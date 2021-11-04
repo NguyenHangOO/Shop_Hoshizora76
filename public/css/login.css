@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Noto+Sans|Open+Sans:400,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+body{
+  height: 100vh; 
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: sans-serif;
+  justify-content: center;
+  background-image: linear-gradient(#fca5f1, #b5ffff);
+  background-size: cover;
+  background-position: center;
+}
+.container{
+  position: relative;
+  width: 400px;
+  height: 506px;
+  background: white;
+  padding: 60px 40px;
+}
+.introduce{
+    position: relative;
+    width: 400px;
+    height: 506px;
+    background: rgb(231, 9, 176);
+    padding: 60px 40px;
+  }
+h1,h4{
+    color: white; 
+}
+header{
+  font-size: 40px;
+  margin-bottom: 60px;
+  font-family: 'Montserrat', sans-serif;
+}
+.input-field, form .button{
+  margin: 25px 0;
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+.input-field input{
+  height: 100%;
+  width: 100%;
+  border: 1px solid silver;
+  padding-left: 15px;
+  outline: none;
+  font-size: 19px;
+  transition: .4s;
+}
+input:focus{
+  border: 1px solid #1DA1F2;
+}
+.input-field label, span.show{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input-field label{
+  left: 15px;
+  pointer-events: none;
+  color: grey;
+  font-size: 18px;
+  transition: .4s;
+}
+input:valid ~ span.show{
+  visibility: visible;
+}
+input:focus ~ label,
+input:valid ~ label{
+  transform: translateY(-33px);
+  background: white;
+  font-size: 16px;
+  color: #1DA1F2; 
+}
+form .button{
+  margin-top: 30px;
+  overflow: hidden;
+  z-index: 111;
+}
+.button .inner{
+  position: absolute;
+  height: 100%;
+  width: 300%;
+  left: -100%;
+  z-index: -1;
+  transition: all .4s;
+  background: -webkit-linear-gradient(right,#fca5f1,#fc00ff,#63e2ff);
+}
+.button:hover .inner{
+  left: 0;
+}
+.button button{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+}
+.container .auth{
+  margin: 35px 0 20px 0;
+  font-size: 19px;
+  color: grey;
+}
+.signup{
+  margin-top: 50px;
+  font-family: 'Noto Sans', sans-serif;
+}
+.signup a{
+  color: #3498db;
+  text-decoration: none;
+}
+.signup a:hover{
+  text-decoration: underline;
+}
+#pacman {
+    width: 0;
+    height: 0;
+    border-right: 15px solid red;
+    border-top: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid red;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-direction: reverse; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 3s;
+    animation-direction: alternate-reverse; 
+    animation-iteration-count: infinite;
+}
+#pacman2 {
+    width: 0;
+    height: 0;
+    border-right: 15px solid transparent;
+    border-top: 15px solid yellow;
+    border-left: 15px solid yellow;
+    border-bottom: 15px solid transparent;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+#pacman1 {
+    width: 0;
+    height: 0;
+    border-right: 15px solid transparent;
+    border-top: 15px solid paleturquoise;
+    border-left: 15px solid paleturquoise;
+    border-bottom: 15px solid transparent;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 3s;
+    animation-direction: reverse;
+    animation-iteration-count: infinite;
+}
+ @-webkit-keyframes example {
+    0% {background-color:crimson; left:0px; top:0px;}
+    25% {background-color:lightsalmon; left:300px; top:0px;}
+    50% {background-color:seagreen; left:300px; top:200px;}
+    75% {background-color:midnightblue; left:0px; top:300px;}
+    100% {background-color:indigo; left:0px; top:0px;}
+  }
+  
+  /* Standard syntax */
+  @keyframes example {
+    0% {background-color:crimson; left:0px; top:0px;}
+    25% {background-color:lightsalmon; left:300px; top:0px;}
+    50% {background-color:seagreen; left:300px; top:250px;}
+    75% {background-color:midnightblue; left:0px; top:250px;}
+    100% {background-color:indigo; left:0px; top:0px;}
+  }
+  @media screen and (max-width: 480px) {
+    .introduce{
+      display:none;
+    }
+  }

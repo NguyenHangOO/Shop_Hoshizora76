@@ -1,0 +1,29 @@
+
+.modal-3 a {
+  color:gray;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+.modal-3 ul li {
+  margin-left: 2px;
+  margin-right: 2px;
+  display: inline-block;
+}
+.modal-3 li:hover {
+  color: #fff;
+  background: #25e21e;
+}
+.modal-3 li#active {
+  background: #25e21e;
+  color: #fff;
+}
+.modal-3 ul {
+  text-align: right;
+  margin: auto;
+}
+.phantrang{
+  margin-top: 10px;
+  padding-bottom: 10px;
+  right: 0;
+}

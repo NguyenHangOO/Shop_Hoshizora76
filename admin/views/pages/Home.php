@@ -1,0 +1,99 @@
+<style>
+  #ac1{background-color: #afabab;}
+  #ac1 a{color:white;}
+  #tbdh{border-radius: 10px;}
+  @media (max-width: 380px) {#btnxn{font-size: 10px;padding:0 2px;}#tbdh{font-size:12px;}}
+  @media (max-width: 330px) {#btnxn{font-size: 8px;padding:0 0px;}#tbdh{font-size:11px;}}
+</style>
+<div id="content-wrapper">
+      <div class="mui--appbar-height"></div>
+      <div class="mui-container-fluid">
+        <br> 
+        <div class="mui-row" >
+          <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
+            <div class="congviec"style="background-image: linear-gradient(#00a8c5,#ffff7e);">
+              <a href="" id="info_user">
+                <i class="far fa-user-circle" id="icon_user"></i><br/>
+                <?php 
+                   $row= json_decode($data["DSMember"],true);
+                   $tongtv=count($row);
+                    echo '<span id="tongtv">'.$tongtv.'</span></br/>';
+                ?>
+                Thành viên
+              </a>
+            </div>
+          </div>
+          <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
+            <div class="congviec"style="background-image: linear-gradient(#ffe98a,#d74177);">
+              <a href="" id="info_user">
+                <i class="fas fa-shipping-fast" id="icon_user"></i><br/>
+                <?php 
+                   $row= json_decode($data["DSDH"],true);
+                   $tongdh=count($row);
+                    echo '<span id="tongtv">'.$tongdh.'</span></br/>';
+                ?>
+                Đơn hàng
+              </a>
+            </div>
+          </div>
+          <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
+            <div class="congviec"style="background-image: linear-gradient(#d585ff,#00ffee);">
+              <a href="" id="info_user">
+                <i class="fas fa-dollar-sign" id="icon_user"></i><br/>
+                <?php 
+                   $row= json_decode($data["DSTTDH"],true);
+                   foreach ($row as list("danhthu"=>$danhthu)){
+                    echo '<span id="tongtv">'.number_format($danhthu).'đ</span></br/>'; }
+                ?>
+                Doanh thu tháng <span><?php echo $m = date("m"); ?></span>
+              </a>
+            </div>
+          </div>
+          <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
+            <div class="congviec"style="background-image: linear-gradient(#8e78ff,#fc7d7b);">
+              <a href="" id="info_user">
+                <i class="fab fa-shopify" id="icon_user"></i><br/>
+                <?php 
+                   $row= json_decode($data["DSSP"],true);
+                   $tongsp=count($row);
+                    echo '<span id="tongtv">'.$tongsp.'</span></br/>';
+                ?>
+                Sản phẩm
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mui-row">
+          <h2>Công việc hôm nay</h2>
+          <div class="mui-col-sm-12  mui-col-lg-8 mui-col-lg-offset-2">
+            <table class="mui-table" id="tbdh">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th id="td1">Người mua</th>
+                  <th id="td1">Tổng tiền</th>
+                  <th id="td1">Ngày đặt</th>
+                  <th id="td5">Xử lý</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="trhorver">
+                <?php 
+                   $row= json_decode($data["DSDHXL"],true);
+                  foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$hoten,"tongtien"=>$tongtien)){
+                  ?>
+                  <td><span><?php echo $id; ?></span></td>
+                  <td id="td1"><span><?php echo $hoten; ?></span></td>
+                  <td id="td1"><span><?php echo number_format($tongtien); ?></span></td>
+                  <td id="td1"><span><?php echo $ngay; ?></span></td>
+                  <td id="td5">
+                    <a href="admin.php?url=Home/Xulydonhang/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn">Xác nhận</a>
+                  </td>
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</div>
