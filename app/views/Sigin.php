@@ -15,7 +15,7 @@
         <form action="./Register/Khachhangdn" method="POST">
             <div class="input-field">
 				<input type="text" name="username" required>
-				<label>Username</label>
+				<label>Username/Email</label>
 			</div>
 			<div class="input-field">
 				<input class="pswrd" name="password" type="password" required>

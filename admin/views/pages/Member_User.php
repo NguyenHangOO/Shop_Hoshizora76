@@ -55,7 +55,7 @@
                     <?php if($trangthai==1){ ?>
                       <a href="./admin.php?url=Member/LockUser/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn" title="Khóa tài khoản"><i class="fas fa-lock"></i></a>
                     <?php }  else {?>
-                      <a href="./admin.php?url=Member/UnlockUser/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn" title="Mở khóa tài khoản"><i class="fas fa-unlock-alt"></i></a>
+                      <a href="./admin.php?url=Member/UnlockUser/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--primary mui-btn mui-btn--small" id="btnxn" title="Mở khóa tài khoản"><i class="fas fa-unlock-alt"></i></a>
                       <!--<button class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btnxn" title="Xóa tài khoản" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i></button>-->
                     <?php } ?>
                   </td>

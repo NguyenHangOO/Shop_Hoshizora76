@@ -29,7 +29,26 @@
                             $result = "no"; 
                         }
                     } 
-                }else { $result = "NoAdmin";}
+                }else {
+                    $kq2 = $this->UserModel->GetAdminEmail($username); 
+                    $row2= json_decode($kq2,true);
+                    if(count($row2)>0){
+                        foreach ($row2 as list("username"=>$usa,"password"=>$pass,"trangthai"=>$trangthai)){
+                            if(password_verify($password,$pass)){
+                                if($trangthai==1){
+                                    $_SESSION['useradmin'] = $usa;
+                                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
+                                }
+                                else{ $result = "lock";}
+                            }
+                            else {
+                                $result = "no"; 
+                            }
+                        } 
+                    }else {
+                        $result = "NoAdmin";
+                    }
+                }
 				$this->view("Sigin",[
                     // "result" => $kq,
                      "result"=>$result  

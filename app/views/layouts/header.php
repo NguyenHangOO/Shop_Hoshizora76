@@ -121,6 +121,5 @@
 			</div>
 		</div>
 	</header>
-	
 	<div class="banner">
 	</div>

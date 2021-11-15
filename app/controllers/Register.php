@@ -57,7 +57,24 @@
                         }
                     } 
                 }else{
-                    $result = "nouser";
+                    $kq2 = $this->UserModel->GetMemberEmail($username);
+                    $row2= json_decode($kq2,true);
+                    if(count($row2)>0){
+                        foreach ($row2 as list("id"=>$iduss,"username"=>$user,"password"=>$pass,"trangthai"=>$trangthai)){
+                            if(password_verify($password,$pass)){
+                                if($trangthai==1){
+                                    $_SESSION['username'] = $user;
+                                    $_SESSION['iduss'] = $iduss;
+                                    header("Location:/CodeApp/Shop_Hoshizora76/");
+                                }
+                                else{ $result = "lock";}
+                            }
+                            else {
+                                $result = "no"; 
+                            }
+                        } 
+                    }else{ $result = "nouser";}
+                   
                 }
 				$this->view("Sigin",[
                 // "result" => $kq,

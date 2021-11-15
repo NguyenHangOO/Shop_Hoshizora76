@@ -1,9 +1,9 @@
 <style>
   #ac1{background-color: #afabab;}
   #ac1 a{color:white;}
-  #tbdh{border-radius: 10px;}
-  @media (max-width: 380px) {#btnxn{font-size: 10px;padding:0 2px;}#tbdh{font-size:12px;}}
-  @media (max-width: 330px) {#btnxn{font-size: 8px;padding:0 0px;}#tbdh{font-size:11px;}}
+  #tbdh{border-radius: 10px;}#btnxn{padding:0 8px;}
+  @media (max-width: 380px) {#tbdh{font-size:12px;}}
+  @media (max-width: 330px) {#tbdh{font-size:11px;}}
 </style>
 <div id="content-wrapper">
       <div class="mui--appbar-height"></div>
@@ -12,7 +12,7 @@
         <div class="mui-row" >
           <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
             <div class="congviec"style="background-image: linear-gradient(#00a8c5,#ffff7e);">
-              <a href="" id="info_user">
+              <a id="info_user">
                 <i class="far fa-user-circle" id="icon_user"></i><br/>
                 <?php 
                    $row= json_decode($data["DSMember"],true);
@@ -25,7 +25,7 @@
           </div>
           <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
             <div class="congviec"style="background-image: linear-gradient(#ffe98a,#d74177);">
-              <a href="" id="info_user">
+              <a  id="info_user">
                 <i class="fas fa-shipping-fast" id="icon_user"></i><br/>
                 <?php 
                    $row= json_decode($data["DSDH"],true);
@@ -38,20 +38,20 @@
           </div>
           <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
             <div class="congviec"style="background-image: linear-gradient(#d585ff,#00ffee);">
-              <a href="" id="info_user">
+              <a id="info_user">
                 <i class="fas fa-dollar-sign" id="icon_user"></i><br/>
                 <?php 
                    $row= json_decode($data["DSTTDH"],true);
                    foreach ($row as list("danhthu"=>$danhthu)){
                     echo '<span id="tongtv">'.number_format($danhthu).'đ</span></br/>'; }
                 ?>
-                Doanh thu tháng <span><?php echo $m = date("m"); ?></span>
+                Thu nhập tháng <span><?php echo $m = date("m"); ?></span>
               </a>
             </div>
           </div>
           <div class="mui-col-sm-6 mui-col-lg-3" id="mui">
             <div class="congviec"style="background-image: linear-gradient(#8e78ff,#fc7d7b);">
-              <a href="" id="info_user">
+              <a  id="info_user">
                 <i class="fab fa-shopify" id="icon_user"></i><br/>
                 <?php 
                    $row= json_decode($data["DSSP"],true);
@@ -87,7 +87,8 @@
                   <td id="td1"><span><?php echo number_format($tongtien); ?></span></td>
                   <td id="td1"><span><?php echo $ngay; ?></span></td>
                   <td id="td5">
-                    <a href="admin.php?url=Home/Xulydonhang/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn">Xác nhận</a>
+                    <a href="admin.php?url=Home/Xulydonhang/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn" title="Xác nhận"><i class="fas fa-check"></i></a>
+                    <a href="admin.php?url=Home//<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" title="Hủy" id="btnxn"><i class="fas fa-times-circle"></i></a>
                   </td>
                 </tr>
                 <?php } ?>

@@ -32,7 +32,7 @@
                         <a style="font-size: 80px;"><i style="color: #ff4081;"class="fas fa-user-circle"></i></a>
                         <div class="mui-textfield mui-textfield--float-label mui--text-left">
                           <input type="text" name="username" required>
-                          <label>Username</label>
+                          <label>Username/Email</label>
                         </div>
                         <div class="mui-textfield mui-textfield--float-label mui--text-left">
                           <input type="password" name="password" required>

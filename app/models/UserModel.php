@@ -67,8 +67,26 @@
             }
             return $kq;
         }
+        public function checkEmail($em){
+            $qr = "SELECT id from `member` where email='$em'";
+            $rows = mysqli_query($this->con, $qr);
+            $kq = "<span style=\"color:green\">Email hợp lệ</span>";
+            if( mysqli_num_rows($rows)>0){
+                $kq ="<span style=\"color:red\">Email đã được sử dụng</span>";
+            }
+            return $kq;
+        }
         function GetMember($username){
             $sqr = "SELECT * FROM member where username='$username'";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function GetMemberEmail($username){
+            $sqr = "SELECT * FROM member where email='$username'";
             $rows = mysqli_query($this->con, $sqr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){

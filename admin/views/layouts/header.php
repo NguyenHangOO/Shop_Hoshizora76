@@ -9,15 +9,16 @@
 	<Link rel="shortcut icon" href="public/images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<!-- MUI CSS -->
-    <link href="//cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="./public/css/thongbao.css">
     <link rel="stylesheet" type="text/css" href="./public/css/adminstyle.css">
+    <link href="//cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
     <div id="sidedrawer" class="mui--no-user-select">
       <div id="sidedrawer-brand" class="mui--appbar-line-height">
-        <span class="mui--text-title"><a href="/CodeApp/Shop_Hoshizora76/"> <img id="lg" src="public/images/logo-H76.png" ></a></span>
+        <span class="mui--text-title"><a href="/CodeApp/Shop_Hoshizora76/admin.php?url=Home"> <img id="lg" src="public/images/logo-H76.png" ></a></span>
         <span class="tenshop">Hoshizora76 | <a style="text-decoration: none;"><?php if(isset($_SESSION['useradmin'])){echo $_SESSION['useradmin'];} ?></a></span>
       </div>
       <div class="mui-divider"></div>
@@ -39,18 +40,18 @@
         <li>
           <strong id="ac4"><a id="tieude"><i class="fas fa-th-list"></i>&nbsp;Quản lý danh mục<span class="mui-caret"></span></a></strong>
           <ul>
-            <li id="hoho"><a id="tdcap2" href="#"> <i class="fab fa-canadian-maple-leaf"></i>&nbsp;Phân loại Handmade</a></li>
-            <li id="hoho"><a id="tdcap2" href="#"><i class="fas fa-gifts"></i>&nbsp;Phân loại Gift Set</a></li>
+            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Category/Handmade"> <i class="fab fa-canadian-maple-leaf"></i>&nbsp;Phân loại Handmade</a></li>
+            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Category/GiftSet"><i class="fas fa-gifts"></i>&nbsp;Phân loại Gift Set</a></li>
           </ul>
         </li>
         <li>
-          <strong id="ac5"><a id="tieude" href=""><i class="fab fa-shopify"></i>&nbsp;Quản lý sản phẩm</a></strong>
+          <strong id="ac5"><a id="tieude" href="./admin.php?url=Product"><i class="fab fa-shopify"></i>&nbsp;Quản lý sản phẩm</a></strong>
         </li>
         <li>
           <strong id="ac6"><a id="tieude"><i class="fas fa-shipping-fast"></i>&nbsp;Quản lý đơn hàng<span class="mui-caret"></span></a></strong>
           <ul>
-            <li id="hoho"><a id="tdcap2" href="#"><i class="fas fa-sign-in-alt"></i>&nbsp;Đơn nhập</a></li>
-            <li id="hoho"><a id="tdcap2" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;Đơn xuất</a></li>
+            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Order/orImport"><i class="fas fa-sign-in-alt"></i>&nbsp;Đơn nhập</a></li>
+            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Order/orExport"><i class="fas fa-sign-out-alt"></i>&nbsp;Đơn xuất</a></li>
           </ul>
         </li>
       </ul>

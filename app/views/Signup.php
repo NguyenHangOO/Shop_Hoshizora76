@@ -31,8 +31,9 @@
 				<label>Confirm password</label>
             </div>
             <div class="input-field">
-				<input type="email" name="email" required>
+				<input type="email" name="email" id="email" required>
 				<label>Email</label>
+                <div id="messageem" style="font-size:12px; text-align: left; margin-left:3px;"></div>
 			</div>
             <div class="input-check">
             <input type="checkbox" name="yes" value="yes" checked >
@@ -57,6 +58,16 @@
         <?php } ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
-    <script src="./public/js/register.js" ></script>	
+    <script src="./public/js/register.js" ></script>
+    <script>
+        $(document).ready(function(){
+            $("#email").keyup(function(){
+                var uem = $(this).val();
+                $.post("./Ajax/checkEmail",{em:uem}, function(data){
+                    $("#messageem").html(data);
+                });
+            });
+        });
+    </script>	
 </body>
 </html>

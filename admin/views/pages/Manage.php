@@ -4,7 +4,7 @@
   #qt{background-color:#ffcc33; color:white; padding:3px;border-radius:3px;font-size:12px;} #nv{background-color:green; color:white;padding:3px;border-radius:3px;font-size:12px;}
   #lock{color:red} #unlock{color:green}
   #tbdh{border-radius: 4px;}
-  #btnxn{border-radius:5px;padding:0 10px;}
+  #btnxn{border-radius:5px;padding:0 10px;} #btncq{border-radius:5px;padding:0 8px;background-color:#FFA500;color:white;}
   .add{background: white;width:atuo;border-radius: 2px;margin-bottom:10px; padding:15px;border:dashed #c2bdbd; text-align:center;}
 </style>
 <div id="content-wrapper">
@@ -72,6 +72,7 @@
                                 if($quyen==1) { ?>
                                     <td id="td5">
                                         <a href="./admin.php?url=Member/LockStaff/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn" title="Khóa tài khoản"><i class="fas fa-lock"></i></a>
+                                        <a href="./admin.php?url=Member/GrantPermission/<?php echo $id; ?>" class="mui-btn mui-btn--raised  mui-btn mui-btn--small" id="btncq" title="Cấp quyền quản trị"><i class="fas fa-user-cog"></i></a>
                                     </td>
                         <?php  } }
                         }else {
@@ -79,7 +80,7 @@
                             foreach ($row as list("quyen"=>$quyen)){
                                 if($quyen==1) { ?>
                                     <td id="td5">
-                                        <a href="./admin.php?url=Member/UnlockStaff/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn" title="Mở khóa tài khoản"><i class="fas fa-unlock-alt"></i></a>
+                                        <a href="./admin.php?url=Member/UnlockStaff/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--primary mui-btn mui-btn--small" id="btnxn" title="Mở khóa tài khoản"><i class="fas fa-unlock-alt"></i></a>
                                     </td>
                         <?php  } }
                         } ?>  
