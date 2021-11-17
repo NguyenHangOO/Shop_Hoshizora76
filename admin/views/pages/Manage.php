@@ -28,8 +28,9 @@
               <thead>
                 <tr>
                   <th>STT</th>
-                  <th id="td1">Username</th>
-                  <th id="td1">Họ tên</th>
+                  <th >Username</th>
+                  <th >Họ tên</th>
+                  <th >Email</th>
                   <th id="td1">Quyền</th>
                   <th id="td1">Trạng thái</th>
                   <th id="td5">Thao tác</th>
@@ -39,13 +40,14 @@
                 <?php 
                 $stt=0;
                 $row= json_decode($data["DSAdmin"],true);
-				        foreach ($row as list("id"=>$id,"username"=>$username,"fullname"=>$hoten,"quyen"=>$quyen,"trangthai"=>$trangthai)){
+				        foreach ($row as list("id"=>$id,"username"=>$username,"fullname"=>$hoten,"quyen"=>$quyen,"trangthai"=>$trangthai,"email"=>$email)){
                     $stt++;
                 ?>
                 <tr id="trhorver">
                   <td><span><?php  echo $stt;?></span></td>
-                  <td id="td1"><span><?php echo $username; ?></span></td>
-                  <td id="td1"><span><?php echo $hoten; ?></span></td>
+                  <td ><span><?php echo $username; ?></span></td>
+                  <td ><span><?php echo $hoten; ?></span></td>
+                  <td ><span><?php echo $email; ?></span></td>
                   <td id="td1">
                         <?php 
                             if($quyen==1){

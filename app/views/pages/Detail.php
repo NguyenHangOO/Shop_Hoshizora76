@@ -189,17 +189,18 @@
                     <div class="phantrang">
                         <ul class="pagination modal-3">
                             <li class="rounded-circle"><a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php if($data["trang"]==1) {echo $data["trang"];} else {echo $data["trang"]-1;}?>" class="prev fa fa-arrow-left"></a></li>
-                            <li class="rounded-circle"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/1">1</a></li>
+                            <!--<li class="rounded-circle"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/1">1</a></li>-->
                             <?php
                             $phantrang=5;
                             $row= json_decode($data["danhgia"],true);
                             $tongsodg=count($row);
                             $trang = ceil($tongsodg / $phantrang); 
-                            for($i=2;$i<=$trang;$i++){?>
+                            for($i=1;$i<=$trang;$i++){
+                                if($data["trang"]==$i){?>
+                                <li class="rounded-circle" id="active"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
+                            <?php } else { ?>
                                 <li class="rounded-circle"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
-                            <?php }
-
-                            ?>
+                            <?php } } ?>
                             <li class="rounded-circle"><a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php if($data["trang"]<$trang) {echo $data["trang"]+1;} else {echo $data["trang"];}?>" class="next fa fa-arrow-right"></a></li>
                         </ul>
                     </div>

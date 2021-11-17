@@ -18,8 +18,9 @@
               <thead>
                 <tr>
                   <th id="td">STT</th>
-                  <th id="td1">Họ tên</th>
-                  <th id="td1">Username</th>
+                  <th >Họ tên</th>
+                  <th >Username</th>
+                  <th >Email</th>
                   <th id="td1">Hình</th>
                   <th id="td1">Trạng thái</th>
                   <th id="td5">Thao tác</th>
@@ -29,13 +30,14 @@
                 <?php 
                   $stt=0;
                   $row= json_decode($data["DSMember"],true);
-                  foreach ($row as list("id"=>$id,"username"=>$username,"fullname"=>$hoten,"img"=>$img,"trangthai"=>$trangthai)){
+                  foreach ($row as list("id"=>$id,"username"=>$username,"fullname"=>$hoten,"img"=>$img,"trangthai"=>$trangthai,"email"=>$email)){
                       $stt++;
                 ?>
                 <tr id="trhorver">
                   <td id="td"><span><?php echo $stt; ?></span></td>
-                  <td id="td1"><span><?php echo $hoten; ?></span></td>
-                  <td id="td1"><span><?php echo $username; ?></span></td>
+                  <td ><span><?php echo $hoten; ?></span></td>
+                  <td ><span><?php echo $username; ?></span></td>
+                  <td ><span><?php echo $email; ?></span></td>
                   <td id="td1">
                   <?php if($img!=""){ ?>
                       <img src="<?php echo $img; ?>" alt="" id="img-u">

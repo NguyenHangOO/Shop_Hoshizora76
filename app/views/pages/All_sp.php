@@ -57,17 +57,22 @@
 			</div>
 			<div class="phantrang">
 				<ul class="pagination modal-3">
-					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php if($data["trang"]==1) {echo $data["trang"];} else {echo $data["trang"]-1;}?>" class="prev fa fa-arrow-left"></a></li>
-					<li class="rounded-circle"> <a href="./Home/ALL_sp/1">1</a></li>
+				<li class="rounded-circle"><a href="./Home/ALL_sp/1" class="fas fa-step-backward"></a></li>
+					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php if($data["trang"]==1) {echo $data["trang"];} else {echo $data["trang"]-1;}?>" class="fas fa-caret-left"></a></li>
+					<!--<li class="rounded-circle"> <a href="./Home/ALL_sp/1">1</a></li>-->
 					<?php
 					$phantrang=20;
 					$row= json_decode($data["dssp"],true);
 					$tongsodg=count($row);
 					$trang = ceil($tongsodg / $phantrang); 
-					for($i=2;$i<=$trang;$i++){?>
-						<li class="rounded-circle"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>	
-					<?php } ?>
-					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php if($data["trang"]<$trang) {echo $data["trang"]+1;} else {echo $data["trang"];}?>" class="next fa fa-arrow-right"></a></li>
+					for($i=1;$i<=$trang;$i++){
+						if($data["trang"]==$i){?>
+						<li class="rounded-circle" id="active"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>	
+					<?php }else { ?>
+						<li class="rounded-circle"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>
+					<?php } }?>
+					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php if($data["trang"]<$trang) {echo $data["trang"]+1;} else {echo $data["trang"];}?>" class="fas fa-caret-right"></a></li>
+					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php echo $trang; ?>"><i class="fas fa-step-forward"></i></a></li>
 				</ul>
 			</div>
 		</div>

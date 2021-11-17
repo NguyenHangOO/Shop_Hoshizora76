@@ -28,7 +28,7 @@
             return json_encode($mang);
         }
         function GetDSMember(){
-            $sqr = "SELECT id,fullname,username,img,trangthai  FROM `member`";
+            $sqr = "SELECT id,fullname,username,img,trangthai,email  FROM `member`";
             $rows = mysqli_query($this->con, $sqr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){

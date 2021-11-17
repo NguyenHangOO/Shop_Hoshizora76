@@ -65,7 +65,7 @@
           <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
           <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
           <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">H76</span>
-          <a href="" class="tbh" title="Cài đặt"><i class="fas fa-cog"></i></a>
+          <a class="tbh" title="Cài đặt"><i class="fas fa-cog"></i></a>
           <div class="mui-dropdown tbh" style="margin-top:8px; margin-bottom:-8px;">
             <?php 
             $row= json_decode($data["Admin"],true);
@@ -81,10 +81,10 @@
             </ul>
           </div>
            <!---->
-          <a  class="tbh" title="Thông báo việc cần làm"><i class="fas fa-bell"></i> <sup><span id="hienthi">
+          <span class="tbh" title="Thông báo việc cần làm"><i class="fas fa-bell"></i> <sup><span id="hienthi">
           <?php 
             echo count($row= json_decode($data["DSDHXL"],true)); ?>
-          </span></sup> </a>
+          </span></sup> </span>
           <!--<a  class="tbh" title="Giao diện" ><i class="far fa-moon" style="cursor: pointer;" ></i></a>-->
         </div>
       </div>

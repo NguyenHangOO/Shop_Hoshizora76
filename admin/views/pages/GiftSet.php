@@ -9,7 +9,10 @@
         <div class="mui-row">
             <h2>Quản lý danh mục GiftSet</h2>
           <div class="mui-col-sm-12  mui-col-lg-5 mui-col-lg-offset-1">
-            <a id="buttonthem" class="mui-btn mui-btn--raised mui-btn--primary"><i class="fas fa-plus"></i> &nbsp;Thêm mới</a>
+          <?php  
+              if(isset($data["idsua"])){}else{ ?>
+              <a id="buttonthem" class="mui-btn mui-btn--raised mui-btn--primary"><i class="fas fa-plus"></i> &nbsp;Thêm mới</a>
+            <?php  } ?>
             <table class="mui-table" id="tbdh">
             <thead>
                 <tr>

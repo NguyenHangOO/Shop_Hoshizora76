@@ -94,7 +94,9 @@
                             ///goi model
                             $kq = $this->UserModel->InsertImg($image_url,$username);
                             if($kq=true){
-                                unlink($filename);
+                                if($filename!=$image_url){
+                                    unlink($filename);
+                                }     
                             }
                         } else {
                             // Không phải file ảnh

@@ -8,7 +8,7 @@
                     <div class="mui-col-md-4 mui-col-md-offset-4 cp-ac">
                     <?php  
                     $row= json_decode($data["Admin"],true);
-                    foreach ($row as list("username"=>$username,"fullname"=>$hoten,"email"=>$email)){ ?>
+                    foreach ($row as list("username"=>$username,"fullname"=>$hoten,"email"=>$email,"img"=>$img)){ ?>
                         <form class="mui-form" action="admin.php?url=Member/Hosocanhan" enctype="multipart/form-data" method="POST">
                          <?php if(isset($data["tbc"])){ if ($data["tbc"]=="Cập nhật thành công"){ ?>
                             <div class="tbloi success" id="tbloi">
@@ -22,6 +22,11 @@
                             </div>  
                             <?php } } ?>
                             <legend>Cập nhật thông tin</legend>
+                            <?php if($img==""){ ?>
+                                <img src="./public/images/account/unnamed.png" alt="" style="width:80px;height:80px;text-align:center;">
+                           <?php  } else { ?>
+                                <img src="<?php echo $img ?>" alt="" style="width:80px;height:80px;text-align:center;">
+                            <?php } ?>
                             <div class="mui-textfield mui-textfield--float-label">
                                 <input type="text" name="username" disabled value="<?php echo $username; ?>">
                                 <label>Username</label>

@@ -3,7 +3,7 @@
         
         public function GetSPPT($trang){
             $form = ($trang - 1)*20;
-            $qr = "SELECT sp.id,sp.tensp,sp.giaban,sp.luotmua,sp.hinhanh,sanpham_id, AVG(dg.diem) as dtb,sp.soluong FROM `sanpham` as sp ,danhgia dg WHERE sp.id=sanpham_id and dg.diem not in(-1) and ttban='1' GROUP BY sanpham_id LIMIT $form,20" ;
+            $qr = "SELECT sp.id,sp.tensp,sp.giaban,sp.luotmua,sp.hinhanh,sanpham_id, AVG(dg.diem) as dtb,sp.soluong FROM `sanpham` as sp ,danhgia dg WHERE sp.id=sanpham_id and dg.diem not in(-1) and ttban='1' GROUP BY sanpham_id ORDER BY sp.id DESC LIMIT $form,20" ;
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){

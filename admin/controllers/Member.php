@@ -90,7 +90,9 @@
                             $kq = $this->UserModel->Capnhathoso($fullname,$email,$image_url,$useradmin);
                             if($kq="true"){
                                 if($anhcu!=""){
-                                    unlink($anhcu);
+                                    if($anhcu!=$image_url){
+                                        unlink($anhcu);
+                                    }  
                                 }
                                 $relust="Cập nhật thành công";
                             }

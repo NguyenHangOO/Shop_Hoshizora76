@@ -63,11 +63,9 @@
 						if (isset($_SESSION['username']) && $_SESSION['username']){
 							echo '<a href="./Account/Infomation"data-toggle="tooltip" title="Bấm để thêm thông tin">'.$_SESSION["username"].'</a>';
 						}
-						else{
-							echo '<a href="./Register/Sigin" data-toggle="tooltip" title="Vui lòng đăng nhập!"><i style="font-size:16px" class="far fa-user"></i></a>';
-							
-						}
-						?>
+						else{ ?>
+							<a href="./Register/Sigin" data-toggle="tooltip" title="Vui lòng đăng nhập!"><i style="font-size:16px" class="far fa-user"></i></a>	
+						<?php } ?>
 					</li>
 				</ul>
 			</div>
