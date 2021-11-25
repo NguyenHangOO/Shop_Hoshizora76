@@ -10,6 +10,9 @@
    margin-top: 12px;
    border-radius:5px;
 }
+  .onRow{
+      cursor: pointer;
+    }
 </style>
 <div id="content-wrapper">
       <div class="mui--appbar-height"></div>
@@ -24,6 +27,7 @@
               <li><a data-mui-toggle="tab" data-mui-controls="pane-api-3">Đã xác nhận</a></li>
               <li><a data-mui-toggle="tab" data-mui-controls="pane-api-4">Đang giao</a></li>
               <li><a data-mui-toggle="tab" data-mui-controls="pane-api-5">Đã giao</a></li>
+              <li><a data-mui-toggle="tab" data-mui-controls="pane-api-6">Đã hủy</a></li>
             </ul>
             <div class="mui-tabs__pane mui--is-active" id="pane-api-1">
               <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
@@ -43,7 +47,7 @@
                 <?php 
                 $stt=0;
                 $row= json_decode($data["DSAll"],true);
-				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien,"tinhtrang"=>$tinhtrang)){
+				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien,"tinhtrang"=>$tinhtrang,"member_id"=>$idmem)){
                     $stt++;
                 ?>
                   <tr id="trhorver" class="onRow">
@@ -55,14 +59,14 @@
                     <td id="td6"><span><?php echo number_format($tongtien); ?>đ</span></td>
                     <td id="td6">
                       <?php if($tinhtrang=="Xử lý"){ ?>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btnxn" title="Xác nhận"><i class="fas fa-check"></i></a>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
+                      <a href="admin.php?url=Order/Xulydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btnxn" title="Xác nhận"><i class="fas fa-check"></i></a>
+                      <a href="admin.php?url=Order/Huydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
                      <?php } else if($tinhtrang=="Đã xác nhận"){ ?>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btngh" title="Giao hàng"><i class="fas fa-truck"></i></a>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
+                      <a href="admin.php?url=Order/DangGiaodonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btngh" title="Giao hàng"><i class="fas fa-truck"></i></a>
+                      <a href="admin.php?url=Order/Huydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
                     <?php  } else if($tinhtrang=="Đang giao"){ ?>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btntc" title="Giao thành công"><i class="fas fa-clipboard-check"></i></a>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
+                      <a href="admin.php?url=Order/DaGiaodonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btntc" title="Giao thành công"><i class="fas fa-clipboard-check"></i></a>
+                      <a href="admin.php?url=Order/Huydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
                     <?php  } ?>
                       
                     </td>
@@ -87,7 +91,7 @@
                 <?php 
                 $stt=0;
                 $row= json_decode($data["DSDHXL"],true);
-				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien)){
+				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien,"member_id"=>$idmem)){
                     $stt++;
                 ?>
                   <tr id="trhorver" class="onRow">
@@ -97,8 +101,8 @@
                     <td id="td1"><span><?php echo $name; ?></span></td>
                     <td id="td6"><span><?php echo number_format($tongtien); ?>đ</span></td>
                     <td id="td6">
-                      <a href="" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btnxn" title="Xác nhận"><i class="fas fa-check"></i></a>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
+                      <a href="admin.php?url=Order/Xulydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btnxn" title="Xác nhận"><i class="fas fa-check"></i></a>
+                      <a href="admin.php?url=Order/Huydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
                     </td>
                   </tr>
                 <?php } ?>
@@ -121,7 +125,7 @@
                 <?php 
                 $stt=0;
                 $row= json_decode($data["DSDHXN"],true);
-				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien)){
+				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien,"member_id"=>$idmem)){
                     $stt++;
                 ?>
                   <tr id="trhorver" class="onRow">
@@ -131,8 +135,8 @@
                     <td id="td1"><span><?php echo $name; ?></span></td>
                     <td id="td6"><span><?php echo number_format($tongtien); ?>đ</span></td>
                     <td id="td6">
-                      <a href="" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btngh" title="Giao hàng"><i class="fas fa-truck"></i></a>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
+                      <a href="admin.php?url=Order/DangGiaodonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn mui-btn--small" id="btngh" title="Giao hàng"><i class="fas fa-truck"></i></a>
+                      <a href="admin.php?url=Order/Huydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
                     </td>
                   </tr>
                 <?php } ?>
@@ -155,7 +159,7 @@
                 <?php 
                 $stt=0;
                 $row= json_decode($data["DSDHDG"],true);
-				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien)){
+				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien,"member_id"=>$idmem)){
                     $stt++;
                 ?>
                   <tr id="trhorver" class="onRow">
@@ -165,8 +169,8 @@
                     <td id="td1"><span><?php echo $name; ?></span></td>
                     <td id="td6"><span><?php echo number_format($tongtien); ?>đ</span></td>
                     <td id="td6">
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btntc" title="Giao thành công"><i class="fas fa-clipboard-check"></i></a>
-                      <a href="" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
+                      <a href="admin.php?url=Order/DaGiaodonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btntc" title="Giao thành công"><i class="fas fa-clipboard-check"></i></a>
+                      <a href="admin.php?url=Order/Huydonhang/<?php echo $idmem; ?>/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" id="btndel" title="Hủy"><i class="fas fa-times-circle"></i></a>
                     </td>
                   </tr>
                 <?php } ?>
@@ -189,7 +193,37 @@
                 <?php 
                 $stt=0;
                 $row= json_decode($data["DSDHTT"],true);
-				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien)){
+				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien,"member_id"=>$idmem)){
+                    $stt++;
+                ?>
+                  <tr id="trhorver" class="onRow">
+                    <td><span><?php echo $stt; ?></td>
+                    <td id="td1" class="customerIDCell"><span><?php echo $id; ?></span></td>
+                    <td id="td1"><span><?php echo $ngay; ?></span></td>
+                    <td id="td1"><span><?php echo $name; ?></span></td>
+                    <td id="td6"><span><?php echo number_format($tongtien); ?>đ</span></td>
+                  </tr>
+                <?php } ?>
+                </tbody>
+              </table>
+            </div>
+            <div class="mui-tabs__pane" id="pane-api-6">
+              <table class="mui-table" id="tbdh">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th id="td1">Mã đơn</th>
+                    <th id="td1">Ngày đặt</th>
+                    <th id="td1">Người mua</th>
+                    <th id="td6">Tổng tiền</th>
+                    
+                  </tr>
+                </thead>
+                <tbody id="myTable">
+                <?php 
+                $stt=0;
+                $row= json_decode($data["DSDHHUY"],true);
+				        foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$name,"tongtien"=>$tongtien,"member_id"=>$idmem)){
                     $stt++;
                 ?>
                   <tr id="trhorver" class="onRow">
@@ -205,7 +239,7 @@
             </div>
             <button class="mui-btn mui-btn--primary" onclick="activateNext();">Next</button>
             <script>
-              var paneIds = ['pane-api-1', 'pane-api-2', 'pane-api-3', 'pane-api-4', 'pane-api-5'],
+              var paneIds = ['pane-api-1', 'pane-api-2', 'pane-api-3', 'pane-api-4', 'pane-api-5','pane-api-6'],
                   currPos = 0;
 
               function activateNext() {
@@ -233,7 +267,7 @@
       $(function () {
           $('#myTable tr').dblclick(function (e) {
               var idsp = $(this).closest('.onRow').find('td:nth-child(2)').text();
-                  window.location="./admin.php?url=Order/dailExport/"+idsp;
+                  window.location="./admin.php?url=Order/DetailExport/"+idsp;
           });
       });
       </script>

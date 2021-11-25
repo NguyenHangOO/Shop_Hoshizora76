@@ -55,7 +55,7 @@
         <div class="row">
            <div class="col col-sm-12" style="position: unset;">
             <table class="table table-hover" style="font-size:13px;">
-                <tr id="tieude"><th class="td1" id="tdchk" style="width:3%;"><input type="checkbox" id="chckall"></th><th class="td1" style="width:11%;">Sản phẩm</th><th class="td1" style="width:32%;"></th><th class="td2" style="width:15%;" >Đơn giá</th><th class="td2" style="width:15%;">Số lượng</th><th class="td2" style="width:15%;" >Số tiền</th><th class="td3" id="td33" >Thao tác</th></tr>
+                <tr id="tieude"><th class="td1" id="tdchk" style="width:3%;"></th><th class="td1" style="width:11%;">Sản phẩm</th><th class="td1" style="width:32%;"></th><th class="td2" style="width:15%;" >Đơn giá</th><th class="td2" style="width:15%;">Số lượng</th><th class="td2" style="width:15%;" >Số tiền</th><th class="td3" id="td33" >Thao tác</th></tr>
                 <?php
                     $row= json_decode($data["spcart"],true);
                     foreach ($row as list("id"=>$id,"idgh"=>$idgh,"tensp"=>$tensp,"slg"=>$slg,"giaban"=>$giaban,"hinhanh"=>$hinhanh,"slgton"=>$slton,"ttban"=>$ttban)){
@@ -73,7 +73,7 @@
                                 </div>
                             </td>
                             <td class="td2"style="width:14%;line-height: 80px;"><span style="color:red" id="thanhtien"><?php echo number_format($thanhtien=$giaban*$slg); ?>đ</span></td>
-                            <td class="td3" id="td3"><a style="color:red" id="del" href="#"><i class="fas fa-trash"></i></a></td>
+                            <td class="td3" id="td3"><a style="color:red" id="del" href="./Order/DelProductKH/<?php echo $id; ?>" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i></a></td>
                         </tr>
                       <?php  } else 
                           if($ttban==0){ ?>
@@ -90,11 +90,11 @@
                                 </div>
                             </td>
                             <td class="td2"style="width:14%;line-height: 80px;"><span style="color:red" id="thanhtien"><?php echo number_format($thanhtien=$giaban*$slg); ?>đ</span></td>
-                            <td class="td3" id="td3"><a style="color:red" id="del" href="#"><i class="fas fa-trash"></i></a></td>
+                            <td class="td3" id="td3"><a style="color:red" id="del" href="./Order/DelProductKH/<?php echo $id; ?>" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i></a></td>
                         </tr>
                         <?php } else { ?>
                     <tr>
-                        <td class="td1" id="tdchk" style="width:3%;line-height: 80px;"><input type="checkbox" id="chcksp"></td>
+                        <td class="td1" id="tdchk" style="width:3%;line-height: 80px;"><input type="checkbox" name="chcksp" id="chcksp" value="<?php echo $id; ?>" checked></td>
                         <td class="td1"style="width:11%;" ><img src="<?php echo $hinhanh; ?>" alt="" id="imgspp"></td>
                         <td class="td1"style="max-width:32%;"><span class="tenten"><?php echo $tensp; ?></span></td>
                         <td class="td2"style="width:14%;line-height: 80px;"><span style="color:red" id="dongia"><?php echo number_format($giaban); ?>đ</span></td>
@@ -106,15 +106,22 @@
                                 <a href="./Order/UpGiamCartId/<?php echo $id; ?>/<?php echo $idgh; ?>" class="is-form" style="text-decoration: none;" >-</a>
                                 <?php } ?>
                                 <input aria-label="quantity" id="input-qty" max="99" min="1" name="slg" type="number" value="<?php echo $slg; ?>" disabled>
-                                <?php if($slg<=98){ ?>
+                                <?php if($slg<$slton){ ?>
                                 <a href="./Order/UpTangCartId/<?php echo $id; ?>/<?php echo $idgh; ?>" class="is-form"   style="text-decoration: none;">+</a>
+                                </div>
+                                <br/>  
+                                <?php if($slton<=5){ ?>
+                                        <span style="font-size:10px; color:red">Số lượng còn:<?php echo $slton; ?></span>
+                                    <?php } ?>
                                 <?php  } else { ?>
-                                <a  class="is-form" style="text-decoration: none;" >+</a>
-                                <?php } ?>   
+                                <a  class="is-form" style="text-decoration: none;background:white;">+</a>
                             </div>
+                            <br/>
+                            <span style="font-size:10px; color:red">Số lượng đạt tối đa</span>
+                            <?php } ?>
                         </td>
                         <td class="td2"style="width:14%;line-height: 80px;"><span style="color:red" id="thanhtien"><?php echo number_format($thanhtien=$giaban*$slg); ?>đ</span></td>
-                        <td class="td3" id="td3"><a style="color:red" id="del" href="#"><i class="fas fa-trash"></i></a></td>
+                        <td class="td3" id="td3"><a style="color:red" id="del" href="./Order/DelProductKH/<?php echo $id; ?>" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                      <?php   } } ?>
                 </table>
@@ -123,6 +130,7 @@
     </div>
     <div class="thanhtoan" style="margin-top: 15px; background-color: white;">
         <div class="tongtien">
+        <form action="./Order/ShoppingCartPayment" method="post">
         <?php $row= json_decode($data["spcart"],true);
           $tg=count($row);
           $komua=0;
@@ -138,11 +146,42 @@
           }
           $tgh=$tg-$komua;
           ?>
-            <span style="text-align:left;display:block"><input type="checkbox" id= "chckall">&nbsp;<span>Tất cả (<?php echo $tgh; ?> )</span></span>
-            <span style="text-align:left;display:block"><a href="" style="color:red;text-decoration: none;"><i class="fas fa-trash"></i>&nbsp;Xóa tất cả sản phẩm</a> </span>
-            <span>Tổng sản phẩm thanh toán (<?php echo $tgh; ?>):</span>&nbsp;<span style="font-size:22px;color:red"><?php echo number_format($tongtien); ?>đ</span>&nbsp;&nbsp;
-            <button type="submit" class="btnMua" >Mua hàng</button>
+            <span style="text-align:left;display:block"><input type="checkbox" id= "chckall" name="chckall" checked>&nbsp;<span>Tất cả (<?php echo $tgh; ?> )</span></span>
+            <span style="text-align:left;display:block"><a href="./Order/DelAllProductKH" style="color:red;text-decoration: none;" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i>&nbsp;Xóa tất cả sản phẩm</a> </span>
+            <span>Tổng sản phẩm thanh toán (<?php echo $tgh; ?>):</span>&nbsp;<span style="font-size:22px;color:red;"><?php echo number_format($tongtien); ?>đ</span>&nbsp;&nbsp;
+            <button type="submit" class="btnMua" id="btn" name="btnMuaHang" >Mua hàng</button>
+            <input type="hidden" name="dsidsp" id="dsidsp" value="">
+            </form>
         </div>   
     </div>
 <?php } ?>
 </div> 
+<script language="javascript">
+    document.getElementById('btn').onclick = function()
+    {
+        var checkbox = document.getElementsByName('chcksp');
+        var result = "";
+            
+        // Lặp qua từng checkbox để lấy giá trị
+        for (var i = 0; i < checkbox.length; i++){
+            if (checkbox[i].checked === true){
+                result +=checkbox[i].value + ' ';
+            }
+        }  
+        document.getElementById('dsidsp').value = result;
+    };
+    document.getElementById('chckall').onclick = function(e){
+        if(this.checked){
+            var checkboxes = document.getElementsByName('chcksp');
+            for (var i = 0; i < checkboxes.length; i++){
+                    checkboxes[i].checked = true;
+            }
+        }else {
+            var checkboxes = document.getElementsByName('chcksp');
+            for (var i = 0; i < checkboxes.length; i++){
+                    checkboxes[i].checked = false;
+            }
+        }
+        
+    }
+</script>

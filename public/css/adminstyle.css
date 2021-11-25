@@ -46,7 +46,7 @@
 #td1{ text-align: center;}
 #td5{width: 80px; text-align: center;}
 h2{margin-left: 75px;}
-#mail{float: right; color:black; text-decoration: none; }
+#mail{float: right; color:black; text-decoration: none;}
 #mui{margin-bottom: 30px;}
 #tongtv{font-size: 35px;}
 #icon_user{font-size:65px;margin-bottom:15px;margin-top: 10px;}
@@ -63,3 +63,7 @@ h2{margin-left: 75px;}
 .mui-form{padding: 10px; text-align: center;}
 .mui-textfield{text-align: left;}
 legend{text-align: center;}
+#s1{
+  color: rgb(238, 238, 5);
+}
+

@@ -3,11 +3,13 @@
         public $Category;
         public $ProductModel;
         public $UserModel;
+        public $OrderModel;
 
         public function __construct(){
             $this->Category = $this->model("Category");
             $this->ProductModel = $this->model("ProductModel");
             $this->UserModel = $this->model("UserModel");
+            $this->OrderModel = $this->model("OrderModel");
         }
         function  Show(){
             $this->view("404",[
@@ -66,6 +68,18 @@
                 $username= $_SESSION['username'];
                 $iduss=$_SESSION['iduss'];
                 $this->UserModel->DELTB($id, $iduss);
+                header("Location:/CodeApp/Shop_Hoshizora76/Account/Notification");
+            }
+            else{
+                $this->view("404",[
+                ]);
+            }
+        }
+        function DelAllNotifi(){
+            if (isset($_SESSION['username'])){
+                $username= $_SESSION['username'];
+                $iduss=$_SESSION['iduss'];
+                $this->UserModel->DELTBALL($iduss);
                 header("Location:/CodeApp/Shop_Hoshizora76/Account/Notification");
             }
             else{
@@ -134,13 +148,20 @@
         function Infor_oder(){
             if (isset($_SESSION['username'])){
                 $username= $_SESSION['username'];
+                $iduss = $_SESSION['iduss'];
                 $this->view("Main",[
                     "Page"=>"Info_oder",
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "spcart"=>$this->ProductModel->GetSpCart(),
                     "ttuser"=>$this->UserModel->GetMember($username),
-                    "tbuser"=>$this->UserModel->GetThongBao()
+                    "tbuser"=>$this->UserModel->GetThongBao(),
+                    "dsdonhang"=>$this->OrderModel->GetDonHang($iduss),
+                    "dsdonhanghuy"=>$this->OrderModel->GetDonHangHuy($iduss),
+                    "dsdonhangxn"=>$this->OrderModel->GetDonHangXN($iduss),
+                    "dsdonhangdag"=>$this->OrderModel->GetDonHangDagGiao($iduss),
+                    "dsdonhangdg"=>$this->OrderModel->GetDonHangDa($iduss),
+                    "dsdonhangcxn"=>$this->OrderModel->GetDonHangCXN($iduss)
                 ]);
             }
             else{
@@ -179,10 +200,11 @@
                     if(isset($_POST["macdinh"]))
                     {
                         $macdinh=1;
+                        $chon=1;
                         $this->UserModel->UpMDAddress($create);
                     }
-                    else { $macdinh = 0;}
-                    $kq = $this->UserModel->InsertAddress($hoten,$sdt,$diachi,$macdinh,$create,$xa,$huyen,$tinh);
+                    else { $macdinh = 0; $chon=0;}
+                    $kq = $this->UserModel->InsertAddress($hoten,$sdt,$diachi,$macdinh,$create,$xa,$huyen,$tinh,$chon);
                     if($kq==true){
                         header("Location:/CodeApp/Shop_Hoshizora76/Account/ShowAddress");
                     }else{
@@ -214,6 +236,31 @@
                 ]);
             }
         }
+        function ChonAddress($create,$idcdc){
+            if (isset($_SESSION['username'])){
+                $iduss = $_SESSION['iduss'];
+                $up = $this->UserModel->UpChonAddress($iduss);
+                if($up=='true'){
+                    $chn = $this->UserModel->ChonAddress($iduss,$idcdc);
+                    if($chn=='true'){
+                        if(isset($_SESSION['strDS'])){
+                            $_SESSION['strDS1'] = $_SESSION['strDS'];
+                            $_SESSION['arr1'] = $_SESSION['arr'];
+                            $_SESSION['slpds1'] = $_SESSION['slpds'];
+                            $_SESSION['btnMuaHang1'] = $_SESSION['btnMuaHang'];
+                        }
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    }
+                }else{
+                    echo 'Lỗi';
+                }
+                
+            }
+            else{
+                $this->view("404",[
+                ]);
+            }
+        }
         function EditAddress($create,$id){
             if (isset($_SESSION['username'])){
                 $username= $_SESSION['username'];
@@ -229,11 +276,12 @@
                     if(isset($_POST["macdinh"]))
                     {
                         $macdinh=1;
+                        $chon=1;
                         $this->UserModel->UpMDAddress($create);
                     }
-                    else { $macdinh = 0;}
+                    else { $macdinh = 0; $chon=0;}
                     if((strlen($sdt)==11 || strlen($sdt)==10)){
-                        $kq = $this->UserModel->UpAddress($hoten,$sdt,$diachi,$macdinh,$xa,$huyen,$tinh,$id);
+                        $kq = $this->UserModel->UpAddress($hoten,$sdt,$diachi,$macdinh,$xa,$huyen,$tinh,$id,$chon);
                         if($kq=='true'){
                             header("Location:/CodeApp/Shop_Hoshizora76/Account/ShowAddress");
                         }else{
@@ -343,6 +391,40 @@
                 ]);
             }
 
+        }
+        function AddressNow(){
+            if (isset($_SESSION['username'])){
+                $username= $_SESSION['username'];
+                $create = $_SESSION['iduss'];
+                if(isset($_POST["btnAddDC"])){
+                    $hoten = $_POST["hoten"];
+                    $sdt = $_POST["sdt"];
+                    $diachi = $_POST["diachi"];
+                    $xa = $_POST["xa"];
+                    $huyen = $_POST["huyen"];
+                    $tinh = $_POST["tinh"];
+                    $macdinh=1;
+                    $chon=1;
+                    $kq = $this->UserModel->InsertAddress($hoten,$sdt,$diachi,$macdinh,$create,$xa,$huyen,$tinh,$chon);
+                    if($kq==true){
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    }else{
+                        $this->view("Main",[
+                            "Page"=>"Create_Address",
+                            "dmsp1"=>$this->Category->GetDM1(),
+                            "dmsp3"=> $this->Category->GetDM3(),
+                            "spcart"=>$this->ProductModel->GetSpCart(),
+                            "ttuser"=>$this->UserModel->GetMember($username),
+                            "tbuser"=>$this->UserModel->GetThongBao(),
+                            "result"=>$kq
+                        ]);
+                    }
+                }  
+            }
+            else{
+                $this->view("404",[
+                ]);
+            }
         }
         function Sigout(){
             if (isset($_SESSION['username'])){

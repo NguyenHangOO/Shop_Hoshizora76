@@ -126,4 +126,12 @@
             }
             return $kq;
         }
+        function ThongBao($idmem,$ngay,$nd){
+            $sqr = "INSERT INTO `thongbao`(`member_id`, `noidung`, `ngaytb`, `trangthai`) VALUES ('$idmem','$nd','$ngay','Chưa xem')";
+            $relust = false;
+            if($rows = mysqli_query($this->con, $sqr)){
+                $relust = true;
+            }
+            return json_encode($relust);
+        }
     }

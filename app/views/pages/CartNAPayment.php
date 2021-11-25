@@ -12,68 +12,62 @@
 <div class="container">
     <div class="nd">
     <?php 
-    $row= json_decode($data["diachi"],true);  if(count($row)!=0){ ?>
-    <form action="./Order/ThanhToan" method="POST">
+        $row= json_decode($data["diachi"],true);  if(count($row)!=0){ ?>
+        <form action="./Order/ThanhToan" method="POST">
     <?php } ?>
-        <?php 
-             $row= json_decode($data["spbuynow"],true);
-             foreach ($row as list("id"=>$id,"tensp"=>$tensp,"hinhanh"=>$img,"giaban"=>$giaban)){
-        ?>
         <div class="row">
-            <div class="col-lg-8" style="position:unset">
-                <h5>Thông tin sản phẩm</h5>
+            <div class="col-md-8"style="position:unset">
+            <h5>Thông tin sản phẩm</h5>
                 <div class="sanpham">
+                    <?php 
+                        $row= json_decode($data["spcart"],true);
+                        $mang = $data["mang"];
+                        $slgmang = $data["slgmang"]; 
+                        foreach ($row as list("id"=>$id,"tensp"=>$tensp,"hinhanh"=>$img,"giaban"=>$giaban,"slg"=>$soluong,"slgton"=>$slton,"ttban"=>$ttban)){
+                            for($i=0;$i<$slgmang-1;$i++){
+                                if($id==$mang["$i"]){ ?>
                     <div class="row ttsp"style="position:unset">
                         <div class="col-md-2"style="position:unset">
-                            <span><img src="<?php echo $img; ?>" alt="" style="width:85px;height:90px;"></span>
+                            <span><img src="<?php echo $img; ?>" alt="" style="width:55px;height:60px;"></span>
                             <input type="hidden" name="idSP" value="<?php echo $id; ?>">
-                            <input type="hidden" name="GiaSP" value="<?php echo $giaban; ?>">
+                            <input type="hidden" name="GiaSP" value="<?php echo $soluong; ?>">
                         </div>
-                        <div class="col-md-6"style="position:unset">
+                        <div class="col-md-8"style="position:unset">
                             <span><?php echo $tensp;?></span><br/>
-                            <?php 
-                                $row= json_decode($data["ctsp"],true);
-                                foreach ($row as list("soluong"=>$soluongton)){?>
-                                <input  max="<?php echo $soluongton;?>" min="1" name="soluongdat" id="soluongdat" type="number" value="1"
-                                onchange="let soluong = Number(document.getElementById('soluongdat').value);
-                                var thanhtien = parseInt(soluong) * <?php echo $giaban; ?>;
-                                document.getElementById('kq').innerHTML = thanhtien.toLocaleString('vi-VN');">
-                                <br/>
-                                <span style="font-size:11px;color:green;">Số lượng còn: <?php echo $soluongton;?></span>
-                            <?php } ?>
-                            
+                            <span style="font-size:11px;color:dark;">Số lượng: <?php echo $soluong;?></span>
                         </div>
-                        <div class="col-md-2"style="position:unset">
-                            <span id="gia"><?php echo number_format($giaban);?>đ</span>
+                        <div class="col-md-2"style="position:unset;text-align:right;">
+                            <span id="gia"><?php echo number_format($giaban*$soluong);?>đ</span>
                         </div>
                     </div> 
+                    <?php } } } ?>
                 </div> 
             </div>
-            <div class="col-lg-4"style="position:unset">
+            <div class="col-md-4" style="position:unset">
                 <h5>Địa chỉ giao hàng</h5>
                 <div class="diachi">
-                    <div class="row ttsp"style="position:unset">
+                    <div class="row ttsp" style="position:unset">
                         <?php 
                             $row= json_decode($data["diachi"],true);
                             foreach ($row as list("id"=>$iddc,"hoten"=>$hoten,"diachi"=>$diachi,"sdt"=>$sdt,"macdinh"=>$macdinh,"xa"=>$xa,"huyen"=>$huyen,"tinh"=>$tinh,"chon"=>$chon)){
                                 if($chon==1){ ?>
                                     <input type="hidden" name="idDiaChi" value="<?php echo $iddc; ?>">
-                                    <div class="col-lg-12"style="position:unset">
+                                    <div class="col-lg-12"style="position:unset" >
                                         <span class="tennhan" ><?php echo $hoten; ?></span>
                                     </div>
                                     <div class="col-lg-12"style="position:unset">
                                         <span for="" class="htlb">Địa chỉ:</span>&nbsp;<span class="htlb2"><?php echo $diachi.', '.$xa.', '.$huyen.', '.$tinh; ?></span><br/>
                                     </div>
-                                    <div class="col-lg-12"style="position:unset">
+                                    <div class="col-lg-12" style="position:unset">
                                         <span for="" class="htlb">Điện thoại:</span>&nbsp;<span class="htlb2"><?php echo $sdt; ?></span><br/>
                                     </div>
                         <?php } } 
                         if(count($row)!=0){ ?>
-                            <div class="col-lg-12"style="position:unset">
+                            <div class="col-lg-12" style="position:unset">
                                 <button type="button" class="btn btn-info" style="padding:5px;font-size:14px;"data-toggle="modal" data-target="#getdiachi">Thay đổi</button>
                             </div>
                             <?php } else { ?>
-                                <div class="col-lg-12"style="position:unset">
+                                <div class="col-lg-12"style="position:unset" >
                                     <button type="button" class="btn btn-primary" style="padding:5px;font-size:14px;"data-toggle="modal" data-target="#adddiachi">Thêm địa chỉ</button>
                                 </div>   
                        <?php } ?> 
@@ -180,22 +174,34 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
         <div class="row" style="margin-top:10px;">
             <div class="col-lg-8"style="position:unset">
                 <h5>Hình thức thanh toán</h5>
                 <div class="form-group form-check">
-                    <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" checked disabled> Thanh toán khi nhận hàng
+                    <label class="form-check-label" >
+                    <input class="form-check-input" type="checkbox" checked disabled> <span>Thanh toán khi nhận hàng</span>
                     </label>
                 </div>
             </div>
             <div class="col-lg-4"style="position:unset">
-            <span>Tổng tiền:</span><span style="font-size:22px;color:red" id="kq" ><?php echo number_format($giaban) ?></span><span style="font-size:22px;color:red">đ</span> &nbsp;&nbsp;
-            <button type="submit" class="btnMua" name="btnMua" onclick="return confirm('Chấp nhận thanh toán mua hàng?')" >Thanh toán</button>
+            <?php $row= json_decode($data["spcart"],true);
+                $tongtien=0;
+                $mang = $data["mang"];
+                $slgmang = $data["slgmang"];
+                foreach ($row as list("id"=>$id,"slgton"=>$slton,"slg"=>$slg,"ttban"=>$ttban,"giaban"=>$giaban)){
+                    for($i=0;$i<$slgmang-1;$i++){
+                        if($id==$mang["$i"]){
+                            $tongtien=$tongtien + ($slg*$giaban);
+                        }
+                    }
+                }
+            ?>
+            <span>Tổng tiền:</span><span style="font-size:22px;color:red" id="kq" ><?php echo number_format($tongtien) ?></span><span style="font-size:22px;color:red">đ</span> &nbsp;&nbsp;
+            <input type="hidden" name="TongTien" value="<?php echo $tongtien; ?>">
+            <button type="submit" class="btnMua" name="btnMuaNA" onclick="return confirm('Chấp nhận thanh toán mua hàng?')" >Thanh toán</button>
             </div>
         </div>
-        <?php } ?>
     </form>
     </div>
 </div>

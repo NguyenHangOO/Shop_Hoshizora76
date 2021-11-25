@@ -80,15 +80,15 @@
                 <tr id="trhorver">
                 <?php 
                    $row= json_decode($data["DSDHXL"],true);
-                  foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$hoten,"tongtien"=>$tongtien)){
+                  foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$hoten,"tongtien"=>$tongtien,"member_id"=>$idmem)){
                   ?>
                   <td><span><?php echo $id; ?></span></td>
                   <td id="td1"><span><?php echo $hoten; ?></span></td>
                   <td id="td1"><span><?php echo number_format($tongtien); ?></span></td>
                   <td id="td1"><span><?php echo $ngay; ?></span></td>
                   <td id="td5">
-                    <a href="admin.php?url=Home/Xulydonhang/<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn" title="Xác nhận"><i class="fas fa-check"></i></a>
-                    <a href="admin.php?url=Home//<?php echo $id; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" title="Hủy" id="btnxn"><i class="fas fa-times-circle"></i></a>
+                    <a href="admin.php?url=Home/Xulydonhang/<?php echo $id; ?>/<?php echo $idmem; ?>" class="mui-btn mui-btn--raised mui-btn--accent mui-btn mui-btn--small" id="btnxn" title="Xác nhận"><i class="fas fa-check"></i></a>
+                    <a href="admin.php?url=Home/Huydonhang/<?php echo $id; ?>/<?php echo $idmem; ?>" class="mui-btn mui-btn--raised mui-btn--danger mui-btn mui-btn--small" title="Hủy" id="btnxn"><i class="fas fa-times-circle"onclick="return confirm('Bạn có chắc muốn hủy đơn '+<?php echo $id; ?> +'?')"></i></a>
                   </td>
                 </tr>
                 <?php } ?>

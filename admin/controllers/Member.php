@@ -34,7 +34,7 @@
                     $pass=$username."123456";
                     $pass = password_hash($pass,PASSWORD_DEFAULT);
                     $kq = $this->UserModel->Thennhanvien($fullname,$email,$username,$pass);
-                    if($kq="true"){
+                    if($kq=="true"){
                         $relust="Thêm thành công";
                     }else { $relust="Thêm không thành công";}
                     $this->view("Main",[
@@ -88,7 +88,7 @@
                             $image_url = $path . $name;
                             ///goi model
                             $kq = $this->UserModel->Capnhathoso($fullname,$email,$image_url,$useradmin);
-                            if($kq="true"){
+                            if($kq=="true"){
                                 if($anhcu!=""){
                                     if($anhcu!=$image_url){
                                         unlink($anhcu);
@@ -102,7 +102,7 @@
                         }
                     } else {
                          $kq = $this->UserModel->Capnhathosokoanh($fullname,$email,$useradmin);
-                         if($kq="true"){
+                         if($kq=="true"){
                             $relust="Cập nhật thành công";
                         }
                     }

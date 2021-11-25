@@ -18,16 +18,16 @@
             } 
             return json_encode($result);
         }
-        function InsertAddress($hoten,$sdt,$diachi,$macdinh,$create,$xa,$huyen,$tinh){
-            $sqr = "INSERT INTO diachi(`hoten`, `sdt`, `diachi`, `macdinh`, `member_id`, `xa`, `huyen`, `tinh`) VALUES ('$hoten','$sdt','$diachi','$macdinh','$create','$xa','$huyen','$tinh')";
+        function InsertAddress($hoten,$sdt,$diachi,$macdinh,$create,$xa,$huyen,$tinh,$chon){
+            $sqr = "INSERT INTO diachi(`hoten`, `sdt`, `diachi`, `macdinh`, `member_id`, `xa`, `huyen`, `tinh`,`chon`) VALUES ('$hoten','$sdt','$diachi','$macdinh','$create','$xa','$huyen','$tinh','$chon')";
             $result = false;
             if(mysqli_query ($this->con, $sqr)){
                 $result = true;
             }
             return json_encode($result);
         }
-        function UpAddress($hoten,$sdt,$diachi,$macdinh,$xa,$huyen,$tinh,$id){
-            $sqr = "UPDATE `diachi` SET `hoten`='$hoten',`diachi`='$diachi',`macdinh`='$macdinh',`sdt`='$sdt',`xa`='$xa',`huyen`='$huyen',`tinh`='$tinh' WHERE id = $id";
+        function UpAddress($hoten,$sdt,$diachi,$macdinh,$xa,$huyen,$tinh,$id,$chon){
+            $sqr = "UPDATE `diachi` SET `hoten`='$hoten',`diachi`='$diachi',`macdinh`='$macdinh',`chon`='$chon',`sdt`='$sdt',`xa`='$xa',`huyen`='$huyen',`tinh`='$tinh' WHERE id = $id";
             $result = false;
             if(mysqli_query ($this->con, $sqr)){
                 $result = true;
@@ -35,7 +35,23 @@
             return json_encode($result);
         }
         function UpMDAddress($create){
-            $sqr = "UPDATE `diachi` SET `macdinh`='0' WHERE member_id=$create";
+            $sqr = "UPDATE `diachi` SET `macdinh`='0',chon=0 WHERE member_id=$create";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function UpChonAddress($create){
+            $sqr = "UPDATE `diachi` SET chon='0' WHERE member_id=$create";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function ChonAddress($create,$iddc){
+            $sqr = "UPDATE `diachi` SET chon='1' WHERE member_id=$create and id=$iddc";
             $result = false;
             if(mysqli_query ($this->con, $sqr)){
                 $result = true;
@@ -126,6 +142,10 @@
             $qr = "DELETE  FROM `thongbao` WHERE id=$id and member_id= $iduss " ;
             $rows = mysqli_query($this->con, $qr);
         }
+        public function DELTBALL($iduss){
+            $qr = "DELETE  FROM `thongbao` WHERE member_id= $iduss " ;
+            $rows = mysqli_query($this->con, $qr);
+        }
         function DELAddress($id){
             $qr = "DELETE  FROM `diachi` WHERE id=$id" ;
             $rows = mysqli_query($this->con, $qr);
@@ -147,6 +167,14 @@
                 $mang[] = $row;
             }
             return json_encode($mang);
+        }
+        function ThongBao($idmem,$ngay,$nd){
+            $sqr = "INSERT INTO `thongbao`(`member_id`, `noidung`, `ngaytb`, `trangthai`) VALUES ('$idmem','$nd','$ngay','Chưa xem')";
+            $relust = false;
+            if($rows = mysqli_query($this->con, $sqr)){
+                $relust = true;
+            }
+            return json_encode($relust);
         }
     }
 ?>

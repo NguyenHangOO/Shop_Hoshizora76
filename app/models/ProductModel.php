@@ -161,7 +161,7 @@
         }
         public function GetDGPT($id,$trang){
             $form = ($trang - 1)*5;
-            $qr = "SELECT dg.diem,dg.binhluan,dg.ngaybl,m.fullname FROM danhgia dg, member as m WHERE sanpham_id=$id and dg.diem not in(-1,0) and member_id = m.id LIMIT $form,5" ;
+            $qr = "SELECT dg.diem,dg.binhluan,dg.ngaybl,m.fullname,m.img FROM danhgia dg, member as m WHERE sanpham_id=$id and dg.diem not in(-1,0) and member_id = m.id LIMIT $form,5" ;
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){
@@ -193,6 +193,26 @@
         public function TangLuotXem($id){
             $qr = "UPDATE `sanpham` SET `luotxem`= luotxem+1 WHERE id=$id" ;
             $rows = mysqli_query($this->con, $qr);
+        }
+        public function TangLuotMua($id,$slg){
+            $qr = "UPDATE `sanpham` SET `luotmua`= luotmua+$slg WHERE id=$id" ;
+            $rows = mysqli_query($this->con, $qr);
+        }
+        public function UpSlgSp($idsp,$slgdat){
+            $sqr = "UPDATE `sanpham` SET `soluong`=soluong-$slgdat WHERE id=$idsp";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        public function UpSlgHuySp($idsp,$slgdat){
+            $sqr = "UPDATE `sanpham` SET `soluong`=soluong+$slgdat WHERE id=$idsp";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
         }
     }
 ?>

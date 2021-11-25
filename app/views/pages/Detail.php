@@ -114,9 +114,9 @@
                 <?php
                     $row= json_decode($data["ctsp"],true);
                     foreach ($row as list("mota"=>$mota)){ ?>
-                    <span style="margin-left:20px;">
+                    <p style="margin-left:10px;text-align: justify;font-size:16px;">
                         <?php echo $mota ?>
-                    </span>
+                    </p>
                 <?php } ?>
                 </div>
             </div>
@@ -156,7 +156,7 @@
                      <div style="margin-top:25px">
                         <?php
                             $row= json_decode($data["danhgiapt"],true);
-                            foreach ($row as list("fullname"=>$fullname,"diem"=>$dtb,"binhluan"=>$binhluan,"ngaybl"=>$ngaybl)){ 
+                            foreach ($row as list("fullname"=>$fullname,"diem"=>$dtb,"binhluan"=>$binhluan,"ngaybl"=>$ngaybl,"img"=>$img)){ 
                                 if($dtb>=4.6)
                                     $dg = '<i class="fas fa-star" id="s1"></i><i class="fas fa-star"id="s1"></i><i class="fas fa-star"id="s1"></i><i class="fas fa-star"id="s1"></i><i class="fas fa-star"id="s1"></i>';
                                 else if ($dtb>=4.35)
@@ -178,11 +178,21 @@
                                 else
                                     $dg = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>';
                             ?>
-                            <span style="margin-left:20px;font-size:14px"><?php echo $fullname ?></span><br/>
-                            <span style="margin-left:20px;font-size:10px"><?php echo $dg ?></span><br/>
-                            <span style="margin-left:20px;font-size:12px"><?php echo $binhluan ?></span><br/>
-                            <span style="margin-left:20px;font-size:12px"><?php echo $ngaybl ?></span>
-                            <hr>
+                             <hr>
+                            <div class="row">
+                                <div class="col-12" style="position: unset;">
+                                    <?php if($img==""){ ?>
+                                        <img src="./public/images/account/unnamed.png" alt="" class="rounded-circle" style="width:35px;height:35px;">
+                                    <?php } else{ ?>
+                                        <img src="<?php echo $img; ?>" alt="" class="rounded-circle" style="width:35px;height:35px;">
+                                   <?php  } ?>
+                                    &nbsp;<span style="font-size:14px"><?php echo $fullname ?></span><br/>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:10px"><?php echo $dg ?></span><br/>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:12px"><?php echo $binhluan ?></span><br/>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:12px"><?php echo $ngaybl ?></span>
+                                </div>
+                            </div>
+                           
                         <?php } ?>    
                         </div>
                     </div>

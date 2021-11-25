@@ -1,4 +1,7 @@
 <style>
+	#deatail{
+		text-decoration: none;
+	}
 	 @media screen and (max-width: 1030px) {
 	#chimuc{margin-top:-20px;}
     }
@@ -42,6 +45,7 @@
 		<div id="info-b2">
 			<div class="tab">
 				<button class="tablinks active">Tất cả</button>
+				<button class="tablinks">Chờ xác nhận</button>
 				<button class="tablinks">Đã xác nhận</button>
 				<button class="tablinks">Đang giao</button>
 				<button class="tablinks">Đã giao</button>
@@ -49,69 +53,117 @@
 				</div>
 				
 				<div id="Tất cả" class="tabcontent">
+					<table class="table table-hover" style="font-size:13px;text-align:center;" >
+						<tr><th>STT</th><th>Mã đơn hàng</th><th>Ngày mua</th><th style="text-align:right;">Tổng tiền</th><th>Trạng thái</th><th>Chi tiết</th></tr>
+						<?php 
+								$row= json_decode($data["dsdonhang"],true);
+								$stt=0;
+								foreach ($row as list("id"=>$id,"ngay"=>$ngay,"tongtien"=>$tongtien,"tinhtrang"=>$trangthai)){ $stt++;?>
+						<tbody>
+							<tr>
+								<td><?php echo $stt;?></td>
+								<td><?php echo $id;?></td>
+								<td><?php echo $ngay;?></td>
+								<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
+								<td><?php echo $trangthai;?></td>
+								<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
+							</tr>
+						</tbody>
+						<?php } ?>
+					</table>
+				</div>
+
+				<div id="Chờ xác nhận" class="tabcontent">
 					<table class="table table-hover" style="font-size:13px;text-align:center;">
-						<tr><th>Mã đơn hàng</th><th>Ngày mua</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Trạng thái</th></tr>
+						<tr><th>STT</th><th>Mã đơn hàng</th><th>Ngày mua</th><th style="text-align:right;">Tổng tiền</th><th>Chi tiết</th></tr>
+						<?php 
+                                $row= json_decode($data["dsdonhangcxn"],true);
+								$stt=0;
+                                foreach ($row as list("id"=>$id,"ngay"=>$ngay,"tongtien"=>$tongtien,"tinhtrang"=>$trangthai)){ $stt++;?>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><?php echo $stt;?></td>
+							<td><?php echo $id;?></td>
+							<td><?php echo $ngay;?></td>
+							<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
+							<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
 						</tr>
+						<?php } ?>
 					</table>
 				</div>
 				
 				<div id="Đã xác nhận" class="tabcontent">
 					<table class="table table-hover" style="font-size:13px;text-align:center;">
-						<tr><th>Mã đơn hàng</th><th>Ngày mua</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Thao tác</th></tr>
+						<tr><th>STT</th><th>Mã đơn hàng</th><th>Ngày mua</th><th style="text-align:right;">Tổng tiền</th><th>Chi tiết</th></tr>
+						<?php 
+                                $row= json_decode($data["dsdonhangxn"],true);
+								$stt=0;
+                                foreach ($row as list("id"=>$id,"ngay"=>$ngay,"tongtien"=>$tongtien,"tinhtrang"=>$trangthai)){ $stt++;?>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><?php echo $stt;?></td>
+							<td><?php echo $id;?></td>
+							<td><?php echo $ngay;?></td>
+							<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
+							<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
 						</tr>
+						<?php } ?>
 					</table>
 				</div>
 				
 				<div id="Đang giao" class="tabcontent">
 					<table class="table table-hover" style="font-size:13px;text-align:center;">
-						<tr><th>Mã đơn hàng</th><th>Ngày mua</th><th>Sản phẩm</th><th>Tổng tiền</th></tr>
+					<thead><tr><th>STT</th><th>Mã đơn hàng</th><th>Ngày mua</th><th style="text-align:right;">Tổng tiền</th><th>Chi tiết</th></tr></thead>
+						<?php 
+                                $row= json_decode($data["dsdonhangdag"],true);
+								$stt=0;
+                                foreach ($row as list("id"=>$id,"ngay"=>$ngay,"tongtien"=>$tongtien,"tinhtrang"=>$trangthai)){ $stt++;?>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><?php echo $stt;?></td>
+							<td><?php echo $id;?></td>
+							<td><?php echo $ngay;?></td>
+							<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
+							<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
 						</tr>
+						<?php } ?>
 					</table>
 				</div>
 
 				<div id="Đã giao" class="tabcontent">
 					<table class="table table-hover" style="font-size:13px;text-align:center;">
-						<tr><th>Mã đơn hàng</th><th>Ngày mua</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Thao tác</th></tr>
+						<tr><th>STT</th><th>Mã đơn hàng</th><th>Ngày mua</th><th style="text-align:right;">Tổng tiền</th><th>Chi tiết</th></tr>
+						<?php 
+                                $row= json_decode($data["dsdonhangdg"],true);
+								$stt=0;
+                                foreach ($row as list("id"=>$id,"ngay"=>$ngay,"tongtien"=>$tongtien,"tinhtrang"=>$trangthai)){ $stt++;?>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><?php echo $stt;?></td>
+							<td><?php echo $id;?></td>
+							<td><?php echo $ngay;?></td>
+							<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
+							<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
 						</tr>
+						<?php } ?>
 					</table>
 				</div>
 
 				<div id="Đã hủy" class="tabcontent">
 					<table class="table table-hover" style="font-size:13px;text-align:center;">
-						<tr><th>Mã đơn hàng</th><th>Ngày mua</th><th>Sản phẩm</th><th>Tổng tiền</th></tr>
+						<tr><th>STT</th><th>Mã đơn hàng</th><th>Ngày mua</th><th style="text-align:right;">Tổng tiền</th><th>Chi tiết</th></tr>
+						<?php 
+                                $row= json_decode($data["dsdonhanghuy"],true);
+								$stt=0;
+                                foreach ($row as list("id"=>$id,"ngay"=>$ngay,"tongtien"=>$tongtien,"tinhtrang"=>$trangthai)){ $stt++;?>
 						<tr>
-							<td>222222222222222222222</td>
-							<td>2222222222222222222222</td>
-							<td>22222222222222222222</td>
-							<td>22222222222222222222</td>
+							<td><?php echo $stt;?></td>
+							<td><?php echo $id;?></td>
+							<td><?php echo $ngay;?></td>
+							<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
+							<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
 						</tr>
+						<?php } ?>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="./public/js/tab.js">
+<script src="./public/js/tab.js"></script>

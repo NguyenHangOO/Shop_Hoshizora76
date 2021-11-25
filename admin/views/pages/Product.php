@@ -16,8 +16,20 @@
         <br> 
         <div class="mui-row">
             <h2>Quản lý sản phẩm</h2>
+            
           <div class="mui-col-sm-12  mui-col-lg-10 mui-col-lg-offset-1">
-            <a class="mui-btn mui-btn--raised mui-btn--primary" ><i class="fas fa-plus"></i> &nbsp;Thêm mới</a><br>
+          <?php if(isset($data["relust"]) && isset($data["tb"]) ){ if ($data["relust"]=="yes"){ ?>
+            <div class="tbloi success" id="tbloi">
+                <i class="far fa-check-circle"></i> <span ><?php echo $data["tb"] ?></span>
+                <a class="close" onclick="var hidden = document.getElementById('tbloi');hidden.style.display = 'none';"><i class="fas fa-times"></i></a>
+            </div>
+            <?php  } else{ ?>
+            <div class="tbloi" id="tbloi">
+                <i class="fas fa-exclamation-circle"></i> <span ><?php echo $data["tb"] ?></span>
+                <a class="close" onclick="var hidden = document.getElementById('tbloi');hidden.style.display = 'none';"><i class="fas fa-times"></i></a>
+            </div>  
+            <?php } } ?>
+            <a href="admin.php?url=Product/AddProduct" class="mui-btn mui-btn--raised mui-btn--primary" ><i class="fas fa-plus"></i> &nbsp;Thêm mới</a><br>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
             <table class="mui-table" id="tbdh">
             <thead>
@@ -28,6 +40,7 @@
                   <th id="td1">Số lượng tồn</th>
                   <th id="td6">Giá gốc</th>
                   <th id="td6">Giá bán</th>
+                  <th id="td6">Trạng thái</th>
                   <th id="td6">Thao tác</th>
                 </tr>
               </thead>
@@ -35,10 +48,10 @@
               <?php 
                 $stt=0;
                 $row= json_decode($data["DSSP"],true);
-				        foreach ($row as list("id"=>$id,"tensp"=>$tensp,"hinhanh"=>$img,"soluong"=>$soluong,"giaban"=>$giaban,"giagoc"=>$giagoc)){
+				        foreach ($row as list("id"=>$id,"tensp"=>$tensp,"hinhanh"=>$img,"soluong"=>$soluong,"giaban"=>$giaban,"giagoc"=>$giagoc,"ttban"=>$ttban)){
                     $stt++;
                 ?>
-                <tr id="trhorver" class="onRow">
+                <tr id="trhorver" class="onRow" style="cursor: pointer;">
                   <td><span><?php echo $stt; ?></span></td>
                   <td style="display:none"><span><?php echo $id; ?></span></td>
                   <td ><span><?php echo $tensp;?></span></td>
@@ -46,15 +59,24 @@
                   <td id="td1"><span><?php echo $soluong;?></span></td>
                   <td id="td6"><span><?php echo number_format($giagoc);?>đ</span></td>
                   <td id="td6"><span><?php echo number_format($giaban);?>đ</span></td>
+                  <?php if($ttban==1){ ?>
+                    <td id="td6" style="color:green"><span>Đang kinh doanh</span></td>
+                 <?php  } else { ?>
+                  <td id="td6" style="color:red"><span>Ngừng kinh doanh</span></td>
+                 <?php  }?>
                   <td id="td6">
-                    <a href="" title="Sửa"><i class="fas fa-edit"></i></a> | <a href="" title="Ngừng kinh doanh" style="color:red"><i class="fas fa-ban"></i></a>
+                    <a href="admin.php?url=Product/EditProduct/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Sửa"><i class="fas fa-edit"></i></a> | 
+                    <?php if($ttban==1){ ?>
+                        <a href="admin.php?url=Product/Stop/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Ngừng kinh doanh" style="color:red" onclick="return confirm('Bạn có chắc muốn thực hiện thao tác này?')"><i class="fas fa-ban"></i></a>
+                    <?php  } else { ?>
+                      <a href="admin.php?url=Product/Start/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Kinh doanh" style="color:green"><i class="far fa-check-circle"></i></a>
+                    <?php  }?>
                   </td>
                 </tr>
                 <?php } ?>
               </tbody>
             </table>
-              <!--$timestamp = time();
-              echo(rand(0,99).$timestamp.rand(1,999));-->
+              
           </div>
         </div>
       </div>
@@ -73,7 +95,7 @@
           $('#myTable tr').dblclick(function (e) {
               var idsp = $(this).closest('.onRow').find('td:nth-child(2)').text();
               var tensp = $(this).closest('.onRow').find('td:nth-child(3)').text();
-                window.location="./admin.php?url=Order/dailProduct/"+idsp;
+                window.location="./admin.php?url=Product/dailProduct/"+idsp;
           });
       });
       </script>

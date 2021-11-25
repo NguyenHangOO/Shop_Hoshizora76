@@ -41,7 +41,10 @@
 				</div>
 				<div id="info-b">
 					<table class="table table-hover" style="font-size:13px;">
-					<tr><th class="td1">Ngày</th><th class="td2" >Nội dung</th><th class="td3" >Thao tác</th></tr>
+					<tr><th class="td1">Ngày</th><th class="td2" >Nội dung</th><th class="td3" >
+					<a class="" href="./Account/DelAllNotifi" onclick="return confirm('Bạn có chắc muốn xóa tất cả thư?')" style="color:red" >
+					<i class="fas fa-trash"></i> ALL</a>
+					</th></tr>
 					<?php
 						$row= json_decode($data["tbnd"],true);
 						foreach ($row as list("id"=>$id,"noidung"=>$noidung,"ngaytb"=>$ngaytb,"trangthai"=>$trangthai)){ ?>
