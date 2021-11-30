@@ -17,7 +17,7 @@
 	<header>
 		<div id="menuwrapperpic">
 			<div  id="logo"> 
-				<a href="/CodeApp/Shop_Hoshizora76/"> <img id="lg" src="public/images/logo-H76.png" ></a>
+				<a href="/CodeApp/Shop_Hoshizora76/"> <img id="lg" src="public/images/logo-shop.png" ></a>
 			</div>		
 			<div  id="menuwrapper">
 				<ul id="menubar">
@@ -60,11 +60,13 @@
 					</li>
 					<li>
 					<?php 
-						if (isset($_SESSION['username']) && $_SESSION['username']){
-							echo '<a href="./Account/Infomation"data-toggle="tooltip" title="Bấm để thêm thông tin">'.$_SESSION["username"].'</a>';
-						}
+						if (isset($_SESSION['username']) && $_SESSION['username']){ ?>
+							<!--echo '<a href="./Account/Infomation"data-toggle="tooltip" title="Bấm để thêm thông tin">'.$_SESSION["username"].'</a>'; -->
+							<a href="./Account/Infomation"data-toggle="tooltip" title="<?php echo $_SESSION["nameuss"]; ?>" style="padding:8px 8px 8px;"><img src="<?php 
+							if( $_SESSION["hinhanh"]!=""){echo  $_SESSION["hinhanh"];}  else {echo "./public/images/account/unnamed.png";}?>" style="width:30px;height:30px;border-radius:50%; "></a>
+						<?php }
 						else{ ?>
-							<a href="./Register/Sigin" data-toggle="tooltip" title="Vui lòng đăng nhập!"><i style="font-size:16px" class="far fa-user"></i></a>	
+							<a href="./Register/Sigin" data-toggle="tooltip" title="Vui lòng đăng nhập!" style="padding-top:15px;"><i style="font-size:18px" class="far fa-user"></i></a>	
 						<?php } ?>
 					</li>
 				</ul>

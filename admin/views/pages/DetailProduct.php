@@ -27,58 +27,58 @@
                     <h4 class="mui-col-sm-12">Thông tin chi tiết</h4>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Danh mục:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $tendm; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Số lượng tồn:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $slg; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Giá gốc:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo number_format($giagoc); ?>đ</span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Giá bán:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo number_format($giaban); ?>đ</span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Đã bán:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $luotmua; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Lượt xem:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $luotxem; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Trạng thái:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <?php if($trangthai==1){ ?>
                             <span >Đang kinh doanh</span>
                         <?php }else { ?>
@@ -90,42 +90,42 @@
                 <?php  foreach($row2 as list("thuonghieu"=>$thuonghieu,"xuatxu"=>$xuatxu,
                 "chatlieu"=>$chatlieu,"kieudang"=>$kieudang,"baohanh"=>$baohanh)){ ?>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Thương hiệu:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $thuonghieu; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Xuất xứ:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $xuatxu; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Chất liệu:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $chatlieu; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Kiểu dáng:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $kieudang; ?></span>
                     </div>
                 </div>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Bảo hành:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $baohanh; ?></span>
                     </div>
                 </div>
@@ -155,10 +155,10 @@
 							$dg = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>';
                 ?>
                 <div class="mui-row">
-                    <div class="mui-col-sm-3" id="tbh">
+                    <div class="mui-col-xs-3" id="tbh">
                         <span class="tt">Điểm đánh giá:</span>
                     </div>
-                    <div class="mui-col-sm-9">
+                    <div class="mui-col-xs-9">
                         <span ><?php echo $dg; ?></span>
                     </div>
                 </div>

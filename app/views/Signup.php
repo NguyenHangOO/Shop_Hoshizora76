@@ -44,17 +44,20 @@
                 </div>
                 <button type="submit" name="btnSignup">SIGNUP</button>
             </div>
+            <div class="sigin">
+                Do you already have an account? <a href="./Register/Sigin" style="text-decoration: none;">Sigin</a>
+            </div>
         </form>
         <?php if(isset($data["epass"])) { ?>
             <h4 style="color:red"> *Mật khẩu không khớp</h4>
         <?php } ?>
         <?php if(isset($data["result"])) { ?>
-            <h4 style="color:red"><?php
+            <?php
                  if($data["result"]== "true"){
-                    echo "Đăng ký thành công"."<a style=\"margin-left:10px;margin-bottom: 15px;\" class=\"btn btn-primary\" href=\"./Register/Sigin\">Đăng nhập</a>";
+                    echo "<h4 style=\"color:green\">Đăng ký thành công</h4>";
                  }
-                 else {echo "Đăng ký thất bại";}
-            ?></h4>
+                 else {echo "<h4 style=\"color:red\">Đăng ký thất bại</h4>";}
+            ?>
         <?php } ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>

@@ -1,5 +1,4 @@
 var modal = document.getElementById('myModal');
-  
 // Lấy phần button mở Modal
 var btn = document.getElementById("myBtn");
 

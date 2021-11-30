@@ -10,6 +10,37 @@
     <link rel="stylesheet" type="text/css" href="public/css/login.css">
 </head>
 <body>
+    <style>
+        #tbb{padding-left:10px;padding-right:10px;}#hbb{font-size:18px;}
+        .btn{ border: 1px solid transparent;padding:10px 15px; text-decoration: none;text-align:center}
+        .btn-primary{background-color: #007bff;border-color: #007bff;color:white;}
+        .btn-dark{background-color: #424242;border-color: #424242;color:white;}
+        .btn-primary:hover{background-color: #9cbfe4;border-color: #9cbfe4;color:white;}
+        .btn-dark:hover{background-color: #a19d9d;border-color: #a19d9d;color:white;}
+    </style>
+    <?php if(isset($_SESSION['iduss']) || isset($_SESSION['idadmin'])){ ?>
+        <div class="container">
+            <div>
+                <span id="hbb">XÁC NHẬN</span>
+            </div>
+            <br>
+            <div>
+                <span id="tbb">Bạn đã đăng nhập với tài khoản <?php if(isset($_SESSION['iduss'])){echo $_SESSION['nameuss'];} else { echo $_SESSION['nameadmin']; }?>, cần đăng xuất trước khi đăng nhập người dùng khác.</span>
+            </div>
+            <br>
+            <div >
+                <div>
+                    <a href="./Account/Sigout" class="btn btn-primary">Thoát</a>
+                    <?php
+                        if(isset($_SESSION['iduss'])){ ?>
+                            <a href="./Home" class="btn btn-dark">Hủy</a>
+                        <?php } else if(isset($_SESSION['idadmin'])){ ?>
+                            <a href="admin.php?url=Home/" class="btn btn-dark">Hủy</a>
+                     <?php   }?>
+                </div>
+            </div>
+        </div>
+    <?php }else { ?>
     <div class="container">
         <header>Sigin</header>
         <form action="./Register/Khachhangdn" method="POST">
@@ -37,10 +68,14 @@
                 <button type="submit" name="btnSigin" value="login">SIGIN</button>
             </div>
         </form>
-        <div class="signup">
+        <div class="signup" style="margin-top:-10px;">
             Not a member? <a href="./Register">Signup now</a>
         </div>
+        <div class="forgotpass">
+            Forgot your password? <a href="./RestPassword"style="text-decoration: none;">Reset your password</a>
+        </div>
     </div>
+    <?php } ?>
     <div class="introduce">
         <div id="pacman" ></div>
         <div id="pacman1" ></div>

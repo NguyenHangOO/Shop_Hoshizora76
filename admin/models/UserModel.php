@@ -112,18 +112,28 @@
             $qr = "SELECT id from `admin` where username='$un'";
             $rows = mysqli_query($this->con, $qr);
             $kq = "<span style=\"color:green\">Username hợp lệ</span>";
-            if( mysqli_num_rows($rows)>0){
-                $kq ="<span style=\"color:red\">Username đã tồn tại</span>";
-            }
+            if( mysqli_num_rows($rows)<=0){
+                $qr = "SELECT id from `member` where username='$un'";
+                $rows = mysqli_query($this->con, $qr);
+                $kq = "<span style=\"color:green\">Username hợp lệ</span>";
+                if( mysqli_num_rows($rows)>0){
+                    $kq ="<span style=\"color:red\">Username đã tồn tại</span>";
+                }
+            }else {$kq ="<span style=\"color:red\">Username đã tồn tại</span>";}
             return $kq;
         }
         public function checkEmail($em){
             $qr = "SELECT id from `admin` where email='$em'";
             $rows = mysqli_query($this->con, $qr);
             $kq = "<span style=\"color:green\">Email hợp lệ</span>";
-            if( mysqli_num_rows($rows)>0){
-                $kq ="<span style=\"color:red\">Email đã được sử dụng</span>";
-            }
+            if( mysqli_num_rows($rows)<=0){
+                $qr = "SELECT id from `member` where email='$em'";
+                $rows = mysqli_query($this->con, $qr);
+                $kq = "<span style=\"color:green\">Email hợp lệ</span>";
+                if( mysqli_num_rows($rows)>0){
+                    $kq ="<span style=\"color:red\">Email đã được sử dụng</span>";
+                }
+            }else {$kq ="<span style=\"color:red\">Email đã được sử dụng</span>";}
             return $kq;
         }
         function ThongBao($idmem,$ngay,$nd){

@@ -20,7 +20,7 @@
                     "DSSP"=>$this->ProductModel->GetDSSP()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function dailProduct($id){
@@ -36,7 +36,7 @@
                     "DGSP"=>$this->ProductModel->GetDGSP($id)
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function Stop($id,$tensp){
@@ -68,7 +68,7 @@
                     ]);
                 }
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function Start($id,$tensp){
@@ -100,7 +100,7 @@
                     ]);
                 }
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function AddProduct(){
@@ -179,7 +179,7 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function EditProduct($id,$ten){
@@ -243,41 +243,34 @@
                     } else {
                             $kq = $this->ProductModel->UpSPKOANH($tensp,$giagoc,$giaban,$soluong,$mota,$danhmuc,$loai1,$loai3,$id);
                             if($kq=='true'){
-                                if(isset($_POST["addmoi"])){
-                                    if($thuonghieu!=""|| $xuatxu!="" || $chatlieu!="" || $kieudang!="" || $baohanh!=""){
-                                        $themtt = $this->ProductModel->InsertTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
-                                    } 
-                                }else {
-                                    $uptt = $this->ProductModel->UpTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
-                                }
-                                if($themtt=="true" || $uptt=="true"){
+                                $uptt = $this->ProductModel->UpTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
+                                if($uptt=="true"){
                                     $relust="yes";
                                     $tb = "Cập nhật sản phẩm thành công";
                                 }else {
                                     $relust="no";
                                     $tb = "Cập nhật chi tiết sản phẩm thất bại";
-                                }
-                                
+                                } 
                             }
                             else {
                                 $relust="no";
                                 $tb = "Cập nhật sản phẩm thất bại";
                             }
                         }
-                   $this->view("Main",[
-                    "Page"=>"EditProduct",
-                    "Admin"=>$this->UserModel->GetAdmin($useradmin),
-                    "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
-                    "DSSP"=>$this->ProductModel->GetDSSP(),
-                    "DM1"=>$this->CategoryModel->GetDM1(),
-                    "DM3"=>$this->CategoryModel->GetDM3(),
-                    "DM"=>$this->CategoryModel->GetDM(),
-                    "SPID"=>$this->ProductModel->GetSPid($id),
-                    "CTSPID"=>$this->ProductModel->GetCTSPid($id),
-                    "tenDM1"=>$this->CategoryModel->GetDM1id($id),
-                    "tenDM3"=>$this->CategoryModel->GetDM3id($id),
-                    "relust"=>$relust,
-                    "tb"=>$tb
+                        $this->view("Main",[
+                        "Page"=>"EditProduct",
+                        "Admin"=>$this->UserModel->GetAdmin($useradmin),
+                        "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
+                        "DSSP"=>$this->ProductModel->GetDSSP(),
+                        "DM1"=>$this->CategoryModel->GetDM1(),
+                        "DM3"=>$this->CategoryModel->GetDM3(),
+                        "DM"=>$this->CategoryModel->GetDM(),
+                        "SPID"=>$this->ProductModel->GetSPid($id),
+                        "CTSPID"=>$this->ProductModel->GetCTSPid($id),
+                        "tenDM1"=>$this->CategoryModel->GetDM1id($id),
+                        "tenDM3"=>$this->CategoryModel->GetDM3id($id),
+                        "relust"=>$relust,
+                        "tb"=>$tb
                 ]);
                 }else {
                     $this->view("Main",[
@@ -297,7 +290,7 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
     }

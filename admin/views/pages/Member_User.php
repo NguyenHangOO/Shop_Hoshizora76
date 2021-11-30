@@ -1,11 +1,18 @@
 <style>
   #ac3{background-color: #afabab;}
   #ac3 a{color:white;}
-  #tbdh{border-radius: 4px;}
+  .h2{background-color: #afabab;}
   #btnxn{border-radius:5px;padding:0 10px;}#lock{color:red} #unlock{color:green}
-  #img-u{width: 40px;height:40px;}
+  #img-u{width: 40px;height:40px;border-radius:50%;}
   #td{width: 40px; text-align:center;}
   .add{background: white;width:atuo;border-radius: 2px;margin-bottom:10px; padding:15px;border:dashed #c2bdbd; text-align:center;}
+  #myInput {
+   font-size: 15px; 
+   padding-bottom: 12px ;padding-top: 8px ;padding-left:20px;padding-right:20px; 
+   border: 1px solid #ddd; 
+   margin-bottom: 12px; 
+   border-radius:5px;
+}
 </style>
 <div id="content-wrapper">
       <div class="mui--appbar-height"></div>
@@ -14,6 +21,7 @@
         <div class="mui-row">
             <h2>Quản lý tài khoản người dùng</h2>
           <div class="mui-col-sm-12  mui-col-lg-10 mui-col-lg-offset-1">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
             <table class="mui-table" id="tbdh">
               <thead>
                 <tr>
@@ -26,14 +34,14 @@
                   <th id="td5">Thao tác</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="myTable">
                 <?php 
                   $stt=0;
                   $row= json_decode($data["DSMember"],true);
                   foreach ($row as list("id"=>$id,"username"=>$username,"fullname"=>$hoten,"img"=>$img,"trangthai"=>$trangthai,"email"=>$email)){
                       $stt++;
                 ?>
-                <tr id="trhorver">
+                <tr id="trhorver" class="onRow">
                   <td id="td"><span><?php echo $stt; ?></span></td>
                   <td ><span><?php echo $hoten; ?></span></td>
                   <td ><span><?php echo $username; ?></span></td>
@@ -69,3 +77,15 @@
         </div>
       </div>
 </div>
+<script>
+  $(document).ready(function() {
+        $('#myInput').on('keyup', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            var tukhoa = $(this).val().toLowerCase();
+            $('#myTable tr').filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa)>-1);
+            });
+        });
+      });
+</script>

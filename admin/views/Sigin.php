@@ -22,12 +22,28 @@
             background-image: linear-gradient(#fca5f1, #b5ffff);
             background-size: cover;
             background-position: center;
-         }
+         }#tbb{padding-left:10px;padding-right:10px;}#hbb{font-size:18px;}
     </style>
     <div class="mui-container">
         <div class="mui-row mui--text-center" style="margin-top: 18%;">
             <div class="mui-col-md-4 mui-col-md-offset-4">
                 <div class="mui-panel" style="border-radius: 5px;">
+                   <?php if(isset($_SESSION["idadmin"])){ ?>
+                    <div class="mui-row">
+                        <span id="hbb">XÁC NHẬN</span>
+                    </div>
+                    <hr>
+                    <div class="mui-row">
+                        <span id="tbb">Bạn đã đăng nhập với tên <?php echo $_SESSION["nameadmin"]?>, cần đăng xuất trước khi đăng nhập người dùng khác.</span>
+                    </div>
+                    <hr>
+                    <div class="mui-row">
+                        <div class="mui-col-lg-8 mui-col-lg-offset-4 mui-col-md-11 mui-col-md-offset-1">
+                            <a href="./admin.php?url=Member/SigoutBack" class="mui-btn mui-btn--small mui-btn--primary">Thoát</a>
+                            <a href="./admin.php?url=Home" class="mui-btn mui-btn--small mui-btn--dark">Hủy</a>
+                        </div>
+                    </div>
+                   <?php  }else { ?>
                     <form class="mui-form" action="admin.php?url=Sigin/CheckSigin" method="POST">
                         <a style="font-size: 80px;"><i style="color: #ff4081;"class="fas fa-user-circle"></i></a>
                         <div class="mui-textfield mui-textfield--float-label mui--text-left">
@@ -50,6 +66,7 @@
                         <?php } ?>
                         <button type="submit" class="mui-btn mui-btn--raised mui-btn--accent" name="btnsigin" value="sigin">Sigin</button>
                     </form>
+                     <?php  } ?>
                 </div>
             </div>
         </div>

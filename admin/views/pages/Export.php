@@ -1,6 +1,7 @@
 <style>
   #ac6{background-color: #afabab;} #ac6 a{color:white;}
-  #tbdh{border-radius: 3px;margin-top:20px;}
+  .h6{background-color: #afabab;}
+  #tbdh{margin-top:20px;}
   #td6{ text-align: right;} #btnxn{border-radius:5px;padding:0 10px;background-color:green;color:white;}
   #btngh{border-radius:5px;padding:0 9px;background-color:#FFD700;color:white;}#btntc{border-radius:5px;padding:0 12px;}#btndel{border-radius:5px;padding:0 10px;}
   #myInput {
@@ -30,7 +31,32 @@
               <li><a data-mui-toggle="tab" data-mui-controls="pane-api-6">Đã hủy</a></li>
             </ul>
             <div class="mui-tabs__pane mui--is-active" id="pane-api-1">
-              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+              <div class="mui-row">
+                <div class="mui-col-sm-4">
+                  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                </div>
+                <div class="mui-col-sm-8">
+                  <form class="mui-form--inline" action="" method="POST">
+                      <div class="mui-textfield">
+                          <?php if(isset($data["bd"])){ ?>
+                              <input type="date" name="bdngay" id="bdngay" value="<?php echo $data["bd"]; ?>">
+                          <?php } else { ?>
+                              <input type="date" name="bdngay" id="bdngay">
+                          <?php } ?>
+                          <label>Từ ngày</label>
+                      </div>
+                      <div class="mui-textfield">
+                          <?php if(isset($data["kt"])){ ?>
+                              <input type="date" name="endngay" id="endngay" value="<?php echo $data["kt"]; ?>">
+                          <?php } else { ?>
+                              <input type="date" name="endngay" id="endngay">
+                          <?php } ?>
+                          <label>Đến ngày</label>
+                      </div>
+                      <button class="mui-btn mui-btn--small mui-btn--primary" name="btnLoc" type="submit">Lọc</button>
+                  </form>
+                </div>
+              </div>
               <table class="mui-table" id="tbdh">
               <thead>
                   <tr>

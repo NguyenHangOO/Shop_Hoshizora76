@@ -414,6 +414,7 @@
                             $rowtt = json_decode($tthuy,true);
                             foreach ($rowtt as list("sanpham_id"=>$idsp,"soluong"=>$slgdat)){
                                 $this->ProductModel->UpSlgHuySp($idsp,$slgdat);
+                                $this->ProductModel->GiamLuotMua($idsp,$slgdat);
                             } 
                             $this->UserModel->ThongBao($iduss,$ngay,$nd);
                             $this->view("Main",[

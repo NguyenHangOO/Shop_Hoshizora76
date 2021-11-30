@@ -60,15 +60,15 @@
                 $row = json_decode($data["donhangct"],true);
                 foreach ($row as list("tensp"=>$tensp,"hinhanh"=>$hinhanh,"soluong"=>$soluong,"thanhtien"=>$thanhtien,"sanpham_id"=>$spid,"dongia"=>$giaban)){ ?>
                 <div class="mui-row">
-                    <div class="mui-col-sm-1">
+                    <div class="mui-col-xs-2" style="text-align:right;">
                         <img src="<?php echo $hinhanh ?>" alt="" class="img">
                     </div>
-                    <div class="mui-col-sm-7">
+                    <div class="mui-col-xs-7">
                         <span class="htlb">Tên sản phẩm: </span><span style="font-size:14px;"><?php echo $tensp ?></span><br/>
                         <span class="htlb">Số lượng đặt: </span><span style="font-size:14px;"><?php echo $soluong ?></span><br/>
                         <span class="htlb">Giá bán: </span><span style="font-size:14px;"><?php echo $giaban ?></span>
                     </div>
-                    <div class="mui-col-sm-4">
+                    <div class="mui-col-xs-3">
                     <span class="htlb">Thành tiền: </span><span style="color:red;"><?php echo number_format($thanhtien)?></span>&nbsp;
                     </div>
                 </div>

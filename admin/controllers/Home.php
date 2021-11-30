@@ -17,12 +17,12 @@
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSMember"=>$this->UserModel->GetDSMember(),
                     "DSSP"=>$this->ProductModel->GetDSSP(),
-                    "DSDH"=>$this->OrderModel->GetDSDH(),
+                    "DSDH"=>$this->OrderModel->GetDSDHhome(),
                     "DSTTDH"=>$this->OrderModel->GetDTDH($m),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
                 ]);
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function Xulydonhang($id,$idmem){
@@ -36,7 +36,7 @@
                     header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function Huydonhang($id,$idmem){
@@ -51,11 +51,12 @@
                     $row= json_decode($ct,true);
                         foreach ($row as list("sanpham_id"=>$idsp,"soluong"=>$slgdat)){
                             $upslgsp = $this->ProductModel->UpSlgSp($idsp,$slgdat);
+                            $this->ProductModel->GiamLuotMua($idsp,$slgdat);
                         }
                     header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
     }

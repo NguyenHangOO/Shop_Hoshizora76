@@ -1,6 +1,6 @@
 <?php
     class App{
-        protected $controller="Sigin";
+        protected $controller="Home";
         protected $action="Show";
         protected $params=[];
         function __construct(){

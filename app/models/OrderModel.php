@@ -57,7 +57,7 @@
             return json_encode($result);
         }
         public function GetDonHang($iduss){
-            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss";
+            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss ORDER BY ngay DESC";
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){
@@ -66,7 +66,7 @@
             return json_encode($mang);
         }
         public function GetDonHangHuy($iduss){
-            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đã hủy'";
+            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đã hủy' ORDER BY ngay DESC";
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){
@@ -75,7 +75,7 @@
             return json_encode($mang);
         }
         public function GetDonHangXN($iduss){
-            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đã xác nhận'";
+            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đã xác nhận' ORDER BY ngay DESC";
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){
@@ -84,7 +84,7 @@
             return json_encode($mang);
         }
         public function GetDonHangCXN($iduss){
-            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Xử lý'";
+            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Xử lý' ORDER BY ngay DESC";
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){
@@ -93,7 +93,7 @@
             return json_encode($mang);
         }
         public function GetDonHangDagGiao($iduss){
-            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đang giao'";
+            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đang giao' ORDER BY ngay DESC";
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){
@@ -102,7 +102,7 @@
             return json_encode($mang);
         }
         public function GetDonHangDa($iduss){
-            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đã giao'";
+            $qr = "SELECT * FROM `donhang` WHERE member_id=$iduss and tinhtrang='Đã giao' ORDER BY ngay DESC";
             $rows = mysqli_query($this->con, $qr);
             $mang = array();
             while ($row = mysqli_fetch_array($rows)){

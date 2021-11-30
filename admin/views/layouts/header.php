@@ -10,21 +10,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<!-- MUI CSS -->
     <link rel="stylesheet" type="text/css" href="./public/css/thongbao.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/Modal.css">
     <link rel="stylesheet" type="text/css" href="./public/css/adminstyle.css">
     <link href="//cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
-    <div id="sidedrawer" class="mui--no-user-select">
+    <div id="sidedrawer" class="mui--no-user-select" style="background-color:rgb(52,58,64);color:white;">
       <div id="sidedrawer-brand" class="mui--appbar-line-height">
-        <span class="mui--text-title"><a href="/CodeApp/Shop_Hoshizora76/admin.php?url=Home"> <img id="lg" src="public/images/logo-H76.png" ></a></span>
-        <span class="tenshop">Hoshizora76 | <a style="text-decoration: none;"><?php if(isset($_SESSION['useradmin'])){echo $_SESSION['useradmin'];} ?></a></span>
+        <span class="mui--text-title"><a href="/CodeApp/Shop_Hoshizora76/admin.php?url=Home"> <img id="lg" src="public/images/logo-shop.png" ></a></span>
+        <span class="tenshop">Hoshizora76 | <a style="text-decoration: none;color:white;"><?php if(isset($_SESSION['useradmin'])){echo $_SESSION['useradmin'];} ?></a></span>
       </div>
-      <div class="mui-divider"></div>
+      <div class="mui-divider" style="background-color:#c2c7d0;"></div>
       <ul>
         <li><strong id="ac1"><a id="tieude" href="./admin.php?url=Home/"><i class="fas fa-home"></i>&nbsp;Trang chủ</a></strong></li>
-        <li><strong id="ac2"><a id="tieude" href=""><i class="fas fa-file-invoice-dollar"></i>&nbsp;Doanh thu</a></strong></li>
+        <li><strong id="ac2"><a id="tieude" href="./admin.php?url=Revenues"><i class="far fa-chart-bar"></i>&nbsp;Thống kê</a></strong></li>
         <?php 
             $row= json_decode($data["Admin"],true);
             foreach ($row as list("quyen"=>$quyen)){
@@ -32,16 +33,16 @@
         <li>
           <strong id="ac3"><a id="tieude"><i class="fas fa-users"></i>&nbsp;Quản lý thành viên<span class="mui-caret"></span></a></strong>
           <ul>
-            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Member/Manage"><i class="fas fa-user-shield"></i>&nbsp;Quản lý</a></li>
-            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Member/UserMH"><i class="fas fa-user"></i>&nbsp;Thành viên</a></li>
+            <li id="hoho" class="h1"><a id="tdcap2" href="./admin.php?url=Member/Manage"><i class="fas fa-user-shield"></i>&nbsp;Quản lý</a></li>
+            <li id="hoho" class="h2"><a id="tdcap2" href="./admin.php?url=Member/UserMH"><i class="fas fa-user"></i>&nbsp;Thành viên</a></li>
           </ul>
         </li>
         <?php } } ?>
         <li>
           <strong id="ac4"><a id="tieude"><i class="fas fa-th-list"></i>&nbsp;Quản lý danh mục<span class="mui-caret"></span></a></strong>
           <ul>
-            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Category/Handmade"> <i class="fab fa-canadian-maple-leaf"></i>&nbsp;Phân loại Handmade</a></li>
-            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Category/GiftSet"><i class="fas fa-gifts"></i>&nbsp;Phân loại Gift Set</a></li>
+            <li id="hoho" class="h3"><a id="tdcap2" href="./admin.php?url=Category/Handmade"> <i class="fab fa-canadian-maple-leaf"></i>&nbsp;Phân loại Handmade</a></li>
+            <li id="hoho" class="h4"><a id="tdcap2" href="./admin.php?url=Category/GiftSet"><i class="fas fa-gifts"></i>&nbsp;Phân loại Gift Set</a></li>
           </ul>
         </li>
         <li>
@@ -50,21 +51,21 @@
         <li>
           <strong id="ac6"><a id="tieude"><i class="fas fa-shipping-fast"></i>&nbsp;Quản lý đơn hàng<span class="mui-caret"></span></a></strong>
           <ul>
-            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Order/orImport"><i class="fas fa-sign-in-alt"></i>&nbsp;Đơn nhập</a></li>
-            <li id="hoho"><a id="tdcap2" href="./admin.php?url=Order/orExport"><i class="fas fa-sign-out-alt"></i>&nbsp;Đơn xuất</a></li>
+            <li id="hoho"class="h5"><a id="tdcap2" href="./admin.php?url=Order/orImport"><i class="fas fa-sign-in-alt"></i>&nbsp;Đơn nhập</a></li>
+            <li id="hoho" class="h6"><a id="tdcap2" href="./admin.php?url=Order/orExport"><i class="fas fa-sign-out-alt"></i>&nbsp;Đơn xuất</a></li>
           </ul>
         </li>
       </ul>
     </div>
     <style>
-      .account{width: 30px;height:30px;border-radius:50%;}
+      .account{width: 30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.5);;}
     </style>
     <header id="header">
-      <div class="mui-appbar mui--appbar-line-height">
+      <div class="mui-appbar mui--appbar-line-height" style="background-color:rgb(244,246,249);">
         <div class="mui-container-fluid">
-          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
-          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
-          <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">H76</span>
+          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer"style="color:rgba(0,0,0,.5);">☰</a>
+          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer"style="color:black">☰</a>
+          <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block" style="color:rgba(0,0,0,.5);">H76</span>
           <a class="tbh" title="Cài đặt"><i class="fas fa-cog"></i></a>
           <div class="mui-dropdown tbh" style="margin-top:8px; margin-bottom:-8px;">
             <?php 
@@ -81,7 +82,7 @@
             </ul>
           </div>
            <!---->
-          <span class="tbh" title="Thông báo việc cần làm"><i class="fas fa-bell"></i> <sup><span id="hienthi">
+          <span class="tbh" title="Thông báo việc cần làm"><i class="far fa-bell"></i> <sup><span id="hienthi">
           <?php 
             echo count($row= json_decode($data["DSDHXL"],true)); ?>
           </span></sup> </span>

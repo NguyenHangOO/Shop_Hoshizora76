@@ -43,11 +43,13 @@
                 $kq = $this->UserModel->GetMember($username);
                 $row= json_decode($kq,true);
                 if(count($row)>0){
-                    foreach ($row as list("id"=>$iduss,"password"=>$pass,"trangthai"=>$trangthai)){
+                    foreach ($row as list("id"=>$iduss,"fullname"=>$hoten,"password"=>$pass,"trangthai"=>$trangthai,"img"=>$hinhanh)){
                         if(password_verify($password,$pass)){
                             if($trangthai==1){
                                 $_SESSION['username'] = $username;
                                 $_SESSION['iduss'] = $iduss;
+                                $_SESSION['nameuss'] = $hoten;
+                                $_SESSION['hinhanh'] = $hinhanh;
                                 header("Location:/CodeApp/Shop_Hoshizora76/");
                             }
                             else{ $result = "lock";}
@@ -60,11 +62,13 @@
                     $kq2 = $this->UserModel->GetMemberEmail($username);
                     $row2= json_decode($kq2,true);
                     if(count($row2)>0){
-                        foreach ($row2 as list("id"=>$iduss,"username"=>$user,"password"=>$pass,"trangthai"=>$trangthai)){
+                        foreach ($row2 as list("id"=>$iduss,"fullname"=>$hoten,"username"=>$user,"password"=>$pass,"trangthai"=>$trangthai,"img"=>$hinhanh)){
                             if(password_verify($password,$pass)){
                                 if($trangthai==1){
                                     $_SESSION['username'] = $user;
                                     $_SESSION['iduss'] = $iduss;
+                                    $_SESSION['nameuss'] = $hoten;
+                                    $_SESSION['hinhanh'] = $hinhanh;
                                     header("Location:/CodeApp/Shop_Hoshizora76/");
                                 }
                                 else{ $result = "lock";}
@@ -73,7 +77,47 @@
                                 $result = "no"; 
                             }
                         } 
-                    }else{ $result = "nouser";}
+                    }else{
+                        $kq = $this->UserModel->GetAdmin($username);
+                        $row= json_decode($kq,true);
+                        if(count($row)>0){
+                            foreach ($row as list("id"=>$ida,"fullname"=>$name,"password"=>$pass,"trangthai"=>$trangthai)){
+                                if(password_verify($password,$pass)){
+                                    if($trangthai==1){
+                                        $_SESSION['useradmin'] = $username;
+                                        $_SESSION['idadmin'] = $ida;
+                                        $_SESSION['nameadmin'] = $name;
+                                        header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
+                                    }
+                                    else{ $result = "lock";}
+                                }
+                                else {
+                                    $result = "no"; 
+                                }
+                            } 
+                        }else {
+                            $kq2 = $this->UserModel->GetAdminEmail($username); 
+                            $row2= json_decode($kq2,true);
+                            if(count($row2)>0){
+                                foreach ($row2 as list("id"=>$ida,"username"=>$usa,"password"=>$pass,"trangthai"=>$trangthai)){
+                                    if(password_verify($password,$pass)){
+                                        if($trangthai==1){
+                                            $_SESSION['useradmin'] = $usa;
+                                            $_SESSION['idadmin'] = $ida;
+                                            $_SESSION['nameadmin'] = $name;
+                                            header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
+                                        }
+                                        else{ $result = "lock";}
+                                    }
+                                    else {
+                                        $result = "no"; 
+                                    }
+                                } 
+                            }else {
+                                $result = "nouser";
+                            }
+                        }
+                    }
                    
                 }
 				$this->view("Sigin",[

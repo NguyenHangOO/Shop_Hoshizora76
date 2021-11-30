@@ -428,7 +428,15 @@
         }
         function Sigout(){
             if (isset($_SESSION['username'])){
-                unset($_SESSION['username']); // xóa session login
+                unset($_SESSION['username']);
+                unset($_SESSION['iduss']);
+                unset($_SESSION['nameuss']);
+                unset($_SESSION['hinhanh']);// xóa session login
+            }
+            if (isset($_SESSION['idadmin'])){
+                unset($_SESSION['idadmin']);
+                unset($_SESSION['useradmin']);
+                unset($_SESSION['nameadmin']);// xóa session login
             }
             header("Location:/CodeApp/Shop_Hoshizora76/");
          }

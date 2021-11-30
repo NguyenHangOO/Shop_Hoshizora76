@@ -51,13 +51,21 @@
                     else if($data["result"] =="kieufile"){ $error = "Không phải file ảnh";}
                     else { $error = "Bạn chưa chọn ảnh";}
                 ?>
-                    <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" style="margin-right:20px;">
-                        <i class="fas fa-exclamation"></i> <?php echo $error; ?>
+                    <?php if($data["result"]=="true"){ ?>
+                    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert" style="margin-right:20px;">
+                        <i class="far fa-check-circle"></i> <?php echo $error; ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                <?php } ?>
+                      <?php  } else { ?>
+                        <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" style="margin-right:20px;">
+                            <i class="fas fa-exclamation"></i> <?php echo $error; ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                <?php } } ?>
                 <?php
                     $row= json_decode($data["ttuser"],true);
                     foreach ($row as list("img"=>$img,"username"=>$username)){ ?>

@@ -1,7 +1,6 @@
 <style>
-  #ac1{background-color: #afabab;}
-  #ac1 a{color:white;}
-  #tbdh{border-radius: 10px;}#btnxn{padding:0 8px;}
+  #ac1{background-color: #afabab;}#tbdh{border-top: 2px solid transparent;}
+  #ac1 a{color:white;}#btnxn{padding:0 8px;}
   @media (max-width: 380px) {#tbdh{font-size:12px;}}
   @media (max-width: 330px) {#tbdh{font-size:11px;}}
 </style>
@@ -68,7 +67,7 @@
           <div class="mui-col-sm-12  mui-col-lg-8 mui-col-lg-offset-2">
             <table class="mui-table" id="tbdh">
               <thead>
-                <tr>
+                <tr id="tableth">
                   <th>Mã đơn</th>
                   <th id="td1">Người mua</th>
                   <th id="td1">Tổng tiền</th>

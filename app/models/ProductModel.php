@@ -198,6 +198,10 @@
             $qr = "UPDATE `sanpham` SET `luotmua`= luotmua+$slg WHERE id=$id" ;
             $rows = mysqli_query($this->con, $qr);
         }
+        public function GiamLuotMua($id,$slg){
+            $qr = "UPDATE `sanpham` SET `luotmua`= luotmua-$slg WHERE id=$id" ;
+            $rows = mysqli_query($this->con, $qr);
+        }
         public function UpSlgSp($idsp,$slgdat){
             $sqr = "UPDATE `sanpham` SET `soluong`=soluong-$slgdat WHERE id=$idsp";
             $result = false;

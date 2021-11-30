@@ -21,9 +21,9 @@
 				foreach ($row as list("img"=>$img,"fullname"=>$username)){ ?>
 				<?php 
 					if($img !=""){ ?>
-						<a href="./Account/Infomation"><img id="ac-ac" src="<?php echo $img ?>"><?php echo $username ?></a>
+						<a href="./Account/Infomation"><img id="ac-ac" src="<?php echo $img ?>" style="text-decoration: none;"><?php echo $username ?></a>
 					<?php }  else {?>
-						<a href="./Account/Infomation"><img id="ac-ac" src="./public/images/account/unnamed.png"><?php echo $username ?></a>
+						<a href="./Account/Infomation"><img id="ac-ac" src="./public/images/account/unnamed.png" style="text-decoration: none;"><?php echo $username ?></a>
 					<?php } ?>
 			<?php } ?>
 			<li style="background: #CDE2CD;"><a href="./Account/Infomation"><i class="fas fa-user-alt"></i> Thông tin tài khoản</a></li>

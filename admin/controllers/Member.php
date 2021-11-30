@@ -20,7 +20,7 @@
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function InsertManage(){
@@ -67,7 +67,7 @@
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function Hosocanhan(){
@@ -124,7 +124,7 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function Capnhatmatkhau(){
@@ -175,7 +175,7 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function LockStaff($id){
@@ -185,7 +185,7 @@
                 header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/Manage");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function UnlockStaff($id){
@@ -195,7 +195,7 @@
                 header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/Manage");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function LockUser($id){
@@ -205,7 +205,7 @@
                 header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/UserMH");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function UnlockUser($id){
@@ -215,7 +215,7 @@
                 header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/UserMH");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         
@@ -226,13 +226,31 @@
                 header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/Manage");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php");
+                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
             }
         }
         function Sigout(){
             if (isset($_SESSION['useradmin'])){
-                unset($_SESSION['useradmin']); // xóa session login
+                unset($_SESSION['useradmin']);
+                unset($_SESSION['idadmin']);
+                unset($_SESSION['nameadmin']); // xóa session login
+            }
+            if(isset($_SESSION["iddh"])){
+                unset($_SESSION["ngay"]);
+                unset($_SESSION["iddh"]);
             }
             header("Location:/CodeApp/Shop_Hoshizora76");
+         }
+         function SigoutBack(){
+            if (isset($_SESSION['useradmin'])){
+                unset($_SESSION['useradmin']);
+                unset($_SESSION['idadmin']);
+                unset($_SESSION['nameadmin']); // xóa session login
+            }
+            if(isset($_SESSION["iddh"])){
+                unset($_SESSION["ngay"]);
+                unset($_SESSION["iddh"]);
+            }
+            header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
          }
     }

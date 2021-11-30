@@ -78,18 +78,28 @@
             $qr = "SELECT id from member where username='$un'";
             $rows = mysqli_query($this->con, $qr);
             $kq = "<span style=\"color:green\">Username hợp lệ</span>";
-            if( mysqli_num_rows($rows)>0){
-                $kq ="<span style=\"color:red\">Username đã tồn tại</span>";
-            }
+            if( mysqli_num_rows($rows)<=0){
+                $qr = "SELECT id from `admin` where username='$un'";
+                $rows = mysqli_query($this->con, $qr);
+                $kq = "<span style=\"color:green\">Username hợp lệ</span>";
+                if( mysqli_num_rows($rows)>0){
+                    $kq ="<span style=\"color:red\">Username đã tồn tại</span>";
+                }
+            }else {$kq ="<span style=\"color:red\">Username đã tồn tại</span>";}
             return $kq;
         }
         public function checkEmail($em){
             $qr = "SELECT id from `member` where email='$em'";
             $rows = mysqli_query($this->con, $qr);
             $kq = "<span style=\"color:green\">Email hợp lệ</span>";
-            if( mysqli_num_rows($rows)>0){
-                $kq ="<span style=\"color:red\">Email đã được sử dụng</span>";
-            }
+            if( mysqli_num_rows($rows)<=0){
+                $qr = "SELECT id from `admin` where email='$em'";
+                $rows = mysqli_query($this->con, $qr);
+                $kq = "<span style=\"color:green\">Email hợp lệ</span>";
+                if( mysqli_num_rows($rows)>0){
+                    $kq ="<span style=\"color:red\">Email đã được sử dụng</span>";
+                }
+            }else { $kq ="<span style=\"color:red\">Email đã được sử dụng</span>";}
             return $kq;
         }
         function GetMember($username){
@@ -175,6 +185,92 @@
                 $relust = true;
             }
             return json_encode($relust);
+        }
+        function GetAdmin($username){
+            $sqr = "SELECT * FROM `admin` where username='$username'";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function GetAdminEmail($username){
+            $sqr = "SELECT * FROM `admin` where email='$username'";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function KiemTraMail($email){
+            $sqr = "SELECT * FROM `member` where email='$email'";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function Token($token,$email){
+            $qr = "UPDATE `member` SET `_token`= '$token' WHERE email='$email' " ;
+            $result = false;
+            if(mysqli_query ($this->con, $qr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function KiemTraMailToken($email,$token){
+            $sqr = "SELECT * FROM `member` where email='$email' and _token='$token'";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function UpPassFo($pass,$email){
+            $qr = "UPDATE `member` SET `password`= '$pass' WHERE email='$email' " ;
+            $result = false;
+            if(mysqli_query ($this->con, $qr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function KiemTraMailAdmin($email){
+            $sqr = "SELECT * FROM `admin` where email='$email'";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function TokenAdmin($token,$email){
+            $qr = "UPDATE `admin` SET `_token`= '$token' WHERE email='$email' " ;
+            $result = false;
+            if(mysqli_query ($this->con, $qr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function KiemTraMailTokenAdmin($email,$token){
+            $sqr = "SELECT * FROM `admin` where email='$email' and _token='$token'";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function UpPassFoAdmin($pass,$email){
+            $qr = "UPDATE `admin` SET `password`= '$pass' WHERE email='$email' " ;
+            $result = false;
+            if(mysqli_query ($this->con, $qr)){
+                $result = true;
+            }
+            return json_encode($result);
         }
     }
 ?>

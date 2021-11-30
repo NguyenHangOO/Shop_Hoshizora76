@@ -120,7 +120,7 @@ form .button{
   text-decoration: none;
 }
 .signup a:hover{
-  text-decoration: underline;
+  text-decoration: none;
 }
 #pacman {
     width: 0;

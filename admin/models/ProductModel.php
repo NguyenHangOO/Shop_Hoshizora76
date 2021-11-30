@@ -147,5 +147,9 @@
             }
             return json_encode($result);
         }
+        public function GiamLuotMua($id,$slg){
+            $qr = "UPDATE `sanpham` SET `luotmua`= luotmua-$slg WHERE id=$id" ;
+            $rows = mysqli_query($this->con, $qr);
+        }
     }
 ?>

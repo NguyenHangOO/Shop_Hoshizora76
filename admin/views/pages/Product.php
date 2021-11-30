@@ -1,6 +1,6 @@
 <style>
   #ac5{background-color: #afabab;}#ac5 a{color:white;}
-  #tbdh{border-radius: 3px;}#img-u{width: 40px;height:40px;}
+  #img-u{width: 40px;height:40px;}
   #td6{ text-align: right;}
   #myInput {
    font-size: 15px; 
