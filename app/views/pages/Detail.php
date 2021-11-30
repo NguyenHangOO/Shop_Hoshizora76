@@ -110,13 +110,13 @@
             </div>
             <div class="htt">
                 <h4 class="hth4">Mô tả</h4>
-                <div style="padding:15px">
+                <div style="padding:15px;margin-top:-15px;">
                 <?php
                     $row= json_decode($data["ctsp"],true);
                     foreach ($row as list("mota"=>$mota)){ ?>
-                    <p style="margin-left:10px;text-align: justify;font-size:16px;">
+                    <span style="margin-left:10px;text-align: justify;font-size:16px;">
                         <?php echo $mota ?>
-                    </p>
+                    </span>
                 <?php } ?>
                 </div>
             </div>
@@ -201,12 +201,22 @@
                             $row= json_decode($data["danhgia"],true);
                             $tongsodg=count($row);
                             $trang = ceil($tongsodg / $phantrang); 
-                            for($i=1;$i<=$trang;$i++){
-                                if($data["trang"]==$i){?>
-                                <li class="rounded-circle" id="active"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
-                            <?php } else { ?>
-                                <li class="rounded-circle"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
-                            <?php } } ?>
+                            if($trang<=5){
+                                for($i=1;$i<=$trang;$i++){
+                                    if($data["trang"]==$i){?>
+                                    <li class="rounded-circle" id="active"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
+                                <?php } else { ?>
+                                    <li class="rounded-circle"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
+                                <?php } } 
+                            } else {
+                                for($i=1;$i<=5;$i++){
+                                    if($data["trang"]==$i){?>
+                                    <li class="rounded-circle" id="active"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
+                                <?php } else { ?>
+                                    <li class="rounded-circle"> <a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php echo $i ?>"><?php echo $i ?></a></li>	
+                            <?php }  } ?>
+                                    <span >....</span> 
+                            <?php  } ?>
                             <li class="rounded-circle"><a href="./Product/Detail/<?php echo $data["idpt"] ?>/<?php if($data["trang"]<$trang) {echo $data["trang"]+1;} else {echo $data["trang"];}?>" class="next fa fa-arrow-right"></a></li>
                         </ul>
                     </div>

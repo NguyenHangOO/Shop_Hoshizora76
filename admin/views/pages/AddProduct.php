@@ -51,7 +51,7 @@
                         <label>Số lượng<label id="bb">*</label></label>
                         <div id="messageem" style="font-size:12px; text-align: left; margin-left:3px;"></div>
                     </div>
-                    <div class="mui-textfield mui-textfield--float-label">
+                    <div class="mui-textfield">
                         <textarea name="mota" id="mota" ></textarea>
                         <label>Mô tả</label>
                         <div id="messageem" style="font-size:12px; text-align: left; margin-left:3px;"></div>
@@ -107,3 +107,10 @@
         </div>
       </div>
 </div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#mota' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

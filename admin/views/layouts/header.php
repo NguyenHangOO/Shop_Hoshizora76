@@ -15,6 +15,7 @@
     <link href="//cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./public/ckeditor5/ckeditor.js"></script>
 </head>
 <body>
     <div id="sidedrawer" class="mui--no-user-select" style="background-color:rgb(52,58,64);color:white;">

@@ -57,7 +57,7 @@
 			</div>
 			<div class="phantrang">
 				<ul class="pagination modal-3">
-				<li class="rounded-circle"><a href="./Home/ALL_sp/1" class="fas fa-step-backward"></a></li>
+					<li class="rounded-circle"><a href="./Home/ALL_sp/1" class="fas fa-step-backward"></a></li>
 					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php if($data["trang"]==1) {echo $data["trang"];} else {echo $data["trang"]-1;}?>" class="fas fa-caret-left"></a></li>
 					<!--<li class="rounded-circle"> <a href="./Home/ALL_sp/1">1</a></li>-->
 					<?php
@@ -65,12 +65,22 @@
 					$row= json_decode($data["dssp"],true);
 					$tongsodg=count($row);
 					$trang = ceil($tongsodg / $phantrang); 
-					for($i=1;$i<=$trang;$i++){
-						if($data["trang"]==$i){?>
-						<li class="rounded-circle" id="active"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>	
-					<?php }else { ?>
-						<li class="rounded-circle"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>
-					<?php } }?>
+					if($trang<=5){
+						for($i=1;$i<=$trang;$i++){
+							if($data["trang"]==$i){?>
+							<li class="rounded-circle" id="active"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>	
+						<?php }else { ?>
+							<li class="rounded-circle"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>
+						<?php } }
+					}else {
+						for($i=1;$i<=5;$i++){
+							if($data["trang"]==$i){?>
+							<li class="rounded-circle" id="active"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>	
+						<?php }else { ?>
+							<li class="rounded-circle"> <a href="./Home/ALL_sp/<?php echo $i ?>"><?php echo $i ?></a></li>
+						<?php } } ?>
+						<span>...</span>
+					<?php } ?>
 					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php if($data["trang"]<$trang) {echo $data["trang"]+1;} else {echo $data["trang"];}?>" class="fas fa-caret-right"></a></li>
 					<li class="rounded-circle"><a href="./Home/ALL_sp/<?php echo $trang; ?>"><i class="fas fa-step-forward"></i></a></li>
 				</ul>
