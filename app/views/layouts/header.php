@@ -62,8 +62,18 @@
 					<?php 
 						if (isset($_SESSION['username']) && $_SESSION['username']){ ?>
 							<!--echo '<a href="./Account/Infomation"data-toggle="tooltip" title="Bấm để thêm thông tin">'.$_SESSION["username"].'</a>'; -->
-							<a href="./Account/Infomation"data-toggle="tooltip" title="<?php echo $_SESSION["nameuss"]; ?>" style="padding:8px 8px 8px;"><img src="<?php 
-							if( $_SESSION["hinhanh"]!=""){echo  $_SESSION["hinhanh"];}  else {echo "./public/images/account/unnamed.png";}?>" style="width:30px;height:30px;border-radius:50%; "></a>
+							<a href="./Account/Infomation"data-toggle="tooltip" title="<?php echo $_SESSION["nameuss"]; ?>" style="padding:8px 8px 8px;">
+							<?php
+								$row= json_decode($data["ttuser"],true);
+								foreach ($row as list("img"=>$img,"fullname"=>$username)){ ?>
+								<?php 
+									if($img !=""){ ?>
+										<img src="<?php echo $img ?>" style="width:30px;height:30px;border-radius:50%; ">
+									<?php }  else {?>
+										<img src="./public/images/account/unnamed.png" style="width:30px;height:30px;border-radius:50%; ">
+									<?php } ?>
+							<?php } ?>
+							</a>
 						<?php }
 						else{ ?>
 							<a href="./Register/Sigin" data-toggle="tooltip" title="Vui lòng đăng nhập!" style="padding-top:15px;"><i style="font-size:18px" class="far fa-user"></i></a>	

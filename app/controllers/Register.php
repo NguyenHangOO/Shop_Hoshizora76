@@ -43,13 +43,12 @@
                 $kq = $this->UserModel->GetMember($username);
                 $row= json_decode($kq,true);
                 if(count($row)>0){
-                    foreach ($row as list("id"=>$iduss,"fullname"=>$hoten,"password"=>$pass,"trangthai"=>$trangthai,"img"=>$hinhanh)){
+                    foreach ($row as list("id"=>$iduss,"fullname"=>$hoten,"password"=>$pass,"trangthai"=>$trangthai)){
                         if(password_verify($password,$pass)){
                             if($trangthai==1){
                                 $_SESSION['username'] = $username;
                                 $_SESSION['iduss'] = $iduss;
                                 $_SESSION['nameuss'] = $hoten;
-                                $_SESSION['hinhanh'] = $hinhanh;
                                 header("Location:/CodeApp/Shop_Hoshizora76/");
                             }
                             else{ $result = "lock";}
@@ -62,13 +61,12 @@
                     $kq2 = $this->UserModel->GetMemberEmail($username);
                     $row2= json_decode($kq2,true);
                     if(count($row2)>0){
-                        foreach ($row2 as list("id"=>$iduss,"fullname"=>$hoten,"username"=>$user,"password"=>$pass,"trangthai"=>$trangthai,"img"=>$hinhanh)){
+                        foreach ($row2 as list("id"=>$iduss,"fullname"=>$hoten,"username"=>$user,"password"=>$pass,"trangthai"=>$trangthai)){
                             if(password_verify($password,$pass)){
                                 if($trangthai==1){
                                     $_SESSION['username'] = $user;
                                     $_SESSION['iduss'] = $iduss;
                                     $_SESSION['nameuss'] = $hoten;
-                                    $_SESSION['hinhanh'] = $hinhanh;
                                     header("Location:/CodeApp/Shop_Hoshizora76/");
                                 }
                                 else{ $result = "lock";}

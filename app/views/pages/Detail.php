@@ -181,11 +181,7 @@
                              <hr>
                             <div class="row">
                                 <div class="col-12" style="position: unset;">
-                                    <?php if($img==""){ ?>
                                         <img src="./public/images/account/unnamed.png" alt="" class="rounded-circle" style="width:35px;height:35px;">
-                                    <?php } else{ ?>
-                                        <img src="<?php echo $img; ?>" alt="" class="rounded-circle" style="width:35px;height:35px;">
-                                   <?php  } ?>
                                     &nbsp;<span style="font-size:14px"><?php echo $fullname ?></span><br/>
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:10px"><?php echo $dg ?></span><br/>
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:12px"><?php echo $binhluan ?></span><br/>

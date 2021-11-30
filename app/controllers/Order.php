@@ -42,12 +42,14 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function CartKhachHang(){
             if (isset($_SESSION['username'])){
+                $username = $_SESSION['username'];
                 if(isset($_SESSION['btnMuaHang'])){
                     unset($_SESSION['btnMuaHang']);
                     if(isset($_SESSION['chckall'])){
@@ -72,7 +74,8 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
             else {
@@ -81,12 +84,14 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function UpTangCartId($id,$idgh){
             if (isset($_SESSION['username'])){
+                $username = $_SESSION['username'];
                 $kq = $this->OrderModel->UpTCart($id,$idgh);
                 if($kq=true){
                     header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
@@ -98,12 +103,14 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function UpGiamCartId($id,$idgh){
             if (isset($_SESSION['username'])){
+                $username = $_SESSION['username'];
                 $kq = $this->OrderModel->UpGCart($id,$idgh);
                 if($kq=true){
                     header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
@@ -116,7 +123,8 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
@@ -127,6 +135,7 @@
                     "Page"=>"BuyNow",
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
+                    "ttuser"=>$this->UserModel->GetMember($username),
                     "tbuser"=>$this->UserModel->GetThongBao(),
                     "spcart"=>$this->ProductModel->GetSpCart(),
                     "spbuynow"=>$this->ProductModel->GetCTSPid($id),
@@ -140,13 +149,15 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function DelProductKH($id){
             if (isset($_SESSION['username'])){
                 $iduss = $_SESSION['iduss'];
+                $username = $_SESSION['username'];
                 $kq = $this->OrderModel->DelCart($id,$iduss);
                 if($kq=true){
                     header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
@@ -158,13 +169,15 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function DelAllProductKH(){
             if (isset($_SESSION['username'])){
                 $iduss = $_SESSION['iduss'];
+                $username = $_SESSION['username'];
                 $kq = $this->OrderModel->DelAllCart($iduss);
                 if($kq=true){
                     header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
@@ -176,13 +189,15 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function ThanhToan(){
             if (isset($_SESSION['username'])){
                 $iduss = $_SESSION['iduss'];
+                $username = $_SESSION['username'];
                 if(isset($_POST["btnMua"])){
                     $iddc = $_POST['idDiaChi'];
                     $slgdat = $_POST['soluongdat'];
@@ -303,8 +318,7 @@
                                 }
                             }
                         }else {
-                            $this->view("Main",[
-                                "Page"=>"404"
+                            $this->view("404",[
                             ]);
                         }
                     } 
@@ -316,13 +330,15 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function DetailOrder($idma){
             if (isset($_SESSION['username'])){
                 $iduss = $_SESSION['iduss'];
+                $username = $_SESSION['username'];
                 $this->view("Main",[
                     "Page"=>"DetailOrder",
                     "dmsp1"=>$this->Category->GetDM1(),
@@ -331,7 +347,8 @@
                     "spcart"=>$this->ProductModel->GetSpCart(),
                     "donhang"=>$this->OrderModel->DonHang($iduss,$idma),
                     "donhangct"=>$this->OrderModel->DonHangChiTiet($idma),
-                    "dgct"=>$this->OrderModel->DGDonHang($idma)
+                    "dgct"=>$this->OrderModel->DGDonHang($idma),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
             else {
@@ -340,13 +357,15 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function DanhGia($idma,$idcsp){
             if (isset($_SESSION['username'])){
                 $iduss = $_SESSION['iduss'];
+                $username = $_SESSION['username'];
                 if(isset($_POST["btndanhgia"])){
                     $idsp = $_POST['idSP'];
                     date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -372,7 +391,8 @@
                                     "spcart"=>$this->ProductModel->GetSpCart(),
                                     "donhang"=>$this->OrderModel->DonHang($iduss,$idma),
                                     "donhangct"=>$this->OrderModel->DonHangChiTiet($idma),
-                                    "dgct"=>$this->OrderModel->DGDonHang($idma)
+                                    "dgct"=>$this->OrderModel->DGDonHang($idma),
+                                    "ttuser"=>$this->UserModel->GetMember($username)
                                 ]);
                             }else {echo 'Lỗi đánh giá';}
                 }else{
@@ -382,6 +402,7 @@
                         "dmsp3"=> $this->Category->GetDM3(),
                         "tbuser"=>$this->UserModel->GetThongBao(),
                         "spcart"=>$this->ProductModel->GetSpCart(),
+                        "ttuser"=>$this->UserModel->GetMember($username),
                         "donhangct"=>$this->OrderModel->DonHangChiTiet($idma),
                         "dgct"=>$this->OrderModel->DGDonHang($idma),
                         "idcsp"=>$idcsp
@@ -394,13 +415,15 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
         function HuyDonMua($idma){
             if (isset($_SESSION['username'])){
                 $iduss = $_SESSION['iduss'];
+                $username = $_SESSION['username'];
                 $kt = $this->OrderModel->DonHang($iduss,$idma);
                 $rowkt = json_decode($kt,true);
                 foreach ($rowkt as list("tinhtrang"=>$trangthai)){
@@ -423,6 +446,7 @@
                                 "dmsp3"=> $this->Category->GetDM3(),
                                 "tbuser"=>$this->UserModel->GetThongBao(),
                                 "spcart"=>$this->ProductModel->GetSpCart(),
+                                "ttuser"=>$this->UserModel->GetMember($username),
                                 "donhang"=>$this->OrderModel->DonHang($iduss,$idma),
                                 "donhangct"=>$this->OrderModel->DonHangChiTiet($idma),
                                 "dgct"=>$this->OrderModel->DGDonHang($idma),
@@ -441,7 +465,8 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }
@@ -462,6 +487,7 @@
                             "dmsp3"=> $this->Category->GetDM3(),
                             "tbuser"=>$this->UserModel->GetThongBao(),
                             "spcart"=>$this->ProductModel->GetSpCart(),
+                            "ttuser"=>$this->UserModel->GetMember($username),
                             "diachi"=>$this->UserModel->GetDiaChi($username)
                         ]);
                     }else{
@@ -487,6 +513,7 @@
                             "tbuser"=>$this->UserModel->GetThongBao(),
                             "spcart"=>$this->ProductModel->GetSpCart(),
                             "diachi"=>$this->UserModel->GetDiaChi($username),
+                            "ttuser"=>$this->UserModel->GetMember($username),
                             "slgmang"=>$_SESSION['slpds'],
                             "mang"=>$_SESSION['arr']
                         ]);
@@ -502,7 +529,8 @@
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart()
+                    "spcart"=>$this->ProductModel->GetSpCart(),
+                    "ttuser"=>$this->UserModel->GetMember($username)
                 ]);
             }
         }

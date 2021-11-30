@@ -69,7 +69,7 @@
                 <?php
                     $row= json_decode($data["ttuser"],true);
                     foreach ($row as list("img"=>$img,"username"=>$username)){ ?>
-                    <img style="height: 160px;width: 160px;" src="<?php echo $img ?>"> &nbsp;
+                    <img style="height: 160px;width: 160px;margin:5px;" src="<?php echo $img ?>"> &nbsp;
                 <?php } ?>
                     <br/>Chọn file ảnh: <input type="file" name="uploadFile"><br> <br> 
                     <input class="btn btn-primary" type="submit" name="btnUpload" value="Upload">

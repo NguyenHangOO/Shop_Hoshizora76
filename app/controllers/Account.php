@@ -108,7 +108,7 @@
                             ///goi model
                             $kq = $this->UserModel->InsertImg($image_url,$username);
                             if($kq=true){
-                                if($filename!=$image_url){
+                                if($filename!=$image_url && $filename !=""){
                                     unlink($filename);
                                 }     
                             }
@@ -431,7 +431,7 @@
                 unset($_SESSION['username']);
                 unset($_SESSION['iduss']);
                 unset($_SESSION['nameuss']);
-                unset($_SESSION['hinhanh']);// xóa session login
+                // xóa session login
             }
             if (isset($_SESSION['idadmin'])){
                 unset($_SESSION['idadmin']);

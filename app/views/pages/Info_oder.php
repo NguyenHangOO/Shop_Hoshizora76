@@ -66,7 +66,12 @@
 								<td><?php echo $ngay;?></td>
 								<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
 								<td><?php echo $trangthai;?></td>
-								<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
+								<?php 
+									if($trangthai=="Đã giao"){ ?>
+										<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Đánh giá/chi tiết</a></td>
+									<?php }else{ ?>
+										<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
+								<?php } ?>
 							</tr>
 						</tbody>
 						<?php } ?>
@@ -139,7 +144,7 @@
 							<td><?php echo $id;?></td>
 							<td><?php echo $ngay;?></td>
 							<td style="text-align:right;"><?php echo number_format($tongtien);?>đ</td>
-							<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Xem chi tiết</a></td>
+							<td><a href="./Order/DetailOrder/<?php echo $id;?>" id="detail">Đánh giá/chi tiết</a></td>
 						</tr>
 						<?php } ?>
 					</table>
