@@ -22,7 +22,7 @@
                     "DM1"=>$this->CategoryModel->GetDM1()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function editHandmade($id){
@@ -58,7 +58,7 @@
                     ]);
                 } 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function GiftSet(){
@@ -71,7 +71,7 @@
                     "DM3"=>$this->CategoryModel->GetDM3()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function editGiftSet($id){
@@ -107,7 +107,7 @@
                     ]);
                 }
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function AddGiftSet(){
@@ -134,7 +134,7 @@
                     ]);
                }
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DelGiftSet($id){
@@ -157,7 +157,7 @@
                      "tb"=>$tb
                  ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function AddHand(){
@@ -184,7 +184,7 @@
                     ]);
                }
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DelHandmade($id){
@@ -207,7 +207,7 @@
                      "tb"=>$tb
                  ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
     }

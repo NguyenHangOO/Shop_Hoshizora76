@@ -69,9 +69,9 @@
                 <?php
                     $row= json_decode($data["ttuser"],true);
                     foreach ($row as list("img"=>$img,"username"=>$username)){ ?>
-                    <img style="height: 160px;width: 160px;margin:5px;" src="<?php echo $img ?>"> &nbsp;
+                    <img style="height: 160px;width: 160px;margin:5px;" src="<?php echo $img ?>" id="image"> &nbsp;
                 <?php } ?>
-                    <br/>Chọn file ảnh: <input type="file" name="uploadFile"><br> <br> 
+                    <br/>Chọn file ảnh: <input type="file" name="uploadFile" id="upload"><br> <br> 
                     <input class="btn btn-primary" type="submit" name="btnUpload" value="Upload">
                     <input type="text" name="anhtrc" value="<?php echo $img ?>" style="display:none;"><br>
                 </form>
@@ -79,3 +79,16 @@
         </div>	
     </div>
 </div>
+<script>
+    document.getElementById("upload").onchange = function () {
+    var reader = new FileReader();
+     
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+</script>

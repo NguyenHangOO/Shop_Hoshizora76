@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOSHIZORA76</title>
-    <base href="/CodeApp/Shop_Hoshizora76/">
+    <base href="/">
     <Link rel="shortcut icon" href="./public/images/logo.png">
     <link rel="stylesheet" type="text/css" href="./public/css/signup.css">
 </head>

@@ -22,7 +22,7 @@
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
                 ]);
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Xulydonhang($id,$idmem){
@@ -33,10 +33,10 @@
                     $ngay = date('Y-m-d H:i:s');
                     $nd="Đơn hàng ".$id." của bạn đã được chấp nhận";
                     $this->UserModel->ThongBao($idmem,$ngay,$nd);
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
+                    header("Location:/admin.php?url=Home/");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Huydonhang($id,$idmem){
@@ -53,10 +53,10 @@
                             $upslgsp = $this->ProductModel->UpSlgSp($idsp,$slgdat);
                             $this->ProductModel->GiamLuotMua($idsp,$slgdat);
                         }
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
+                    header("Location:/admin.php?url=Home/");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
     }

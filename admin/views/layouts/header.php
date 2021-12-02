@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Hoshizora76</title>
-    <base href="/CodeApp/Shop_Hoshizora76/">
+    <base href="/">
 	<Link rel="shortcut icon" href="public/images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<!-- MUI CSS -->
@@ -20,7 +20,7 @@
 <body>
     <div id="sidedrawer" class="mui--no-user-select" style="background-color:rgb(52,58,64);color:white;">
       <div id="sidedrawer-brand" class="mui--appbar-line-height">
-        <span class="mui--text-title"><a href="/CodeApp/Shop_Hoshizora76/admin.php?url=Home"> <img id="lg" src="public/images/logo-shop.png" ></a></span>
+        <span class="mui--text-title"><a href="/admin.php?url=Home"> <img id="lg" src="public/images/logo-shop.png" ></a></span>
         <span class="tenshop">Hoshizora76 | <a style="text-decoration: none;color:white;"><?php if(isset($_SESSION['useradmin'])){echo $_SESSION['useradmin'];} ?></a></span>
       </div>
       <div class="mui-divider" style="background-color:#c2c7d0;"></div>

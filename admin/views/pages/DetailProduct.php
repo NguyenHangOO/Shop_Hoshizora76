@@ -31,7 +31,21 @@
                         <span class="tt">Danh mục:</span>
                     </div>
                     <div class="mui-col-xs-9">
-                        <span ><?php echo $tendm; ?></span>
+                        <span >
+                            <?php echo $tendm; ?>
+                        <?php 
+                            $row3= json_decode($data["tenDM1"],true);
+                            if(count($row3)>0){
+                             foreach ($row3 as list("id"=>$id,"tenloai"=>$tenloai)){ ?>
+                                > <?php echo $tenloai; ?>
+                       <?php  } } ?>
+                       <?php 
+                            $row4= json_decode($data["tenDM3"],true);
+                            if(count($row4)>0){
+                             foreach ($row4 as list("id"=>$id,"tenloai"=>$tenloai)){ ?>
+                                > <?php echo $tenloai; ?>
+                       <?php  } } ?>
+                        </span>
                     </div>
                 </div>
                 <div class="mui-row">

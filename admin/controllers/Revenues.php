@@ -34,7 +34,7 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
     }

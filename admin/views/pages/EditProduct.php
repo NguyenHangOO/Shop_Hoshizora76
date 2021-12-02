@@ -6,7 +6,7 @@
       <div class="mui-container-fluid">
         <br> 
         <div class="row">
-            <div class="mui-col-md-8 mui-col-md-offset-2">
+            <div class="mui-col-md-8 mui-col-md-offset-2"style="border:2px solid gray; border-radius:5px;">
                 <?php  
                     $row = json_decode($data["SPID"],true);
                     foreach($row as list("id"=>$id,"tensp"=>$tensp)){
@@ -32,7 +32,7 @@
                         "giaban"=>$giaban,"luotmua"=>$luotmua,"luotxem"=>$luotxem,"ttban"=>$trangthai,"mota"=>$mota,"tendm"=>$tendm,"iddm"=>$iddm)){
                     ?> 
                     <div>
-                        <img src="<?php echo $hinhanh; ?>" alt="" style="width:120px;height:125px;">
+                        <img src="<?php echo $hinhanh; ?>" alt="" style="width:120px;height:125px;" id="image">
                     </div>
                     <div class="mui-textfield mui-textfield--float-label">
                         <input type="text" name="tensp" value="<?php echo $tensp; ?>" required>
@@ -79,7 +79,7 @@
                        <?php  } else {
                             foreach ($row3 as list("id"=>$id,"tenloai"=>$tenloai)){
                                 ?>
-                                    <option value="<?php echo $id; ?>"><?php echo $tenloai; ?></option>
+                                    <option value="<?php echo $id; ?>">--<?php echo $tenloai; ?>--</option>
                                 <?php } } ?>
                       <?php 
                         $row= json_decode($data["DM1"],true);
@@ -97,9 +97,9 @@
                         if(count($row4)==0){ ?>
                             <option value="">Chọn</option>
                        <?php  } else {
-                            foreach ($row3 as list("id"=>$id,"tenloai"=>$tenloai)){
+                            foreach ($row4 as list("id"=>$id,"tenloai"=>$tenloai)){
                                 ?>
-                                    <option value="<?php echo $id; ?>"><?php echo $tenloai; ?></option>
+                                    <option value="<?php echo $id; ?>">--<?php echo $tenloai; ?>--</option>
                                 <?php } } ?>
                       <?php 
                         $row= json_decode($data["DM3"],true);
@@ -157,7 +157,7 @@
                         <label>Bảo hành</label>
                     </div>
                     <?php } ?>
-                         Chọn file ảnh: <input type="file" name="uploadFile"><br> 
+                         Chọn file ảnh: <input type="file" name="uploadFile" id="upload"><br> 
                          <?php  
                         $row = json_decode($data["SPID"],true);
                         foreach($row as list("hinhanh"=>$hinhanh)){
@@ -176,4 +176,15 @@
         .catch( error => {
             console.error( error );
         } );
+    document.getElementById("upload").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
 </script>

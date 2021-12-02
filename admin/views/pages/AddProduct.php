@@ -6,7 +6,7 @@
       <div class="mui-container-fluid">
         <br> 
         <div class="row">
-            <div class="mui-col-md-8 mui-col-md-offset-2">
+            <div class="mui-col-md-8 mui-col-md-offset-2" style="border:2px solid gray; border-radius:5px;">
                 <form class="mui-form" action="admin.php?url=Product/AddProduct" enctype="multipart/form-data" method="POST">
                 <?php if(isset($data["relust"]) && isset($data["tb"])){ if ($data["relust"]=="yes"){ ?>
                     <div class="tbloi success" id="tbloi">
@@ -100,7 +100,10 @@
                         <input type="text" name="baohanh" >
                         <label>Bảo hành</label>
                     </div>
-                         Chọn file ảnh<span id="bb">*</span>: <input type="file" name="uploadFile"><br>  
+                    <div>
+                        <img id="image" style="width:120px;height:125px;">
+                    </div>
+                         Chọn file ảnh<span id="bb">*</span>: <input type="file" name="uploadFile" id="upload"><br>  
                     <button type="submit" name="btnAddsp" class="mui-btn mui-btn--raised mui-btn--primary">Thêm mới</button>
                 </form>
             </div>
@@ -113,4 +116,15 @@
         .catch( error => {
             console.error( error );
         } );
+    document.getElementById("upload").onchange = function () {
+    var reader = new FileReader();
+     
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
 </script>

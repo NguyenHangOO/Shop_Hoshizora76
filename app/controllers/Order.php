@@ -94,7 +94,7 @@
                 $username = $_SESSION['username'];
                 $kq = $this->OrderModel->UpTCart($id,$idgh);
                 if($kq=true){
-                    header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
+                    header("Location:/Order/CartKhachHang");
                 }else echo 'Lỗi xảy ra'; 
             }
             else {
@@ -113,7 +113,7 @@
                 $username = $_SESSION['username'];
                 $kq = $this->OrderModel->UpGCart($id,$idgh);
                 if($kq=true){
-                    header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
+                    header("Location:/Order/CartKhachHang");
                 }else echo 'Lỗi xảy ra';
                 
             }
@@ -160,7 +160,7 @@
                 $username = $_SESSION['username'];
                 $kq = $this->OrderModel->DelCart($id,$iduss);
                 if($kq=true){
-                    header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
+                    header("Location:/Order/CartKhachHang");
                 }else echo 'Lỗi xảy ra';
             }
             else {
@@ -180,7 +180,7 @@
                 $username = $_SESSION['username'];
                 $kq = $this->OrderModel->DelAllCart($iduss);
                 if($kq=true){
-                    header("Location:/CodeApp/Shop_Hoshizora76/Order/CartKhachHang");
+                    header("Location:/Order/CartKhachHang");
                 }else echo 'Lỗi xảy ra';
             }
             else {
@@ -217,7 +217,7 @@
                             $uplmsp = $this->ProductModel->TangLuotMua($idsp,$slgdat);
                             $kqdg = $this->OrderModel->DanhFrist($diem,$iduss,$idsp,$ngay,$iddh);
                             if($upslgsp=='true'){
-                                header("Location:/CodeApp/Shop_Hoshizora76/Order/DetailOrder/$iddh");
+                                header("Location:/Order/DetailOrder/$iddh");
                             }
                         }
                     }
@@ -258,7 +258,7 @@
                                 if($upslgsp=='true'){
                                     unset($_SESSION['chckall']);
                                     unset($_SESSION['btnMuaHang']);
-                                    header("Location:/CodeApp/Shop_Hoshizora76/Order/DetailOrder/$iddh");
+                                    header("Location:/Order/DetailOrder/$iddh");
                                 }
                             }
                         }
@@ -313,7 +313,7 @@
                                             unset($_SESSION['slpds1']);
                                             unset($_SESSION['btnMuaHang1']);
                                         }
-                                        header("Location:/CodeApp/Shop_Hoshizora76/Order/DetailOrder/$iddh");
+                                        header("Location:/Order/DetailOrder/$iddh");
                                     }
                                 }
                             }
@@ -454,7 +454,7 @@
                             ]);
                         }else{echo 'Lỗi hủy đơn';}
                     }else {
-                        header("Location:/CodeApp/Shop_Hoshizora76/Order/DetailOrder/$idma"); 
+                        header("Location:/Order/DetailOrder/$idma"); 
                     }
                 } 
                 

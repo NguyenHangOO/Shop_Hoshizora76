@@ -44,7 +44,7 @@
                 }
                
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DetailExport($idma){
@@ -60,7 +60,7 @@
                     "dgct"=>$this->OrderModel->DGDonHang($idma)
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Xulydonhang($idmem,$id){
@@ -71,10 +71,10 @@
                     $ngay = date('Y-m-d H:i:s');
                     $nd="Đơn hàng ".$id." của bạn đã được chấp nhận";
                     $this->UserModel->ThongBao($idmem,$ngay,$nd);
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/orExport");
+                    header("Location:/admin.php?url=Order/orExport");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Huydonhang($idmem,$id){
@@ -91,10 +91,10 @@
                             $upslgsp = $this->ProductModel->UpSlgSp($idsp,$slgdat);
                             $this->ProductModel->GiamLuotMua($idsp,$slgdat);
                         }
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/orExport");
+                    header("Location:/admin.php?url=Order/orExport");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DangGiaodonhang($idmem,$id){
@@ -105,10 +105,10 @@
                     $ngay = date('Y-m-d H:i:s');
                     $nd="Đơn hàng ".$id." của bạn đang được giao đến bạn";
                     $this->UserModel->ThongBao($idmem,$ngay,$nd);
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/orExport");
+                    header("Location:/admin.php?url=Order/orExport");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DaGiaodonhang($idmem,$id){
@@ -119,10 +119,10 @@
                     $ngay = date('Y-m-d H:i:s');
                     $nd="Đơn hàng ".$id." của bạn đã được giao thành công";
                     $this->UserModel->ThongBao($idmem,$ngay,$nd);
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/orExport");
+                    header("Location:/admin.php?url=Order/orExport");
                 }else{echo 'Xử lý thất bại';}
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function orImport(){
@@ -148,7 +148,7 @@
                     ]);
                 }
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function AddImport(){
@@ -168,7 +168,7 @@
                     "DSSP"=>$this->ProductModel->GetDSSP()
                 ]);
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function AddSPDonHang(){
@@ -182,7 +182,7 @@
                     $dh = $this->OrderModel->GetDonNhap($_SESSION["iddh"]);
                     $row= json_decode($dh,true);
                     if($idsp==""){
-                        header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/AddImport");
+                        header("Location:/admin.php?url=Order/AddImport");
                     }else {
                         if(count($row)==0){
                             $this->OrderModel->InsertDonNhap($_SESSION["iddh"],$_SESSION["idadmin"],$_SESSION["ngay"]);
@@ -192,7 +192,7 @@
                         if(count($row2)==0){
                             $addct = $this->OrderModel->AddChiTiet($_SESSION["iddh"],$arr[0],$arr[1],$soluong,$thanhtien);
                             if($addct=="true"){
-                                header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/AddImport");
+                                header("Location:/admin.php?url=Order/AddImport");
                             }else {
                                 $this->view("Main",[
                                     "Page"=>"AddImport",
@@ -220,7 +220,7 @@
                     ]);
                 }
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function SaveImport($idma,$tongtien){
@@ -237,12 +237,12 @@
                     foreach ($row as list("sanpham_id"=>$idsp,"soluong"=>$soluong)){
                         $upslgsp = $this->ProductModel->UpSlgSp($idsp,$soluong);
                     }
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/DetailImport/$idma");
+                    header("Location:/admin.php?url=Order/DetailImport/$idma");
                 }else {
                     echo "Lỗi không thể lưu đơn hàng";
                 }
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DetailImport($idma){
@@ -257,7 +257,7 @@
                     "donhang"=>$this->OrderModel->GetDN($idma)
                 ]);
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DelImport($idma){
@@ -271,11 +271,11 @@
                             unset($_SESSION["ngay"]);
                             unset($_SESSION["iddh"]);
                         }
-                        header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/orImport");
+                        header("Location:/admin.php?url=Order/orImport");
                     }
                 }
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function DelDetailIm($idsp,$idma){
@@ -284,10 +284,10 @@
                 $kq= $this->OrderModel->DelDetailIm($idsp,$idma);
                 if($kq=="true"){
                     
-                    header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Order/AddImport");
+                    header("Location:/admin.php?url=Order/AddImport");
                 }
             }else {
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
     }

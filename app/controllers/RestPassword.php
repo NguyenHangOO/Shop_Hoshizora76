@@ -7,6 +7,9 @@
         }
         function Show(){
             if(isset($_POST["btnReset"])){
+                require "./public/PHPMailer/src/PHPMailer.php";
+                require "./public/PHPMailer/src/SMTP.php";
+                require './public/PHPMailer/src/Exception.php';
                 $email = $_POST["email"];
                 $kq = $this->UserModel->KiemTraMail($email);
                 $row= json_decode($kq,true);
@@ -14,9 +17,6 @@
                     $token = substr(MD5(rand(0,10000)),0,16);
                     $k =$this->UserModel->Token($token,$email);
                     if($k=="true"){
-                        require "./public/PHPMailer/src/PHPMailer.php";
-                        require "./public/PHPMailer/src/SMTP.php";
-                        require './public/PHPMailer/src/Exception.php';
                         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
                         try {
                             $mail->SMTPDebug = 2;
@@ -38,7 +38,7 @@
                             $mail->addAddress($to, $to_name);
                             $mail->isHTML(true);  // Set email format to HTML
                             $mail->Subject = 'Cập nhật lại mật khẩu của bạn';      
-                            $noidungthu = "<b>Chào bạn!</b><br>Đây là link cập nhật mật khẩu! Nhấn vào đây http://127.0.0.1/CodeApp/Shop_Hoshizora76/RestPassword/UpdatePass/$email/$token   <br> 
+                            $noidungthu = "<b>Chào bạn!</b><br>Đây là link cập nhật mật khẩu! Nhấn vào đây http://hoshizora76.tw/RestPassword/UpdatePass/$email/$token   <br> 
                             Không chia sẽ link cho bất kỳ ai." ;
                             $mail->Body = $noidungthu;
                             $mail->smtpConnect( array(
@@ -49,7 +49,7 @@
                                 )
                             ));
                             $mail->send();
-                            header("Location:/CodeApp/Shop_Hoshizora76/RestPassword/Messmage"); 
+                            header("Location:/RestPassword/Messmage"); 
                         } catch (Exception $e) {
                             $relust = "Không thể gửi link xác nhận";
                         }
@@ -64,9 +64,6 @@
                         $token = substr(MD5(rand(0,10000)),0,16);
                         $k =$this->UserModel->TokenAdmin($token,$email);
                         if($k=="true"){
-                            require "./public/PHPMailer/src/PHPMailer.php";
-                            require "./public/PHPMailer/src/SMTP.php";
-                            require './public/PHPMailer/src/Exception.php';
                             $mail = new PHPMailer\PHPMailer\PHPMailer(true);
                             try {
                                 $mail->SMTPDebug = 2;
@@ -88,7 +85,7 @@
                                 $mail->addAddress($to, $to_name);
                                 $mail->isHTML(true);  // Set email format to HTML
                                 $mail->Subject = 'Cập nhật lại mật khẩu của bạn';      
-                                $noidungthu = "<b>Chào bạn!</b><br>Đây là link cập nhật mật khẩu! Nhấn vào đây http://127.0.0.1/CodeApp/Shop_Hoshizora76/RestPassword/UpdatePass/$email/$token   <br> 
+                                $noidungthu = "<b>Chào bạn!</b><br>Đây là link cập nhật mật khẩu! Nhấn vào đây http://hoshizora76.tw/RestPassword/UpdatePass/$email/$token   <br> 
                                 Không chia sẽ link cho bất kỳ ai." ;
                                 $mail->Body = $noidungthu;
                                 $mail->smtpConnect( array(
@@ -99,7 +96,7 @@
                                     )
                                 ));
                                 $mail->send();
-                                header("Location:/CodeApp/Shop_Hoshizora76/RestPassword/Messmage"); 
+                                header("Location:/RestPassword/Messmage"); 
                             } catch (Exception $e) {
                                 $relust = "Không thể gửi link xác nhận";
                             }
@@ -121,7 +118,6 @@
             }
         }
         function UpdatePass($email,$token){
-            
             if(isset($_POST["btnUpReset"])){
                 $password = $_POST["password"];
                 $cfpassword = $_POST["cfpassword"];

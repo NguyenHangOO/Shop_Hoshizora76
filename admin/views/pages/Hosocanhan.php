@@ -25,7 +25,7 @@
                             <?php if($img==""){ ?>
                                 <img src="./public/images/account/unnamed.png" alt="" style="width:80px;height:80px;text-align:center;">
                            <?php  } else { ?>
-                                <img src="<?php echo $img ?>" alt="" style="width:80px;height:80px;text-align:center;">
+                                <img src="<?php echo $img ?>" alt="" style="width:80px;height:80px;text-align:center;" id="image">
                             <?php } ?>
                             <div class="mui-textfield mui-textfield--float-label">
                                 <input type="text" name="username" disabled value="<?php echo $username; ?>">
@@ -39,7 +39,7 @@
                                 <input type="email" name="email" value="<?php echo $email; ?>" required>
                                 <label>Email</label>
                             </div>
-                            Chọn file ảnh: <input type="file" name="uploadFile"><br> <br> 
+                            Chọn file ảnh: <input type="file" name="uploadFile" id="upload"><br> <br> 
                             <input type="text" name="anhtrc" value="<?php echo $img ?>" style="display:none;"><br>
                             <button type="submit" name="btnUpload" class="mui-btn mui-btn--raised mui-btn--primary">Cập nhật</button>
                         </form>
@@ -84,3 +84,16 @@
            } } ?>
       </div>
 </div>
+<script>
+    document.getElementById("upload").onchange = function () {
+    var reader = new FileReader();
+     
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+</script>

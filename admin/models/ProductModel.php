@@ -67,7 +67,7 @@
                 }else {
                     $sqr = "INSERT INTO `sanpham`(`tensp`, `giagoc`, `giaban`, `soluong`, `hinhanh`, `mota`, `danhmuc_id`, `loai3_id`, `ttban`,`luotmua`,`luotxem`) VALUES ('$tensp','$giagoc','$giaban','$soluong','$image_url','$mota','$danhmuc','$loai3','1',0,0)";
                 }
-            }else if($loai3=""){
+            }else if($loai3==""){
                 $sqr = "INSERT INTO `sanpham`(`tensp`, `giagoc`, `giaban`, `soluong`, `hinhanh`, `mota`, `danhmuc_id`, `ttban`,`luotmua`,`luotxem`) VALUES ('$tensp','$giagoc','$giaban','$soluong','$image_url','$mota','$danhmuc','1',0,0)";
             }else {
                 $sqr = "INSERT INTO `sanpham`(`tensp`, `giagoc`, `giaban`, `soluong`, `hinhanh`, `mota`, `danhmuc_id`, `loai1_id`, `loai3_id`, `ttban`,`luotmua`,`luotxem`) VALUES ('$tensp','$giagoc','$giaban','$soluong','$image_url','$mota','$danhmuc','$loai1','$loai3','1',0,0)";
@@ -110,7 +110,7 @@
                 }else {
                     $sqr = "UPDATE `sanpham` SET `tensp`='$tensp',`giagoc`='$giagoc',`giaban`='$giaban',`soluong`='$soluong',`hinhanh`='$image_url',`mota`='$mota',`danhmuc_id`='$danhmuc',`loai3_id`='$loai3' WHERE id = $id";
                 }
-            }else if($loai3=""){
+            }else if($loai3==""){
                 $sqr = "UPDATE `sanpham` SET `tensp`='$tensp',`giagoc`='$giagoc',`giaban`='$giaban',`soluong`='$soluong',`hinhanh`='$image_url',`mota`='$mota',`danhmuc_id`='$danhmuc' WHERE id = $id";
             }else {
                 $sqr = "UPDATE `sanpham` SET `tensp`='$tensp',`giagoc`='$giagoc',`giaban`='$giaban',`soluong`='$soluong',`hinhanh`='$image_url',`mota`='$mota',`danhmuc_id`='$danhmuc',`loai1_id`='$loai1',`loai3_id`='$loai3' WHERE id = $id";
@@ -128,7 +128,7 @@
                 }else {
                     $sqr = "UPDATE `sanpham` SET `tensp`='$tensp',`giagoc`='$giagoc',`giaban`='$giaban',`soluong`='$soluong',`mota`='$mota',`danhmuc_id`='$danhmuc',`loai3_id`='$loai3' WHERE id = $id";
                 }
-            }else if($loai3=""){
+            }else if($loai3==""){
                 $sqr = "UPDATE `sanpham` SET `tensp`='$tensp',`giagoc`='$giagoc',`giaban`='$giaban',`soluong`='$soluong',`mota`='$mota',`danhmuc_id`='$danhmuc' WHERE id = $id";
             }else {
                 $sqr = "UPDATE `sanpham` SET `tensp`='$tensp',`giagoc`='$giagoc',`giaban`='$giaban',`soluong`='$soluong',`mota`='$mota',`danhmuc_id`='$danhmuc',`loai1_id`='$loai1',`loai3_id`='$loai3' WHERE id = $id";

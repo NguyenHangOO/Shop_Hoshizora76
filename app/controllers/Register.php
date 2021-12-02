@@ -49,7 +49,7 @@
                                 $_SESSION['username'] = $username;
                                 $_SESSION['iduss'] = $iduss;
                                 $_SESSION['nameuss'] = $hoten;
-                                header("Location:/CodeApp/Shop_Hoshizora76/");
+                                header("Location:/");
                             }
                             else{ $result = "lock";}
                         }
@@ -67,7 +67,7 @@
                                     $_SESSION['username'] = $user;
                                     $_SESSION['iduss'] = $iduss;
                                     $_SESSION['nameuss'] = $hoten;
-                                    header("Location:/CodeApp/Shop_Hoshizora76/");
+                                    header("Location:/");
                                 }
                                 else{ $result = "lock";}
                             }
@@ -85,7 +85,7 @@
                                         $_SESSION['useradmin'] = $username;
                                         $_SESSION['idadmin'] = $ida;
                                         $_SESSION['nameadmin'] = $name;
-                                        header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
+                                        header("Location:/admin.php?url=Home/");
                                     }
                                     else{ $result = "lock";}
                                 }
@@ -103,7 +103,7 @@
                                             $_SESSION['useradmin'] = $usa;
                                             $_SESSION['idadmin'] = $ida;
                                             $_SESSION['nameadmin'] = $name;
-                                            header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Home/");
+                                            header("Location:/admin.php?url=Home/");
                                         }
                                         else{ $result = "lock";}
                                     }

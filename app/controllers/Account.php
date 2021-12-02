@@ -55,7 +55,7 @@
                 $username= $_SESSION['username'];
                 $iduss=$_SESSION['iduss'];
                 $this->UserModel->DOCTB($id,$iduss);
-                header("Location:/CodeApp/Shop_Hoshizora76/Account/Notification");
+                header("Location:/Account/Notification");
             }
             else{
                 $this->view("404",[
@@ -68,7 +68,7 @@
                 $username= $_SESSION['username'];
                 $iduss=$_SESSION['iduss'];
                 $this->UserModel->DELTB($id, $iduss);
-                header("Location:/CodeApp/Shop_Hoshizora76/Account/Notification");
+                header("Location:/Account/Notification");
             }
             else{
                 $this->view("404",[
@@ -80,7 +80,7 @@
                 $username= $_SESSION['username'];
                 $iduss=$_SESSION['iduss'];
                 $this->UserModel->DELTBALL($iduss);
-                header("Location:/CodeApp/Shop_Hoshizora76/Account/Notification");
+                header("Location:/Account/Notification");
             }
             else{
                 $this->view("404",[
@@ -206,7 +206,7 @@
                     else { $macdinh = 0; $chon=0;}
                     $kq = $this->UserModel->InsertAddress($hoten,$sdt,$diachi,$macdinh,$create,$xa,$huyen,$tinh,$chon);
                     if($kq==true){
-                        header("Location:/CodeApp/Shop_Hoshizora76/Account/ShowAddress");
+                        header("Location:/Account/ShowAddress");
                     }else{
                         $this->view("Main",[
                             "Page"=>"Create_Address",
@@ -283,7 +283,7 @@
                     if((strlen($sdt)==11 || strlen($sdt)==10)){
                         $kq = $this->UserModel->UpAddress($hoten,$sdt,$diachi,$macdinh,$xa,$huyen,$tinh,$id,$chon);
                         if($kq=='true'){
-                            header("Location:/CodeApp/Shop_Hoshizora76/Account/ShowAddress");
+                            header("Location:/Account/ShowAddress");
                         }else{
                             $result="false";
                         }
@@ -323,7 +323,7 @@
             if (isset($_SESSION['username'])){
                 $username= $_SESSION['username'];
                 $this->UserModel->DELAddress($id);
-                header("Location:/CodeApp/Shop_Hoshizora76/Account/ShowAddress");
+                header("Location:/Account/ShowAddress");
             }
             else{
                 $this->view("404",[
@@ -438,7 +438,7 @@
                 unset($_SESSION['useradmin']);
                 unset($_SESSION['nameadmin']);// xóa session login
             }
-            header("Location:/CodeApp/Shop_Hoshizora76/");
+            header("Location:/");
          }
     }
 ?>

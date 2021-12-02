@@ -20,7 +20,7 @@
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function InsertManage(){
@@ -67,7 +67,7 @@
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Hosocanhan(){
@@ -124,7 +124,7 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Capnhatmatkhau(){
@@ -175,47 +175,47 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function LockStaff($id){
             if(isset($_SESSION['useradmin'])){
                $kq = $this->UserModel->LockStaff($id);
                if($kq=="true"){
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/Manage");
+                header("Location:/admin.php?url=Member/Manage");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function UnlockStaff($id){
             if(isset($_SESSION['useradmin'])){
                $kq = $this->UserModel->UnlockStaff($id);
                if($kq=="true"){
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/Manage");
+                header("Location:/admin.php?url=Member/Manage");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function LockUser($id){
             if(isset($_SESSION['useradmin'])){
                $kq = $this->UserModel->LockUser($id);
                if($kq=="true"){
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/UserMH");
+                header("Location:/admin.php?url=Member/UserMH");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function UnlockUser($id){
             if(isset($_SESSION['useradmin'])){
                $kq = $this->UserModel->UnlockUser($id);
                if($kq=="true"){
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/UserMH");
+                header("Location:/admin.php?url=Member/UserMH");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         
@@ -223,10 +223,10 @@
             if(isset($_SESSION['useradmin'])){
                $kq = $this->UserModel->GrantPermission($id);
                if($kq=="true"){
-                header("Location:/CodeApp/Shop_Hoshizora76/admin.php?url=Member/Manage");
+                header("Location:/admin.php?url=Member/Manage");
                 }else{echo 'Xử lý thất bại';}
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Sigout(){
@@ -251,6 +251,6 @@
                 unset($_SESSION["ngay"]);
                 unset($_SESSION["iddh"]);
             }
-            header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+            header("Location:/Register/Sigin");
          }
     }

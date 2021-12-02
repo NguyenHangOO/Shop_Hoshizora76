@@ -20,7 +20,7 @@
                     "DSSP"=>$this->ProductModel->GetDSSP()
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function dailProduct($id){
@@ -33,10 +33,12 @@
                     "DSSP"=>$this->ProductModel->GetDSSP(),
                     "SPID"=>$this->ProductModel->GetSPid($id),
                     "CTSPID"=>$this->ProductModel->GetCTSPid($id),
-                    "DGSP"=>$this->ProductModel->GetDGSP($id)
+                    "DGSP"=>$this->ProductModel->GetDGSP($id),
+                    "tenDM1"=>$this->CategoryModel->GetDM1id($id),
+                    "tenDM3"=>$this->CategoryModel->GetDM3id($id)
                 ]);
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Stop($id,$tensp){
@@ -68,7 +70,7 @@
                     ]);
                 }
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function Start($id,$tensp){
@@ -100,7 +102,7 @@
                     ]);
                 }
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function AddProduct(){
@@ -179,12 +181,12 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
         function EditProduct($id,$ten){
             if(isset($_SESSION['useradmin'])){
-                $useradmin=$_SESSION['useradmin']; 
+                $useradmin=$_SESSION['useradmin'];
                 if(isset($_POST["btnEditsp"])){
                    $tensp =  $_POST["tensp"];
                    $danhmuc =  $_POST["danhmuc"];
@@ -209,15 +211,25 @@
                             $image_url = $path . $name;
                             ///goi model
                             $kq = $this->ProductModel->UpSP($tensp,$giagoc,$giaban,$soluong,$image_url,$mota,$danhmuc,$loai1,$loai3,$id);
-                            if($kq=='true'){
-                                if(isset($_POST["addmoi"])){
-                                    if($thuonghieu!=""|| $xuatxu!="" || $chatlieu!="" || $kieudang!="" || $baohanh!=""){
-                                        $themtt = $this->ProductModel->InsertTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
-                                    } 
-                                }else {
-                                    $uptt = $this->ProductModel->UpTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
+                            if(isset($_POST["addmoi"])){
+                                if($thuonghieu!=""|| $xuatxu!="" || $chatlieu!="" || $kieudang!="" || $baohanh!=""){
+                                    $themtt = $this->ProductModel->InsertTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
+                                }else{
+                                    $relust="yes";
+                                    $tb = "Cập nhật sản phẩm thành công";
                                 }
-                                if($themtt=="true" || $uptt=="true"){
+                            }else {
+                                $uptt = $this->ProductModel->UpTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
+                                if($anhcu!=""){
+                                    if($anhcu!=$image_url){
+                                        unlink($anhcu);
+                                    }  
+                                }
+                                $relust="yes";
+                                $tb = "Cập nhật sản phẩm thành công";
+                            }
+                            if(isset($themtt)){
+                                if($themtt=="true"){
                                     if($anhcu!=""){
                                         if($anhcu!=$image_url){
                                             unlink($anhcu);
@@ -229,12 +241,8 @@
                                     $relust="no";
                                     $tb = "Cập nhật chi tiết sản phẩm thất bại";
                                 }
+                            }
                                 
-                            }
-                            else {
-                                $relust="no";
-                                $tb = "Cập nhật sản phẩm thất bại";
-                            }
                         } else {
                             // Không phải file ảnh
                             $relust="no";
@@ -242,21 +250,28 @@
                         }
                     } else {
                             $kq = $this->ProductModel->UpSPKOANH($tensp,$giagoc,$giaban,$soluong,$mota,$danhmuc,$loai1,$loai3,$id);
-                            if($kq=='true'){
+                            if(isset($_POST["addmoi"])){
+                                if($thuonghieu!=""|| $xuatxu!="" || $chatlieu!="" || $kieudang!="" || $baohanh!=""){
+                                    $themtt = $this->ProductModel->InsertTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
+                                }else{
+                                    $relust="yes";
+                                    $tb = "Cập nhật sản phẩm thành công";
+                                } 
+                            }else {
                                 $uptt = $this->ProductModel->UpTTSP($id,$thuonghieu,$xuatxu,$chatlieu,$kieudang,$baohanh);
-                                if($uptt=="true"){
+                                $relust="yes";
+                                $tb = "Cập nhật sản phẩm thành công";
+                            }
+                            if(isset($themtt)){
+                                if($themtt=="true"){
                                     $relust="yes";
                                     $tb = "Cập nhật sản phẩm thành công";
                                 }else {
                                     $relust="no";
                                     $tb = "Cập nhật chi tiết sản phẩm thất bại";
-                                } 
+                                }
                             }
-                            else {
-                                $relust="no";
-                                $tb = "Cập nhật sản phẩm thất bại";
-                            }
-                        }
+                    }
                         $this->view("Main",[
                         "Page"=>"EditProduct",
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
@@ -290,7 +305,7 @@
                 }
                 
             }else{
-                header("Location:/CodeApp/Shop_Hoshizora76/Register/Sigin");
+                header("Location:/Register/Sigin");
             }
         }
     }
