@@ -15,6 +15,7 @@
             }else { $username="";}
             $this->view("Main",[
                 "Page"=>"Group",
+                "giaodien"=>$this->UserModel->Giaodien(),
                 "dsspdm"=>$this->ProductModel->GetSpTheoDM($id),
                 "ds20sp"=>$this->ProductModel->Get20SP(),
                 "tendm"=>$this->Category->GetDM($id),
@@ -31,6 +32,7 @@
             }else { $username="";}
             $this->view("Main",[
                 "Page"=>"Group",
+                "giaodien"=>$this->UserModel->Giaodien(),
                 "dsspdm"=>$this->ProductModel->GetSpTheoDM($id),
                 "ds20sp"=>$this->ProductModel->Get20SP2($id),
                 "tendm"=>$this->Category->GetDM($id),
@@ -47,6 +49,7 @@
             }else { $username="";}
             $this->view("Main",[
                 "Page"=>"Group2",
+                "giaodien"=>$this->UserModel->Giaodien(),
                 "dmlid"=>$this->ProductModel->GetSpTheoDM1id($id,$lid),
                 "dsspdm"=>$this->ProductModel->GetSpTheoDM2($id,$lid),
                 "tendm"=>$this->Category->GetDM($id),
@@ -66,6 +69,7 @@
             if($trang==""){$trang=1;}
             $this->view("Main",[
                 "Page"=>"Detail",
+                "giaodien"=>$this->UserModel->Giaodien(),
                 "dmsp1"=>$this->Category->GetDM1(),
                 "dmsp3"=>$this->Category->GetDM3(),
                 "tbuser"=>$this->UserModel->GetThongBao(),
@@ -78,6 +82,7 @@
                 "danhgiapt"=>$this->ProductModel->GetDGPT($id,$trang),
                 "danhgia"=>$this->ProductModel->GetDanhgia($id),
                 "spcart"=>$this->ProductModel->GetSpCart(),
+                "listanh"=>$this->ProductModel->ImagesSP($id),
                 "trang"=>$trang,
                 "idpt"=>$id
             ]);

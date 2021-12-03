@@ -3,7 +3,7 @@
         <script>
             var r = confirm("Thêm giỏ hàng thành công! Bạn có muốn thanh toán?");
             if (r == true) {
-                window.location="/CodeApp/Shop_Hoshizora76/Order/CartKhachHang";
+                window.location="/Order/CartKhachHang";
             } else {
                 history.back();
             }

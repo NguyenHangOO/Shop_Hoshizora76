@@ -39,7 +39,7 @@
         function LockStaff($id){
             $sqr = "UPDATE `admin` SET `trangthai`='0' WHERE id= $id";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -47,7 +47,7 @@
         function UnlockStaff($id){
             $sqr = "UPDATE `admin` SET `trangthai`='1' WHERE id= $id";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -55,7 +55,7 @@
         function LockUser($id){
             $sqr = "UPDATE `member` SET `trangthai`='0' WHERE id= $id";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -63,7 +63,7 @@
         function UnlockUser($id){
             $sqr = "UPDATE `member` SET `trangthai`='1' WHERE id= $id";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -71,7 +71,7 @@
         function  GrantPermission($id){
             $sqr = "UPDATE `admin` SET `quyen`='1' WHERE id= $id";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -79,7 +79,7 @@
         function Capnhatmatkhau($mkmoi,$useradmin){
             $sqr = "UPDATE `admin` SET `password`='$mkmoi' WHERE username ='$useradmin'";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -87,7 +87,7 @@
         function Capnhathoso($fullname,$email,$image_url,$useradmin){
             $sqr = "UPDATE `admin` SET `fullname`='$fullname',email='$email',img='$image_url' WHERE username ='$useradmin'";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -95,7 +95,7 @@
         function Capnhathosokoanh($fullname,$email,$useradmin){
             $sqr = "UPDATE `admin` SET `fullname`='$fullname',email='$email' WHERE username ='$useradmin'";
             $relust = false;
-            if($rows = mysqli_query($this->con, $sqr)){
+            if(mysqli_query($this->con, $sqr)){
                 $relust = true;
             }
             return json_encode($relust);
@@ -138,6 +138,48 @@
         }
         function ThongBao($idmem,$ngay,$nd){
             $sqr = "INSERT INTO `thongbao`(`member_id`, `noidung`, `ngaytb`, `trangthai`) VALUES ('$idmem','$nd','$ngay','Chưa xem')";
+            $relust = false;
+            if($rows = mysqli_query($this->con, $sqr)){
+                $relust = true;
+            }
+            return json_encode($relust);
+        }
+        function Giaodien(){
+            $sqr = "SELECT * FROM `configdisplay`";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function UPGiaodien($image_top,$image_bottom,$footer){
+            $sqr = "UPDATE `configdisplay` SET `right-top`='$image_top',`right-bottom`='$image_bottom',`footer`='$footer' WHERE id=0";
+            $relust = false;
+            if(mysqli_query($this->con, $sqr)){
+                $relust = true;
+            }
+            return json_encode($relust);
+        }
+        public function Banner(){
+            $sqr = "SELECT * FROM `banner`";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function inBanner($img){
+            $sqr = "INSERT INTO `banner`(`img`) VALUES ('$img')";
+            $relust = false;
+            if($rows = mysqli_query($this->con, $sqr)){
+                $relust = true;
+            }
+            return json_encode($relust);
+        }
+        function delBanner(){
+            $sqr = "DELETE FROM `banner` WHERE 1";
             $relust = false;
             if($rows = mysqli_query($this->con, $sqr)){
                 $relust = true;

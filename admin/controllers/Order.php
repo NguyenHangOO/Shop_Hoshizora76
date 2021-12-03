@@ -20,6 +20,8 @@
                     $kt=$_POST["endngay"];
                     $this->view("Main",[
                         "Page"=>"Export",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DSAll"=>$this->OrderModel->GetAllFilter($bd,$kt),
@@ -33,6 +35,8 @@
                 }else {
                     $this->view("Main",[
                         "Page"=>"Export",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DSAll"=>$this->OrderModel->GetAll(),
@@ -52,6 +56,8 @@
                 $useradmin=$_SESSION['useradmin']; 
                 $this->view("Main",[
                     "Page"=>"DetailExport",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                     "DSSP"=>$this->ProductModel->GetDSSP(),
@@ -133,6 +139,8 @@
                     $kt=$_POST["endngay"];
                     $this->view("Main",[
                         "Page"=>"Import",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "donhang"=>$this->OrderModel->GetDNFilter($bd,$kt),
@@ -142,6 +150,8 @@
                 }else{
                     $this->view("Main",[
                         "Page"=>"Import",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "donhang"=>$this->OrderModel->GetDNDESC()
@@ -162,6 +172,8 @@
                 }
                 $this->view("Main",[
                     "Page"=>"AddImport",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                     "CTDH"=>$this->OrderModel->DonNhapCTId($_SESSION["iddh"]),
@@ -196,6 +208,8 @@
                             }else {
                                 $this->view("Main",[
                                     "Page"=>"AddImport",
+                                    "banner"=>$this->UserModel->Banner(),
+                                    "giaodien"=>$this->UserModel->Giaodien(),
                                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                                     "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                                     "CTDH"=>$this->OrderModel->DonNhapCTId($_SESSION["iddh"]),
@@ -206,6 +220,8 @@
                         }else {
                             $this->view("Main",[
                                 "Page"=>"AddImport",
+                                "banner"=>$this->UserModel->Banner(),
+                                "giaodien"=>$this->UserModel->Giaodien(),
                                 "Admin"=>$this->UserModel->GetAdmin($useradmin),
                                 "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                                 "CTDH"=>$this->OrderModel->DonNhapCTId($_SESSION["iddh"]),
@@ -215,8 +231,7 @@
                         } 
                     }
                 }else {
-                    $this->view("Main",[
-                        "Page"=>"404"
+                    $this->view("404",[
                     ]);
                 }
             }else {
@@ -250,6 +265,8 @@
                 $useradmin=$_SESSION['useradmin'];
                 $this->view("Main",[
                     "Page"=>"DetailImport",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                     "CTDH"=>$this->OrderModel->DonNhapCTId($idma),

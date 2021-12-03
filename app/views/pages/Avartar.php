@@ -21,10 +21,10 @@
             $row= json_decode($data["ttuser"],true);
             foreach ($row as list("img"=>$img,"fullname"=>$username)){ ?>
             <?php 
-                if($img !=""){ ?>
+                if($img !="" && file_exists($img)){ ?>
                     <a href="./Account/Infomation"><img id="ac-ac" src="<?php echo $img ?>"><?php echo $username ?></a>
                 <?php }  else {?>
-                    <a href="./Account/Infomation"><img id="ac-ac" src="./public/images/account/unnamed.png"><?php echo $username ?></a>
+                    <a href="./Account/Infomation"><img id="ac-ac" src="./public/images/unnamed.png"><?php echo $username ?></a>
                 <?php } ?>
         <?php } ?>
             <li><a href="./Account/Infomation"><i class="fas fa-user-alt"></i> Thông tin tài khoản</a></li>

@@ -64,10 +64,10 @@
 								$row= json_decode($data["ttuser"],true);
 								foreach ($row as list("img"=>$img,"fullname"=>$username)){ ?>
 								<?php 
-									if($img !=""){ ?>
+									if($img !="" && file_exists($img)){ ?>
 										<img src="<?php echo $img ?>" style="width:32px;height:32px;border-radius:50%;">
 									<?php }  else {?>
-										<img src="./public/images/account/unnamed.png" style="width:32px;height:32px;border-radius:50%;">
+										<img src="./public/images/unnamed.png" style="width:32px;height:32px;border-radius:50%;">
 									<?php } ?>
 							<?php } ?>
 							</a>
@@ -105,7 +105,7 @@
 								<?php 
 									$row= json_decode($data["dmsp1"],true);
 									foreach ($row as list("id"=>$id,"tenloai"=>$tenloai,"icon"=>$icon)){?>
-										<li><a href="<?php echo 'Product/Grouptype/3/'.$id.'' ;?>"><i class="<?php echo $icon ;?>"></i> <?php echo $tenloai ;?></a></li>
+										<li><a href="<?php echo 'Product/Grouptype/376520/'.$id.'' ;?>"><i class="<?php echo $icon ;?>"></i> <?php echo $tenloai ;?></a></li>
 								<?php } ?>	
 								</ul>
 							</li>
@@ -114,7 +114,7 @@
 								<?php 
 									$row= json_decode($data["dmsp3"],true);
 									foreach ($row as list("id"=>$id,"tenloai"=>$tenloai,"icon"=>$icon)){?>
-										<li><a href="<?php echo 'Product/Grouptype/4/'.$id.'' ;?>"><i class="<?php echo $icon ;?>"></i> <?php echo $tenloai ;?></a></li>
+										<li><a href="<?php echo 'Product/Grouptype/476520/'.$id.'' ;?>"><i class="<?php echo $icon ;?>"></i> <?php echo $tenloai ;?></a></li>
 								<?php }?>
 								</ul>
 							</li>

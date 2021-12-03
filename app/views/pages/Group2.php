@@ -1,6 +1,6 @@
 <style>
     #sp-c{
-        position: unset; background: white;max-width: 195px;
+        position: unset; background: white;max-width: 192px;
     }
     @media screen and (max-width: 480px) {
         #sp480{

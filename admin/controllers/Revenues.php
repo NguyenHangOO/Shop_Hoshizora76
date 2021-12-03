@@ -16,6 +16,8 @@
                     $kt=$_POST["endngay"];
                     $this->view("Main",[
                         "Page"=>"Revenues",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DSSP"=>$this->ProductModel->GetDSSP(),
@@ -26,6 +28,8 @@
                 }else {
                     $this->view("Main",[
                         "Page"=>"Revenues",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DSSP"=>$this->ProductModel->GetDSSP(),

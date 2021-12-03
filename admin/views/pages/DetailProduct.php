@@ -1,7 +1,8 @@
 <style>
     .tt{color:gray;}#tbh{text-align:right;	}
     h3{background-color:#D3D3D3	;padding-left:70px;padding-top:10px;padding-bottom:10px;}
-    #back{cursor: pointer;margin-right:10px;text-decoration: none;}
+    #back{cursor: pointer;margin-right:10px;text-decoration: none;}.anh{width: 50px;height: 45px;margin-right:7px;cursor: pointer; }
+    .anh:hover{transform: scale(1.5); border: 1.2px solid red; }
 </style>
 <div id="content-wrapper">
       <div class="mui--appbar-height"></div>
@@ -18,9 +19,18 @@
                     <br/>
                     <div class="mui-row">
                     <div class="mui-col-lg-8 mui-col-lg-offset-2 mui-col-sm-8 mui-col-sm-offset-2">
-                        <img src="<?php echo $hinhanh; ?>" alt="" style="width:90%;height:270px;">
+                        <img src="<?php echo $hinhanh; ?>" alt="" id="main-img" style="width:90%;height:270px;margin-bottom:15px;">
+                        <p>
+                            <img src="<?php echo $hinhanh; ?>" alt="" class="anh" >
+                            <?php  
+                                $rown = json_decode($data["listanh"],true);
+                                foreach($rown as list("img"=>$hinhanh)){
+                                ?> 
+                            <img src="<?php echo $hinhanh ?>" alt="" class="anh">
+                            <?php } ?>
+                        </p>
                     </div> 
-                </div>
+            </div>
             </div>
             <div class="mui-col-lg-7">
                 <div class="mui-row">
@@ -193,3 +203,11 @@
         <?php } ?>
       </div>
 </div>
+<script>
+    $(() => {
+        $('p img').click(function(){
+            let imgPath = $(this).attr('src');
+            $('#main-img').attr('src',imgPath);
+        });
+    });
+</script>

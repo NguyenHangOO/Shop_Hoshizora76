@@ -272,5 +272,23 @@
             }
             return json_encode($result);
         }
+        function Giaodien(){
+            $sqr = "SELECT * FROM `configdisplay`";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        public function Banner(){
+            $sqr = "SELECT * FROM `banner`";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
     }
 ?>

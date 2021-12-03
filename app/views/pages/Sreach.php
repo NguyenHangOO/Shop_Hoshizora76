@@ -1,25 +1,10 @@
 <style>
-    .tb{
-        background-color: rgb(255, 255, 251);border: 1px solid rgb(253, 216, 53);
-        color: rgb(223, 189, 21);
-        padding: 16px 24px;
-        display: flex;
-    }
-    .khungtb{
-        width: 100%;
-        padding: 16px 24px;
-        font-size: 15px;
-        margin-bottom: 24px;
-    }
-    #sp-c{
-        position: unset; background: white;max-width: 195px; 
-    }
-    .goiy{
-        margin-top:30px;
-    }
-    h5{
-        margin-top:20px; margin-left:20px;
-    }
+    .tb{background-color: rgb(255, 255, 251);border: 1px solid rgb(253, 216, 53);color: rgb(223, 189, 21);
+        padding: 16px 24px;display: flex;}
+    .khungtb{width: 100%;padding: 16px 24px;font-size: 15px;margin-bottom: 24px;}
+    #sp-c{position: unset; background: white;max-width: 192px; }
+    .goiy{margin-top:30px;}
+    h5{margin-top:20px; margin-left:20px;}
     #kq{background-color: rgb(255, 255, 251);border-top-left-radius:5px ;border-top-right-radius:5px ;}
     #sp480{
         background-color: rgb(255, 255, 251); border-bottom-left-radius:5px ;border-bottom-right-radius:5px ;
@@ -63,7 +48,7 @@
                         <?php if($soluong<1){ ?>
                             <a class="btnhh">Hết hàng</a>
                         <?php } else{ ?>
-                            <a style="margin-right:4px;margin-bottom: 15px;" class="btn btn-primary" href="<?php echo 'Product/Detail/'.$id.'/1' ;?>">Mua Ngay</a>
+                            <a style="margin-right:4px;margin-bottom: 15px;" class="btn btn-primary" href="<?php echo './Order/BuyNow/'.$id ;?>">Mua Ngay</a>
                             <a style="margin-bottom: 15px;" class="btn btn-danger" href="<?php echo './Order/CartID/'.$id.'' ;?>"><i class="fas fa-cart-plus"></i></a>
                         <?php } ?>
                     </a>
@@ -107,7 +92,7 @@
                         <?php if($soluong<1){ ?>
                             <a class="btnhh">Hết hàng</a>
                         <?php } else{ ?>
-                            <a style="margin-right:4px;margin-bottom: 15px;" class="btn btn-primary" href="<?php echo 'Product/Detail/'.$id.'/1' ;?>">Mua Ngay</a>
+                            <a style="margin-right:4px;margin-bottom: 15px;" class="btn btn-primary" href="<?php echo './Order/BuyNow/'.$id ;?>">Mua Ngay</a>
                             <a style="margin-bottom: 15px;" class="btn btn-danger" href="<?php echo './Order/CartID/'.$id.'' ;?>"><i class="fas fa-cart-plus"></i></a>
                         <?php } ?>
                     </a>

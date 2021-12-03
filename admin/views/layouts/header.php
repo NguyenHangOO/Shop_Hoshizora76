@@ -59,7 +59,9 @@
       </ul>
     </div>
     <style>
-      .account{width: 30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.5);;}
+      .account{width: 30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.5);}
+      .anh{width: 70px;height: 60px;margin-right:12px;}
+      .btn-reset{background-color:green;color:white;padding:2px;cursor: pointer;}
     </style>
     <header id="header">
       <div class="mui-appbar mui--appbar-line-height" style="background-color:rgb(244,246,249);">
@@ -67,14 +69,19 @@
           <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer"style="color:rgba(0,0,0,.5);">☰</a>
           <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer"style="color:black">☰</a>
           <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block" style="color:rgba(0,0,0,.5);">H76</span>
-          <a class="tbh" title="Cài đặt"><i class="fas fa-cog"></i></a>
+          <div class="mui-dropdown tbh">
+            <span data-mui-toggle="dropdown" style="cursor: pointer;" title="Cài đặt"><i class="fas fa-cog"></i></span>
+            <ul class="mui-dropdown__menu mui-dropdown__menu--right">
+              <li><a id="myBtn"style="cursor: pointer;"><i class="fas fa-tools"></i>&nbsp;Cấu hình trang</a></li>
+            </ul>
+          </div>
           <div class="mui-dropdown tbh" style="margin-top:8px; margin-bottom:-8px;">
             <?php 
             $row= json_decode($data["Admin"],true);
             foreach ($row as list("img"=>$img)){ if($img!=""){ ?>
                 <span data-mui-toggle="dropdown" style="cursor: pointer;" title="My account"><img src="<?php echo $img; ?>" alt="" class="account"></span>
             <?php } else { ?>
-                <span data-mui-toggle="dropdown" style="cursor: pointer;" title="My account"><img src="./public/images/account/unnamed.png" alt="" class="account"></span>
+                <span data-mui-toggle="dropdown" style="cursor: pointer;" title="My account"><img src="./public/images/unnamed.png" alt="" class="account"></span>
             <?php  } } ?>
             <ul class="mui-dropdown__menu mui-dropdown__menu--right">
               <li><a href="admin.php?url=Member/Hosocanhan"><i class="fas fa-user-edit"></i></i>&nbsp;Hồ sơ cá nhân</a></li>
@@ -91,4 +98,95 @@
         </div>
       </div>
     </header>
-    
+    <div id="myModal" class="modal">
+        <!-- Nội dung -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="mui-form" action="admin.php?url=Home/ConfigDisplay" method="post" enctype="multipart/form-data">
+                <legend style="font-size:25px;">Giao diện người dùng</legend>
+                <?php
+                    $row= json_decode($data["giaodien"],true);
+                    foreach ($row as list("id"=>$id,"right-top"=>$rtop,"right-bottom"=>$rbottom,"footer"=>$footer)){?>
+                <div class="mui-row">
+                  <img src="<?php echo $rtop; ?>" alt="" style="width:200px;height:90px;" id="imagetop"> 
+                  <img src="<?php echo $rbottom; ?>" alt="" style="width:200px;height:90px;" id="imagebottom"> 
+                </div>
+                <div class="mui-row" style="font-size:12px;">
+                    Right-top: <input type="file" name="uploadtop" id="uploadtop" style="margin-bottom:5px;" accept="image/*"><br> 
+                    Right-bottom: <input type="file" name="uploadbottom" id="uploadbottom" accept="image/*"><br>  
+                </div>
+                <div class="mui-row"style="margin-top:10px;text-align:left;margin-left:10px;margin-right:10px;">
+                  <label for="" style="color:gray;">Banner ads (chạy quảng cáo):</label>
+                </div>
+                <div class="mui-row">
+                  <div class="box-preview-img-an">
+                    <?php  
+                        $rowhh = json_decode($data["banner"],true);
+                        if(count($rowhh)>0){
+                        foreach($rowhh as list("img"=>$hinhanh)){
+                        ?> 
+                      <img src="<?php echo $hinhanh ?>" alt="" class="anh">
+                    <?php } } ?> 
+                  </div>
+                </div>
+                <div class="mui-row">
+                  <div class="box-preview-img"></div>
+                  Chọn tối đa 5 ảnh: <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept=".jpg">
+                  <button type="reset" class="btn-reset">Làm mới</button>
+                </div>
+                <div class="mui-row" style="margin-top:10px;text-align:left;margin-left:10px;margin-right:10px;">
+                  <label for="" style="color:gray;">Nội dung footer (thông tin shop):</label>
+                  <textarea name="footer" id="footer" rows="10"><?php echo $footer; ?></textarea>
+                  <input type="text" name="anhtrctop" value="<?php echo $rtop; ?>" style="display:none;"> 
+                  <input type="text" name="anhtrcbottom" value="<?php echo $rbottom; ?>" style="display:none;">
+                </div>
+                <?php } ?>
+                <button type="submit" name="btncapnhat" class="mui-btn mui-btn--raised mui-btn--accent">Lưu</button>
+            </form>
+        </div>
+    </div>
+    <script>
+      document.getElementById("uploadtop").onchange = function () {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              // get loaded data and render thumbnail.
+              document.getElementById("imagetop").src = e.target.result;
+          };
+
+          // read the image file as a data URL.
+          reader.readAsDataURL(this.files[0]);
+      };
+      document.getElementById("uploadbottom").onchange = function () {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              // get loaded data and render thumbnail.
+              document.getElementById("imagebottom").src = e.target.result;
+          };
+
+          // read the image file as a data URL.
+          reader.readAsDataURL(this.files[0]);
+      };
+      ClassicEditor
+        .create( document.querySelector( '#footer' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+        function previewImg(event) {
+            var files = document.getElementById('img_file').files; 
+            $('.box-preview-img-an').hide();
+            $('.box-preview-img').show();
+            for (i = 0; i < files.length; i++)
+            {
+                $('.box-preview-img').append('<img class="anh" src="" id="' + i +'">');
+                $('.box-preview-img img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
+            }   
+        }
+        $('.btn-reset').on('click', function() {
+            $('.box-preview-img').html('');
+            $('.box-preview-img').hide();
+            $('.output').hide();
+            $('.box-preview-img-an').show();
+        });
+    </script>

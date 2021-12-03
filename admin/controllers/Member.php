@@ -15,6 +15,8 @@
                 $useradmin=$_SESSION['useradmin']; 
                 $this->view("Main",[
                     "Page"=>"Manage",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "DSAdmin"=>$this->UserModel->GetDSAdmin(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
@@ -39,6 +41,8 @@
                     }else { $relust="Thêm không thành công";}
                     $this->view("Main",[
                         "Page"=>"AddManage",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "tbc2"=>$relust
@@ -47,6 +51,8 @@
                 else {
                     $this->view("Main",[
                         "Page"=>"AddManage",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin)
                     ]);
@@ -62,6 +68,8 @@
                 $useradmin = $_SESSION['useradmin'];
                 $this->view("Main",[
                     "Page"=>"Member_User",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSMember"=>$this->UserModel->GetDSMember(),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL()
@@ -83,21 +91,24 @@
                             // Nếu là ảnh tiến hành code upload
                             $path = "./public/images/account/"; 
                             $tmp_name = $_FILES['uploadFile']['tmp_name'];
-                            $name = $_FILES['uploadFile']['name']; 
-                            move_uploaded_file($tmp_name, $path . $name);
-                            $image_url = $path . $name;
+                            //$name = $_FILES['uploadFile']['name']; 
+                            $temp = explode(".", $_FILES["uploadFile"]["name"]);
+                            $newfilename = round(microtime(true)) .$useradmin. '.' . end($temp);
+                            move_uploaded_file($tmp_name, $path . $newfilename);
+                            $image_url = $path . $newfilename;
                             ///goi model
                             $kq = $this->UserModel->Capnhathoso($fullname,$email,$image_url,$useradmin);
                             if($kq=="true"){
                                 if($anhcu!=""){
                                     if($anhcu!=$image_url){
-                                        unlink($anhcu);
+                                        if(file_exists($anhcu)) {
+                                            unlink($anhcu);
+                                        }
                                     }  
                                 }
                                 $relust="Cập nhật thành công";
                             }
                         } else {
-                            // Không phải file ảnh
                             $relust="Không phải file ảnh";
                         }
                     } else {
@@ -108,6 +119,8 @@
                     }
                     $this->view("Main",[
                         "Page"=>"Hosocanhan",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "Account"=>"Hoso",
@@ -117,6 +130,8 @@
                 else {
                     $this->view("Main",[
                         "Page"=>"Hosocanhan",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "Account"=>"Hoso"
@@ -160,6 +175,8 @@
                     }
                     $this->view("Main",[
                         "Page"=>"Hosocanhan",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "Account"=>"Matkhau",
@@ -168,6 +185,8 @@
                 } else {
                     $this->view("Main",[
                         "Page"=>"Hosocanhan",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "Account"=>"Matkhau"

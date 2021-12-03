@@ -1,7 +1,7 @@
 <style>
   #ac5{background-color: #afabab;}#ac5 a{color:white;}
   #img-u{width: 40px;height:40px;}
-  #td6{ text-align: right;}
+  #td6{ text-align: right;}#tdten{max-width:220px;}
   #myInput {
    font-size: 15px; 
    padding-bottom: 12px ;padding-top: 8px ;padding-left:20px;padding-right:20px; 
@@ -29,13 +29,14 @@
                 <a class="close" onclick="var hidden = document.getElementById('tbloi');hidden.style.display = 'none';"><i class="fas fa-times"></i></a>
             </div>  
             <?php } } ?>
-            <a href="admin.php?url=Product/AddProduct" class="mui-btn mui-btn--raised mui-btn--primary" ><i class="fas fa-plus"></i> &nbsp;Thêm mới</a><br>
+            <a href="admin.php?url=Product/AddProduct" class="mui-btn mui-btn--raised mui-btn--primary" ><i class="fas fa-plus"></i> &nbsp;Thêm mới</a>
+            <br>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
             <table class="mui-table" id="tbdh">
             <thead>
                 <tr>
                   <th>STT</th>
-                  <th >Tên sản phẩm</th>
+                  <th id="tdten" >Tên sản phẩm</th>
                   <th id="td1">Hình ảnh</th>
                   <th id="td1">Số lượng tồn</th>
                   <th id="td6">Giá gốc</th>
@@ -54,7 +55,7 @@
                 <tr id="trhorver" class="onRow" style="cursor: pointer;">
                   <td><span><?php echo $stt; ?></span></td>
                   <td style="display:none"><span><?php echo $id; ?></span></td>
-                  <td ><span><?php echo $tensp;?></span></td>
+                  <td id="tdten" ><span><?php echo $tensp;?></span></td>
                   <td id="td1"><img src="<?php echo $img;?>" alt="" id="img-u"></td>
                   <td id="td1"><span><?php echo $soluong;?></span></td>
                   <td id="td6"><span><?php echo number_format($giagoc);?>đ</span></td>

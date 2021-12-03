@@ -151,5 +151,30 @@
             $qr = "UPDATE `sanpham` SET `luotmua`= luotmua-$slg WHERE id=$id" ;
             $rows = mysqli_query($this->con, $qr);
         }
+        public function InsertImagesSP($idsp,$image_url){
+            $sqr = "INSERT INTO `listimages`(`sanpham_id`,`img`) VALUES ('$idsp','$image_url')";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        public function ImagesSP($idsp){
+            $sqr = "SELECT `id`,`img` FROM `listimages` WHERE `sanpham_id` = '$idsp' ";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
+        }
+        function DelImagesSP($idsp){
+            $sqr = "DELETE FROM `listimages` WHERE  `sanpham_id` = '$idsp'";
+            $relust = false;
+            if($rows = mysqli_query($this->con, $sqr)){
+                $relust = true;
+            }
+            return json_encode($relust);
+        }
     }
 ?>

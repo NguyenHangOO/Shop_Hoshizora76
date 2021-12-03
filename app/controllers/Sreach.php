@@ -21,6 +21,7 @@
                 $srch = $_POST["dulieu"];
                 $this->view("Main",[
                     "Page"=>"Sreach",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "spcart"=>$this->ProductModel->GetSpCart(),

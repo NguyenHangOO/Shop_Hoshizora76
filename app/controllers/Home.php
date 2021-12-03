@@ -15,6 +15,8 @@
             }else { $username="";}
             $this->view("Main",[
                 "Page"=>"Home",
+                "banner"=>$this->UserModel->Banner(),
+                "giaodien"=>$this->UserModel->Giaodien(),
                 "dmsp1"=>$this->Category->GetDM1(),
                 "dmsp3"=> $this->Category->GetDM3(),
                 "spcart"=>$this->ProductModel->GetSpCart(),
@@ -30,6 +32,7 @@
             }else { $username="";}
             $this->view("Main",[
                 "Page"=>"All_sp",
+                "giaodien"=>$this->UserModel->Giaodien(),
                 "dssppt"=>$this->ProductModel->GetSPPT($trang),
                 "dssp"=>$this->ProductModel->GetSP(),
                 "dmsp1"=>$this->Category->GetDM1(),

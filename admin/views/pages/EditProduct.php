@@ -1,5 +1,6 @@
 <style>
-  #bb{color:red;}
+  #bb{color:red;}.anh{width: 110px;height: 100px;margin-right:15px;}
+  .btn-reset{background-color:green;color:white;padding:2px;cursor: pointer;}
 </style>
 <div id="content-wrapper">
       <div class="mui--appbar-height"></div>
@@ -31,9 +32,6 @@
                         foreach($row as list("id"=>$id,"hinhanh"=>$hinhanh,"tensp"=>$tensp,"soluong"=>$slg,"giagoc"=>$giagoc,
                         "giaban"=>$giaban,"luotmua"=>$luotmua,"luotxem"=>$luotxem,"ttban"=>$trangthai,"mota"=>$mota,"tendm"=>$tendm,"iddm"=>$iddm)){
                     ?> 
-                    <div>
-                        <img src="<?php echo $hinhanh; ?>" alt="" style="width:120px;height:125px;" id="image">
-                    </div>
                     <div class="mui-textfield mui-textfield--float-label">
                         <input type="text" name="tensp" value="<?php echo $tensp; ?>" required>
                         <label>Tên sản phẩm<label id="bb">*</label></label>
@@ -73,40 +71,45 @@
                     <div class="mui-select">
                       <select name="loai1">
                       <?php 
+                        $rowm1= json_decode($data["DM1"],true);
                         $row3= json_decode($data["tenDM1"],true);
                         if(count($row3)==0){ ?>
                             <option value="">Chọn</option>
+                            <?php 
+                                foreach ($rowm1 as list("id"=>$id,"tenloai"=>$tenloai)){
+                                ?>
+                                <option value="<?php echo $id; ?>"><?php echo $tenloai; ?></option>
+                            <?php } ?>
                        <?php  } else {
                             foreach ($row3 as list("id"=>$id,"tenloai"=>$tenloai)){
-                                ?>
-                                    <option value="<?php echo $id; ?>">--<?php echo $tenloai; ?>--</option>
-                                <?php } } ?>
-                      <?php 
-                        $row= json_decode($data["DM1"],true);
-                        foreach ($row as list("id"=>$id,"tenloai"=>$tenloai)){
-                        ?>
-                        <option value="<?php echo $id; ?>"><?php echo $tenloai; ?></option>
-                        <?php } ?>
+                            ?>
+                            <?php foreach ($rowm1 as list("id"=>$idm1,"tenloai"=>$tenloaim1)){ 
+                                if($id!=$idm3){ ?>
+                                <option value="<?php echo $idm1; ?>"><?php echo $tenloaim1; ?></option>
+                            <?php } } } }?>
                       </select>
                       <label style="text-align:left;">Loại handmade</label>
                     </div>
                     <div class="mui-select">
                       <select name="loai3">
                       <?php 
+                        $rowm3= json_decode($data["DM3"],true);
                         $row4= json_decode($data["tenDM3"],true);
                         if(count($row4)==0){ ?>
                             <option value="">Chọn</option>
+                            <?php 
+                                foreach ($rowm3 as list("id"=>$id,"tenloai"=>$tenloai)){
+                                ?>
+                                <option value="<?php echo $id; ?>"><?php echo $tenloai; ?></option>
+                            <?php } ?>
                        <?php  } else {
                             foreach ($row4 as list("id"=>$id,"tenloai"=>$tenloai)){
-                                ?>
-                                    <option value="<?php echo $id; ?>">--<?php echo $tenloai; ?>--</option>
-                                <?php } } ?>
-                      <?php 
-                        $row= json_decode($data["DM3"],true);
-                        foreach ($row as list("id"=>$id,"tenloai"=>$tenloai)){
-                        ?>
-                        <option value="<?php echo $id; ?>"><?php echo $tenloai; ?></option>
-                        <?php } ?>
+                            ?>
+                                <option value="<?php echo $id; ?>">--<?php echo $tenloai; ?>--</option>
+                            <?php foreach ($rowm3 as list("id"=>$idm3,"tenloai"=>$tenloaim3)){ 
+                                if($id!=$idm3){ ?>
+                                <option value="<?php echo $idm3; ?>"><?php echo $tenloaim3; ?></option>
+                            <?php } } } }?>
                       </select>
                       <label style="text-align:left;">Loại GiftSet</label>
                     </div>
@@ -157,13 +160,29 @@
                         <label>Bảo hành</label>
                     </div>
                     <?php } ?>
-                         Chọn file ảnh: <input type="file" name="uploadFile" id="upload"><br> 
-                         <?php  
-                        $row = json_decode($data["SPID"],true);
-                        foreach($row as list("hinhanh"=>$hinhanh)){
-                        ?> 
+                        <?php  
+                            $row = json_decode($data["SPID"],true);
+                            foreach($row as list("hinhanh"=>$hinhanh)){
+                            ?> 
+                        <div>
+                            <img src="<?php echo $hinhanh; ?>" alt="" style="width:120px;height:125px;" id="image">
+                        </div>
                          <input type="text" name="anhtrc" value="<?php echo $hinhanh ?>" style="display:none;"><br> 
                          <?php } ?>
+                         Chọn file ảnh: <input type="file" name="uploadFile" id="upload"><br> <br>
+                        <div class="box-preview-img-an">
+                            <?php  
+                                $rowhh = json_decode($data["listanh"],true);
+                                if(count($rowhh)>0){
+                                foreach($rowhh as list("img"=>$hinhanh)){
+                                ?> 
+                            <img src="<?php echo $hinhanh ?>" alt="" class="anh">
+                            <?php } } ?> 
+                        </div>
+                        <div class="box-preview-img"></div> <br>
+                        Chọn list ảnh phụ: <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept="image/*">
+                        <button type="reset" class="btn-reset">Làm mới</button>
+                        <br>
                     <button type="submit" name="btnEditsp" class="mui-btn mui-btn--raised mui-btn--primary">Cập nhật</button>
                 </form>
             </div>
@@ -177,14 +196,34 @@
             console.error( error );
         } );
     document.getElementById("upload").onchange = function () {
-    var reader = new FileReader();
+        var reader = new FileReader();
 
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("image").src = e.target.result;
+        reader.onload = function (e) {
+            document.getElementById("image").src = e.target.result;
+        };
+
+        reader.readAsDataURL(this.files[0]);
     };
-
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-};
+    function previewImg(event) {
+        var files = document.getElementById('img_file').files; 
+        $('.box-preview-img-an').hide();
+        $('.box-preview-img').show();
+        for (i = 0; i < files.length; i++)
+        {
+            $('.box-preview-img').append('<img class="anh" src="" id="' + i +'">');
+            $('.box-preview-img img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
+        }   
+    }
+    $('.btn-reset').on('click', function() {
+        $('.box-preview-img').html('');
+        $('.box-preview-img').hide();
+        $('.output').hide();
+        $('.box-preview-img-an').show();
+        <?php  
+            $row = json_decode($data["SPID"],true);
+            if(count($row)>0){
+                foreach($row as list("hinhanh"=>$hinhanh)){ ?>
+                    $('#image').attr('src', "<?php echo $hinhanh; ?>");
+            <?php } } ?> 
+    });
 </script>

@@ -2,6 +2,7 @@
     #ten{color:gray;}#tt{text-align:right;}#right{text-align:right;}img{width:80px;height:75px;}
     #myBtn{background-color:green;color:white;}#hidden{display:none;}
     #thongtin{padding-top:5px;padding-bottom: 5PX;border:1px solid gray; border-radius:3px;}
+    #back{cursor: pointer;margin-right:10px;text-decoration: none;font-size:25px;}
 </style>
 <div id="content-wrapper">
       <div class="mui--appbar-height"></div>
@@ -9,6 +10,7 @@
         <br> 
         <div class="mui-row">
             <div class="mui-col-sm-10 mui-col-lg-offset-1">
+                <a class="fas fa-arrow-circle-left" id="back" title="Back" onclick="return history.back();"></a>
                 <span style="font-size:22px;">THÔNG TIN ĐƠN NHẬP</span><br>
                 <div class="mui-row" id="thongtin">
                 <?php 
@@ -99,7 +101,7 @@
                     foreach ($row as list("thanhtien"=>$thanhtien)){
                         $tongtien = $tongtien + $thanhtien;
                 } ?>
-                <span>Tổng tiền: </span><span style="color:red;font-size:18px;"><?php echo number_format($tongtien) ?>đ</span>
+                <span>Tổng tiền: </span><span style="color:red;font-size:22px;"><?php echo number_format($tongtien) ?>đ</span>
             </div>
         </div>
       </div>

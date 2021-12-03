@@ -31,7 +31,7 @@
                                 <label class="star star-2" for="star-2"></label>
                                 <input class="star star-1" id="star-1" type="radio" name="star1"/>
                                 <label class="star star-1" for="star-1"></label>
-                                <textarea name="binhluan" id="" cols="50" rows="3"></textarea>
+                                <textarea name="binhluan" class="form-control" id="" cols="50" rows="3"></textarea>
                                 <label for="binhluan">Nhận xét</label><br/>
                                 <button style="font-size:13px;" type="sumbit" class="btn btn-warning" name="btndanhgia" >Đánh giá</button>
                             </form>

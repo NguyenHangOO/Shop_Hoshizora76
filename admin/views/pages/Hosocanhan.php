@@ -23,7 +23,7 @@
                             <?php } } ?>
                             <legend>Cập nhật thông tin</legend>
                             <?php if($img==""){ ?>
-                                <img src="./public/images/account/unnamed.png" alt="" style="width:80px;height:80px;text-align:center;">
+                                <img src="./public/images/unnamed.png" alt="" style="width:80px;height:80px;text-align:center;">
                            <?php  } else { ?>
                                 <img src="<?php echo $img ?>" alt="" style="width:80px;height:80px;text-align:center;" id="image">
                             <?php } ?>

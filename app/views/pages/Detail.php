@@ -4,8 +4,9 @@
     .htlb{width: 130px; text-align: left;color:Gray}
     #banchay{position: unset;background: white;border-radius: 5px;height: 1140px;}
     #ttofsp{padding-top:12px;background-color: #FFFFFF;border-radius: 5px;margin-top:5px; }
-    #imgsp{width:350px;height: 350px; padding-right:30px; margin-bottom:10px}
-    #sp-c{position: unset; background: white;max-width: 195px; }
+    #imgsp{width:400px;height: 350px; padding-right:30px; margin-bottom:10px}
+    #sp-c{position: unset; background: white;max-width: 195px; }.anh{width: 50px;height: 45px;margin-left:7px;cursor: pointer; }
+    .anh:hover{transform: scale(1.3); border: 1.2px solid red; }
     @media screen and (max-width: 480px) {
         #banchay{ display:none; }
         #imgsp{width:452px;height: 350px; padding-right:30px; margin-bottom:10px}
@@ -43,6 +44,15 @@
             ?>
         <div class="col-sm-5" style="position: unset;">
                 <img src="<?php echo $hinhanh?>" alt="" id="imgsp"> 
+                <p>
+                    <img src="<?php echo $hinhanh?>" alt="" class="anh">
+                    <?php  
+                        $rown = json_decode($data["listanh"],true);
+                        foreach($rown as list("img"=>$hinhanh)){
+                        ?> 
+                    <img src="<?php echo $hinhanh ?>" alt="" class="anh">
+                    <?php } ?>
+                </p>
         </div>
         <div class="col-sm-7" style="position: unset;">
             <?php
@@ -110,7 +120,7 @@
             </div>
             <div class="htt">
                 <h4 class="hth4">Mô tả</h4>
-                <div style="padding:15px;margin-top:-15px;">
+                <div style="padding:15px;margin-top:-25px;">
                 <?php
                     $row= json_decode($data["ctsp"],true);
                     foreach ($row as list("mota"=>$mota)){ ?>
@@ -282,3 +292,10 @@
         </div>
     </div>
 </div>
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+    $('p img').click(function(){
+        let imgPath = $(this).attr('src');
+        $('#imgsp').attr('src',imgPath);
+    });
+</script>

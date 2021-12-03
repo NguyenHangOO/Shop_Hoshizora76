@@ -1,5 +1,6 @@
 <style>
-  #bb{color:red;}
+  #bb{color:red;}.anh{width: 110px;height: 100px;margin-right:15px;}
+  .btn-reset{background-color:green;color:white;padding:2px;cursor: pointer;}
 </style>
 <div id="content-wrapper">
       <div class="mui--appbar-height"></div>
@@ -103,7 +104,11 @@
                     <div>
                         <img id="image" style="width:120px;height:125px;">
                     </div>
-                         Chọn file ảnh<span id="bb">*</span>: <input type="file" name="uploadFile" id="upload"><br>  
+                         Chọn ảnh chính: <span id="bb">*</span>: <input type="file" name="uploadFile" id="upload"><br><br>       
+                    <div class="box-preview-img"></div> <br>
+                    Chọn list ảnh phụ: <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept="image/*">
+                    <button type="reset" class="btn-reset">Làm mới</button>
+                    <br>
                     <button type="submit" name="btnAddsp" class="mui-btn mui-btn--raised mui-btn--primary">Thêm mới</button>
                 </form>
             </div>
@@ -117,14 +122,29 @@
             console.error( error );
         } );
     document.getElementById("upload").onchange = function () {
-    var reader = new FileReader();
-     
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("image").src = e.target.result;
-    };
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("image").src = e.target.result;
+        };
 
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-};
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    };
+  function previewImg(event) {
+      var files = document.getElementById('img_file').files; 
+      $('.box-preview-img').show();
+      for (i = 0; i < files.length; i++)
+      {
+          $('.box-preview-img').append('<img class="anh" src="" id="' + i +'">');
+          $('.box-preview-img img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
+      }   
+  }
+    $('.btn-reset').on('click', function() {
+      $('.box-preview-img').html('');
+      $('.box-preview-img').hide();
+      $('.output').hide();
+      $('#image').attr('src', "");
+  });
 </script>

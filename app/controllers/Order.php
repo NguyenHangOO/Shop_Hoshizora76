@@ -39,11 +39,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -71,6 +71,7 @@
                 }
                 $this->view("Main",[
                     "Page"=>"Cart",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
@@ -81,11 +82,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()   
                 ]);
             }
         }
@@ -100,11 +101,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -120,11 +121,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -133,6 +134,7 @@
                 $username=$_SESSION['username'];
                 $this->view("Main",[
                     "Page"=>"BuyNow",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "ttuser"=>$this->UserModel->GetMember($username),
@@ -146,11 +148,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -166,11 +168,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -186,11 +188,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -327,11 +329,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -341,6 +343,7 @@
                 $username = $_SESSION['username'];
                 $this->view("Main",[
                     "Page"=>"DetailOrder",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
@@ -354,11 +357,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -385,6 +388,7 @@
                                 $this->OrderModel->ResetDiem($idsp);
                                 $this->view("Main",[
                                     "Page"=>"DetailOrder",
+                                    "giaodien"=>$this->UserModel->Giaodien(),
                                     "dmsp1"=>$this->Category->GetDM1(),
                                     "dmsp3"=> $this->Category->GetDM3(),
                                     "tbuser"=>$this->UserModel->GetThongBao(),
@@ -398,6 +402,7 @@
                 }else{
                     $this->view("Main",[
                         "Page"=>"DanhGia",
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "dmsp1"=>$this->Category->GetDM1(),
                         "dmsp3"=> $this->Category->GetDM3(),
                         "tbuser"=>$this->UserModel->GetThongBao(),
@@ -412,11 +417,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -442,6 +447,7 @@
                             $this->UserModel->ThongBao($iduss,$ngay,$nd);
                             $this->view("Main",[
                                 "Page"=>"DetailOrder",
+                                "giaodien"=>$this->UserModel->Giaodien(),
                                 "dmsp1"=>$this->Category->GetDM1(),
                                 "dmsp3"=> $this->Category->GetDM3(),
                                 "tbuser"=>$this->UserModel->GetThongBao(),
@@ -462,11 +468,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -483,6 +489,7 @@
                         }
                         $this->view("Main",[
                             "Page"=>"CartPayment",
+                            "giaodien"=>$this->UserModel->Giaodien(),
                             "dmsp1"=>$this->Category->GetDM1(),
                             "dmsp3"=> $this->Category->GetDM3(),
                             "tbuser"=>$this->UserModel->GetThongBao(),
@@ -508,6 +515,7 @@
                         }
                         $this->view("Main",[
                             "Page"=>"CartNAPayment",
+                            "giaodien"=>$this->UserModel->Giaodien(),
                             "dmsp1"=>$this->Category->GetDM1(),
                             "dmsp3"=> $this->Category->GetDM3(),
                             "tbuser"=>$this->UserModel->GetThongBao(),
@@ -526,11 +534,11 @@
             else {
                 $this->view("Main",[
                     "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "tbuser"=>$this->UserModel->GetThongBao(),
-                    "spcart"=>$this->ProductModel->GetSpCart(),
-                    "ttuser"=>$this->UserModel->GetMember($username)
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }

@@ -50,7 +50,7 @@
                   <?php if($img!=""){ ?>
                       <img src="<?php echo $img; ?>" alt="" id="img-u">
                   <?php  } else { ?>
-                      <img src="./public/images/account/unnamed.png" alt="" id="img-u">
+                      <img src="./public/images/unnamed.png" alt="" id="img-u">
                  <?php } ?>
                   </td>
                   <td id="td1">

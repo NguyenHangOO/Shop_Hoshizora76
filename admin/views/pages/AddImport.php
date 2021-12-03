@@ -18,7 +18,7 @@
                         <span id="close" onclick="var hidden = document.getElementById('tbtontai');hidden.style.display = 'none';"><i class="fas fa-times"></i></span>
                     </div>  
                 <?php } ?>
-                <a class="mui-btn mui-btn--small" id="myBtn"><i class="fas fa-plus"></i> sản phẩm</a>
+                <a class="mui-btn mui-btn--small" id="myBtn"><i class="fas fa-plus"></i>Sản phẩm</a>
                 <div class="mui-row" id="thongtin">
                     <div class="mui-col-xs-12">
                         <div class="mui-row">

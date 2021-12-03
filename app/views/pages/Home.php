@@ -1,5 +1,5 @@
 <style>
-	#sp-c{position: unset; background: white;max-width: 195px;}
+	#sp-c{position: unset; background: white;max-width: 192px;}
 	#sp4802{padding-left:8px;padding-right:8px;background: rgb(252, 208, 183); border-radius: 5px;}
 	#xemthem{margin-top:5px;}
 	.btnhh{margin-right:4px;margin-bottom: 15px;}
@@ -18,16 +18,18 @@
 				<img name="bannerpic" class="banner" id="apph-l" src="public/images/banner/t1.jpg">  
 			</div>
 		</div>
+		<?php
+			$row= json_decode($data["giaodien"],true);
+            foreach ($row as list("id"=>$id,"right-top"=>$rtop,"right-bottom"=>$rbottom)){?>	
 		<div id="promotion-r">
 			<div id="promotion-r-tb">
-				<!--https://lh3.googleusercontent.com/cnqD_S2bI63EalsLkWJzgx_QB96AJiBNL1s6-lej4nUE1eS_FOg0Qwwwtr_Z8xVhlOKlZs0MOFffwXxBnVqCEY7nnuMpBgiTwnWU0LJBsgfPXmhjqYIqmH4RLxR-c5oRKILhSY6fDQ=w2400-->
-				<img id="apph-t"src="./public/images/hoshizora76-1.jpg"> <br />
+				<img id="apph-t"src="<?php echo $rtop; ?>"> <br />
 			</div>
 			<div id="promotion-r-tb">
-				<!--https://lh3.googleusercontent.com/pWzL-rFqvAf78K3hKxdHuXhC-Kr0-QSvptXjJrYbNrfBHnrUOIRS8gXJRK1q8ZWIy52DRJOtBg73j_NF_1fwlXBZisrOouxyWE8fcZTgs1kowG-szOLiYIwrIK8sNN3MFYaPQVC2AA=w2400-->
-				<img id="apph-b"src="./public/images/hoshizora76-2.jpg"> <br />
+				<img id="apph-b"src="<?php echo $rbottom; ?>"> <br />
 			</div>
 		</div>
+	<?php } ?>
 	</div>
 		<div id="highlights-t"><h5>Sản phẩm nổi bật</h5></div>
 		<div class="row" id="sp480">
@@ -96,6 +98,13 @@
 		</div>
 		<a id="xemthem"class="btn btn-info" href="./Home/All_sp/1">Xem tất cả</a>
 	</div>
+	<script>
+		<?php 
+			$rowbanner = json_decode($data["banner"],true);
+			$banner = count($rowbanner);
+		?>
+		var num_image = <?php echo $banner; ?>;
+	</script>
 	<script src="public/js/time.js"></script>
 	<script src="public/js/banner.js"></script>
 </div>

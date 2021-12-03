@@ -20,6 +20,7 @@
                 $username= $_SESSION['username'];
                 $this->view("Main",[
                     "Page"=>"Account",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "spcart"=>$this->ProductModel->GetSpCart(),
@@ -37,6 +38,7 @@
                 $username= $_SESSION['username'];
                 $this->view("Main",[
                     "Page"=>"Notification",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "spcart"=>$this->ProductModel->GetSpCart(),
@@ -46,7 +48,13 @@
                 ]);
             }
             else{
-                $this->view("404",[
+                $this->view("Main",[
+                    "Page"=>"Check",
+                    "giaodien"=>$this->UserModel->Giaodien(),
+                    "dmsp1"=>$this->Category->GetDM1(),
+                    "dmsp3"=> $this->Category->GetDM3(),
+                    "tbuser"=>$this->UserModel->GetThongBao(),
+                    "spcart"=>$this->ProductModel->GetSpCart()
                 ]);
             }
         }
@@ -93,27 +101,24 @@
                 if(isset($_POST["btnUpload"])){
                     $filename=$_POST["anhtrc"];
                     if ($_FILES['uploadFile']['name'] != NULL) {
-                        // Kiểm tra file up lên có phải là ảnh không
                         if ($_FILES['uploadFile']['type'] == "image/jpeg" || $_FILES['uploadFile']['type'] == "image/png" || $_FILES['uploadFile']['type'] == "image/gif") {
                             
-                            // Nếu là ảnh tiến hành code upload
                             $path = "./public/images/account/"; // Ảnh sẽ lưu vào thư mục images
                             $tmp_name = $_FILES['uploadFile']['tmp_name'];
-                            $name = $_FILES['uploadFile']['name'];
-                            
-                            // Upload ảnh vào thư mục images
-                            move_uploaded_file($tmp_name, $path . $name);
-                            $image_url = $path . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
-                                                      // Insert ảnh vào cơ sở dữ liệu
-                            ///goi model
+                            //$name = $_FILES['uploadFile']['name'];
+                            $temp = explode(".", $_FILES["uploadFile"]["name"]);
+                            $newfilename = round(microtime(true)) .$username. '.' . end($temp);
+                            move_uploaded_file($tmp_name, $path.$newfilename);
+                            $image_url = $path . $newfilename; 
                             $kq = $this->UserModel->InsertImg($image_url,$username);
-                            if($kq=true){
+                            if($kq="true"){
                                 if($filename!=$image_url && $filename !=""){
-                                    unlink($filename);
+                                    if(file_exists($filename)) {
+                                        unlink($filename);
+                                    }
                                 }     
                             }
                         } else {
-                            // Không phải file ảnh
                             $kq="kieufile";
                         }
                     } else {
@@ -121,6 +126,7 @@
                     }
                     $this->view("Main",[
                         "Page"=>"Avartar",
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "dmsp1"=>$this->Category->GetDM1(),
                         "dmsp3"=> $this->Category->GetDM3(),
                         "spcart"=>$this->ProductModel->GetSpCart(),
@@ -132,6 +138,7 @@
                 else { 
                     $this->view("Main",[
                         "Page"=>"Avartar",
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "dmsp1"=>$this->Category->GetDM1(),
                         "dmsp3"=> $this->Category->GetDM3(),
                         "spcart"=>$this->ProductModel->GetSpCart(),
@@ -151,6 +158,7 @@
                 $iduss = $_SESSION['iduss'];
                 $this->view("Main",[
                     "Page"=>"Info_oder",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "spcart"=>$this->ProductModel->GetSpCart(),
@@ -174,6 +182,7 @@
                 $username= $_SESSION['username'];
                 $this->view("Main",[
                     "Page"=>"Address",
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "dmsp1"=>$this->Category->GetDM1(),
                     "dmsp3"=> $this->Category->GetDM3(),
                     "spcart"=>$this->ProductModel->GetSpCart(),
@@ -210,6 +219,7 @@
                     }else{
                         $this->view("Main",[
                             "Page"=>"Create_Address",
+                            "giaodien"=>$this->UserModel->Giaodien(),
                             "dmsp1"=>$this->Category->GetDM1(),
                             "dmsp3"=> $this->Category->GetDM3(),
                             "spcart"=>$this->ProductModel->GetSpCart(),
@@ -222,6 +232,7 @@
                 else{
                     $this->view("Main",[
                         "Page"=>"Create_Address",
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "dmsp1"=>$this->Category->GetDM1(),
                         "dmsp3"=> $this->Category->GetDM3(),
                         "spcart"=>$this->ProductModel->GetSpCart(),
@@ -291,6 +302,7 @@
                     else{
                         $this->view("Main",[
                             "Page"=>"Create_Address",
+                            "giaodien"=>$this->UserModel->Giaodien(),
                             "dmsp1"=>$this->Category->GetDM1(),
                             "dmsp3"=> $this->Category->GetDM3(),
                             "spcart"=>$this->ProductModel->GetSpCart(),
@@ -304,6 +316,7 @@
                 else{
                     $this->view("Main",[
                         "Page"=>"Create_Address",
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "dmsp1"=>$this->Category->GetDM1(),
                         "dmsp3"=> $this->Category->GetDM3(),
                         "spcart"=>$this->ProductModel->GetSpCart(),
@@ -373,6 +386,7 @@
                     }
                     $this->view("Main",[
                         "Page"=>"Account",
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "dmsp1"=>$this->Category->GetDM1(),
                         "dmsp3"=> $this->Category->GetDM3(),
                         "spcart"=>$this->ProductModel->GetSpCart(),
@@ -411,6 +425,7 @@
                     }else{
                         $this->view("Main",[
                             "Page"=>"Create_Address",
+                            "giaodien"=>$this->UserModel->Giaodien(),
                             "dmsp1"=>$this->Category->GetDM1(),
                             "dmsp3"=> $this->Category->GetDM3(),
                             "spcart"=>$this->ProductModel->GetSpCart(),

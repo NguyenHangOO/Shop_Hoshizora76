@@ -1,10 +1,16 @@
 
     <div class="container-fluid">
         <hr>
+        <style> #cuoi p{margin-bottom:3px;}  </style>
         <div class="container">
-            <span style="font-size:13px;">Phone:0522952765</span></br>
-            <span style="font-size:13px;" >Địa chỉ: Nhơn Hưng, Tịnh Biên, An Giang</span></br>
-            <span style="font-size:13px;">Hoshizora76 chuyên cung cấp các loại quà tặng. Chúng tôi nhận đặt hàng trực tuyến và giao hàng tận nơi.</span></br><hr>
+            <div style="font-size:13px;" id="cuoi">
+            <?php
+			$row= json_decode($data["giaodien"],true);
+            foreach ($row as list("footer"=>$footer)){
+                echo $footer;
+             } ?>
+            </div>
+            <hr>
             <span id="f1" style=" float:left; margin-top: 1px;">CopyRight &copy; 2021 bởi HangNguyen</span> 
             <a id="f2" href="mailto:lehang.ut@gmail.com?subject=Help box - tell us what you need from us." style=" float:right; margin-top: 1px; margin-right: 5px; ">
             <i class="fas fa-envelope"></i> Hộp thư liên hệ</a>

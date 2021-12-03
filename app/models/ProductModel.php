@@ -75,7 +75,7 @@
             return json_encode($mang);
         }
         public function GetSpTheoDM2($id,$lid){
-            if($id==3){
+            if($id==376520){
                 $qr = "SELECT sp.id,sp.tensp,sp.giaban,sp.luotmua,sp.hinhanh,sanpham_id, AVG(dg.diem) as dtb,sp.soluong FROM `sanpham` as sp ,danhgia dg WHERE sp.id=sanpham_id and ttban='1' and dg.diem not in(-1) and danhmuc_id=$id and (loai1_id not in($lid) or loai1_id is null) GROUP BY sanpham_id ";
                 $rows = mysqli_query($this->con, $qr);
                 $mang = array();
@@ -83,7 +83,7 @@
                     $mang[] = $row;
                 }
                 return json_encode($mang);
-            } else if($id==4){
+            } else if($id==476520){
                 $qr = "SELECT sp.id,sp.tensp,sp.giaban,sp.luotmua,sp.hinhanh,sanpham_id, AVG(dg.diem) as dtb,sp.soluong FROM `sanpham` as sp ,danhgia dg WHERE sp.id=sanpham_id and ttban='1' and dg.diem not in(-1) and danhmuc_id=$id and (loai3_id not in($lid) or loai3_id is null) GROUP BY sanpham_id ";
                 $rows = mysqli_query($this->con, $qr);
                 $mang = array();
@@ -94,7 +94,7 @@
             }
         }
         public function GetSpTheoDM1id($id,$lid){
-            if($id==3){
+            if($id==376520){
                 $qr = "SELECT sp.id,sp.tensp,sp.giaban,sp.luotmua,sp.hinhanh,sanpham_id, AVG(dg.diem) as dtb,sp.soluong FROM `sanpham` as sp ,danhgia dg WHERE sp.id=sanpham_id and ttban='1' and dg.diem not in(-1) and loai1_id=$lid GROUP BY sanpham_id ";
                 $rows = mysqli_query($this->con, $qr);
                 $mang = array();
@@ -103,7 +103,7 @@
                 }
                 return json_encode($mang);
             }
-            else if($id==4){
+            else if($id==476520){
                 $qr = "SELECT sp.id,sp.tensp,sp.giaban,sp.luotmua,sp.hinhanh,sanpham_id, AVG(dg.diem) as dtb,sp.soluong FROM `sanpham` as sp ,danhgia dg WHERE sp.id=sanpham_id and ttban='1' and dg.diem not in(-1) and loai3_id=$lid GROUP BY sanpham_id ";
                 $rows = mysqli_query($this->con, $qr);
                 $mang = array();
@@ -217,6 +217,15 @@
                 $result = true;
             }
             return json_encode($result);
+        }
+        public function ImagesSP($idsp){
+            $sqr = "SELECT `id`,`img` FROM `listimages` WHERE `sanpham_id` = '$idsp' ";
+            $rows = mysqli_query($this->con, $sqr);
+            $mang = array();
+            while ($row = mysqli_fetch_array($rows)){
+                $mang[] = $row;
+            }
+            return json_encode($mang);
         }
     }
 ?>

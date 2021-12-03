@@ -17,6 +17,8 @@
                 $useradmin=$_SESSION['useradmin']; 
                 $this->view("Main",[
                     "Page"=>"Handmade",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                     "DM1"=>$this->CategoryModel->GetDM1()
@@ -42,6 +44,8 @@
                     }
                     $this->view("Main",[
                         "Page"=>"Handmade",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DM1"=>$this->CategoryModel->GetDM1(),
@@ -51,6 +55,8 @@
                 } else {
                     $this->view("Main",[
                         "Page"=>"Handmade",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DM1"=>$this->CategoryModel->GetDM1(),
@@ -66,6 +72,8 @@
                 $useradmin=$_SESSION['useradmin']; 
                 $this->view("Main",[
                     "Page"=>"GiftSet",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                     "DM3"=>$this->CategoryModel->GetDM3()
@@ -91,6 +99,8 @@
                     }
                     $this->view("Main",[
                         "Page"=>"GiftSet",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DM3"=>$this->CategoryModel->GetDM3(),
@@ -100,6 +110,8 @@
                 } else {
                     $this->view("Main",[
                         "Page"=>"GiftSet",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DM3"=>$this->CategoryModel->GetDM3(),
@@ -126,6 +138,8 @@
                     }
                     $this->view("Main",[
                         "Page"=>"GiftSet",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DM3"=>$this->CategoryModel->GetDM3(),
@@ -150,6 +164,8 @@
                  }
                  $this->view("Main",[
                      "Page"=>"GiftSet",
+                     "banner"=>$this->UserModel->Banner(),
+                     "giaodien"=>$this->UserModel->Giaodien(),
                      "Admin"=>$this->UserModel->GetAdmin($useradmin),
                      "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                      "DM3"=>$this->CategoryModel->GetDM3(),
@@ -176,6 +192,8 @@
                     }
                     $this->view("Main",[
                         "Page"=>"Handmade",
+                        "banner"=>$this->UserModel->Banner(),
+                        "giaodien"=>$this->UserModel->Giaodien(),
                         "Admin"=>$this->UserModel->GetAdmin($useradmin),
                         "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                         "DM1"=>$this->CategoryModel->GetDM1(),
@@ -200,6 +218,8 @@
                  }
                  $this->view("Main",[
                     "Page"=>"Handmade",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
                     "Admin"=>$this->UserModel->GetAdmin($useradmin),
                     "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
                     "DM1"=>$this->CategoryModel->GetDM1(),

@@ -1,7 +1,7 @@
 		<style>
 			#sp480{padding-left:10px;padding-right:10px;background: rgb(252, 208, 183); border-radius: 5px;}
 			#xemthem{ margin-top:5px;}
-			#sp-c{position: unset; background: white;max-width: 195px;}
+			#sp-c{position: unset; background: white;max-width: 192px;}
 			 @media screen and (max-width: 480px) {
 				#sp480{margin-left:-20px;margin-right:-37px;padding-left:0px;padding-right:0px;border-radius: 0px;
 				}}

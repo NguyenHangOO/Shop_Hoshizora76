@@ -40,7 +40,7 @@
     <div class="row bg-white" id="th">
         <div class="col-8"style="position: unset;">
             <i class="fas fa-angle-left"></i>
-            <span onclick="return window.location='/CodeApp/Shop_Hoshizora76/Account/Infor_oder';" style="cursor: pointer; ">TRỞ LẠI</span>
+            <span onclick="return window.location='/Account/Infor_oder';" style="cursor: pointer; ">TRỞ LẠI</span>
         </div>
         <div class="col-4" id="id"style="position: unset;text-align:right;">
         <?php 
