@@ -37,7 +37,7 @@ $.fn.pageMe = function(opts){
                 curr++;
             }
         }else {
-            while(9 > curr && (settings.hidePageNumbers==false)){
+            while(8 > curr && (settings.hidePageNumbers==false)){
                 $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
                 curr++;
             }
