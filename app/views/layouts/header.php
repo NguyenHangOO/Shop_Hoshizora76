@@ -109,7 +109,7 @@
 								<?php } ?>	
 								</ul>
 							</li>
-							<li><a href="Product/GroupCategory/476520"><i class="fas fa-gifts"></i> Gift Set <i class="fas fa-angle-down"></i></a>
+							<li><a href="Product/GroupCategory/476520"><i class="fas fa-gifts"></i> Ngày lễ <i class="fas fa-angle-down"></i></a>
 								<ul class="sub-menu">
 								<?php 
 									$row= json_decode($data["dmsp3"],true);

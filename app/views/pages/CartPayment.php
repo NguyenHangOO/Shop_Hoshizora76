@@ -194,7 +194,7 @@
                         }
                 }
             ?>
-            <span>Tổng tiền:</span><span style="font-size:22px;color:red" id="kq" ><?php echo number_format($tongtien) ?></span><span style="font-size:22px;color:red">đ</span> &nbsp;&nbsp;
+            <span>Tổng tiền: </span><span style="font-size:22px;color:red" id="kq" ><?php echo number_format($tongtien) ?></span><span style="font-size:22px;color:red">đ</span> &nbsp;&nbsp;
             <input type="hidden" name="TongTien" value="<?php echo $tongtien; ?>">
             <button type="submit" class="btnMua" name="btnMuaAll" onclick="return confirm('Chấp nhận thanh toán mua hàng?')" >Thanh toán</button>
             </div>

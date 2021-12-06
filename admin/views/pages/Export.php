@@ -1,8 +1,15 @@
 <style>
   #ac6{background-color: #afabab;} #ac6 a{color:white;}
   .h6{background-color: #afabab;}
-  #tbdh{margin-top:20px;}
+  .tbdh{margin-top:20px;border-top: 2px solid gray;border-bottom: 2px solid gray; border-spacing: 0px;}
   #td6{ text-align: right;} #btnxn{border-radius:5px;padding:0 10px;background-color:green;color:white;}
+  .active {color: #fff;background-color: #007bff;border-color:#007bff}
+  .active a{color: #fff;}
+  .pagination ul{display: flex;padding-left: 0;list-style: none;border-radius: 0.25rem;}
+  .pagination ul li{padding-left:8px;padding-right:8px;padding-top:4px;padding-bottom:4px;display: list-item;text-align: -webkit-match-parent;border-radius: 0.25rem;}
+  .pagination ul li a{text-decoration: none;}
+  .pagination ul li:hover {
+    color: #0056b3;text-decoration: none;background-color: #e9ecef;border-color: #dee2e6;}
   #btngh{border-radius:5px;padding:0 9px;background-color:#FFD700;color:white;}#btntc{border-radius:5px;padding:0 12px;}#btndel{border-radius:5px;padding:0 10px;}
   #myInput {
    font-size: 15px; 
@@ -57,7 +64,7 @@
                   </form>
                 </div>
               </div>
-              <table class="mui-table" id="tbdh">
+              <table class="mui-table tbdh" id="tbdh1">
               <thead>
                   <tr>
                     <th>STT</th>
@@ -100,9 +107,12 @@
                 <?php } ?>
                 </tbody>
               </table>
+              <div class="pagination">
+                  <ul id="myPager"></ul>
+              </div> 
             </div>
             <div class="mui-tabs__pane" id="pane-api-2">
-              <table class="mui-table" id="tbdh">
+              <table class="mui-table tbdh">
                 <thead>
                   <tr>
                     <th>STT</th>
@@ -136,7 +146,7 @@
               </table>
             </div>
             <div class="mui-tabs__pane" id="pane-api-3">
-              <table class="mui-table" id="tbdh">
+              <table class="mui-table tbdh">
                 <thead>
                   <tr>
                     <th>STT</th>
@@ -170,7 +180,7 @@
               </table>
             </div>
             <div class="mui-tabs__pane" id="pane-api-4">
-              <table class="mui-table" id="tbdh">
+              <table class="mui-table tbdh">
                 <thead>
                   <tr>
                     <th>STT</th>
@@ -204,7 +214,7 @@
               </table>
             </div>
             <div class="mui-tabs__pane" id="pane-api-5">
-              <table class="mui-table" id="tbdh">
+              <table class="mui-table tbdh">
                 <thead>
                   <tr>
                     <th>STT</th>
@@ -234,7 +244,7 @@
               </table>
             </div>
             <div class="mui-tabs__pane" id="pane-api-6">
-              <table class="mui-table" id="tbdh">
+              <table class="mui-table tbdh">
                 <thead>
                   <tr>
                     <th>STT</th>
@@ -296,5 +306,6 @@
                   window.location="./admin.php?url=Order/DetailExport/"+idsp;
           });
       });
+      $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:6});
       </script>
 </div>

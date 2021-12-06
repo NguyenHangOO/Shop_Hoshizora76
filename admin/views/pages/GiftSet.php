@@ -7,7 +7,7 @@
       <div class="mui-container-fluid">
         <br> 
         <div class="mui-row">
-            <h2>Quản lý danh mục GiftSet</h2>
+            <h2>Quản lý danh mục ngày lễ</h2>
           <div class="mui-col-sm-12  mui-col-lg-5 mui-col-lg-offset-1">
           <?php if(isset($data["relust"]) && isset($data["tb"]) ){ if ($data["relust"]=="yes"){ ?>
             <div class="tbloi success" id="tbloi">

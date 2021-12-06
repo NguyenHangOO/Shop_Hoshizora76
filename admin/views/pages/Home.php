@@ -1,6 +1,13 @@
 <style>
   #ac1{background-color: #afabab;}#tbdh{border-top: 2px solid transparent;}
   #ac1 a{color:white;}#btnxn{padding:0 8px;}
+  .active {color: #fff;background-color: #007bff;border-color:#007bff}
+  .active a{color: #fff;}
+  .pagination ul{display: flex;padding-left: 0;list-style: none;border-radius: 0.25rem;}
+  .pagination ul li{padding-left:8px;padding-right:8px;padding-top:4px;padding-bottom:4px;display: list-item;text-align: -webkit-match-parent;border-radius: 0.25rem;}
+  .pagination ul li a{text-decoration: none;}
+  .pagination ul li:hover {
+    color: #0056b3;text-decoration: none;background-color: #e9ecef;border-color: #dee2e6;}
   @media (max-width: 380px) {#tbdh{font-size:12px;}}
   @media (max-width: 330px) {#tbdh{font-size:11px;}}
 </style>
@@ -75,11 +82,12 @@
                   <th id="td5">Xử lý</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="myTable">
                 <tr id="trhorver">
                 <?php 
-                   $row= json_decode($data["DSDHXL"],true);
-                  foreach ($row as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$hoten,"tongtien"=>$tongtien,"member_id"=>$idmem)){
+                   $rowb = json_decode($data["DSDHXL"],true);
+                   $fish = count($rowb)/10;
+                  foreach ($rowb as list("id"=>$id,"ngay"=>$ngay,"fullname"=>$hoten,"tongtien"=>$tongtien,"member_id"=>$idmem)){
                   ?>
                   <td><span><?php echo $id; ?></span></td>
                   <td id="td1"><span><?php echo $hoten; ?></span></td>
@@ -93,7 +101,13 @@
                 <?php } ?>
               </tbody>
             </table>
+            <div class="pagination">
+                <ul id="myPager"></ul>
+            </div> 
           </div>
         </div>
       </div>
 </div>
+<script>
+  $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:6});
+</script>

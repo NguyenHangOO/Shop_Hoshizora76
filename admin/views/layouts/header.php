@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Hoshizora76</title>
+    <title>Trang quản trị Hoshizora76</title>
     <base href="/">
 	<Link rel="shortcut icon" href="public/images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,6 +15,7 @@
     <link href="//cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./public/js/pagination.js"></script>
     <script src="./public/ckeditor5/ckeditor.js"></script>
 </head>
 <body>
@@ -42,8 +43,8 @@
         <li>
           <strong id="ac4"><a id="tieude"><i class="fas fa-th-list"></i>&nbsp;Quản lý danh mục<span class="mui-caret"></span></a></strong>
           <ul>
-            <li id="hoho" class="h3"><a id="tdcap2" href="./admin.php?url=Category/Handmade"> <i class="fab fa-canadian-maple-leaf"></i>&nbsp;Phân loại Handmade</a></li>
-            <li id="hoho" class="h4"><a id="tdcap2" href="./admin.php?url=Category/GiftSet"><i class="fas fa-gifts"></i>&nbsp;Phân loại Gift Set</a></li>
+            <li id="hoho" class="h3"><a id="tdcap2" href="./admin.php?url=Category/Handmade"> <i class="fab fa-canadian-maple-leaf"></i>&nbsp;Phân loại handmade</a></li>
+            <li id="hoho" class="h4"><a id="tdcap2" href="./admin.php?url=Category/GiftSet"><i class="fas fa-gifts"></i>&nbsp;Phân loại ngày lễ</a></li>
           </ul>
         </li>
         <li>
@@ -131,7 +132,7 @@
                 </div>
                 <div class="mui-row">
                   <div class="box-preview-img"></div>
-                  Chọn tối đa 5 ảnh: <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept=".jpg">
+                  Chọn ảnh: <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept=".jpg">
                   <button type="reset" class="btn-reset">Làm mới</button>
                 </div>
                 <div class="mui-row" style="margin-top:10px;text-align:left;margin-left:10px;margin-right:10px;">

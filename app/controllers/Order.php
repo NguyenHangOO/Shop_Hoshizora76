@@ -29,11 +29,14 @@
                     $inkq=$this->OrderModel->AddCart($id,$idus,$slg);
                     if($inkq==true)
                     {
-                       $relust="Thêm thành công";
+                       /* $relust="Thêm thành công";
                        $this->view("Directional",[
                          "relust"=>$relust
-                        ]);
-                    } 
+                        ]); */
+                        header("Location:/Order/CartKhachHang");
+                    } else {
+                        echo 'Lỗi không thêm được giỏ hàng';
+                    }
                 }
             }
             else {

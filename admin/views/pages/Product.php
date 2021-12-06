@@ -2,6 +2,13 @@
   #ac5{background-color: #afabab;}#ac5 a{color:white;}
   #img-u{width: 40px;height:40px;}
   #td6{ text-align: right;}#tdten{max-width:220px;}
+  .active {color: #fff;background-color: #007bff;border-color:#007bff}
+  .active a{color: #fff;}
+  .pagination ul{display: flex;padding-left: 0;list-style: none;border-radius: 0.25rem;}
+  .pagination ul li{padding-left:8px;padding-right:8px;padding-top:4px;padding-bottom:4px;display: list-item;text-align: -webkit-match-parent;border-radius: 0.25rem;}
+  .pagination ul li a{text-decoration: none;}
+  .pagination ul li:hover {
+    color: #0056b3;text-decoration: none;background-color: #e9ecef;border-color: #dee2e6;}
   #myInput {
    font-size: 15px; 
    padding-bottom: 12px ;padding-top: 8px ;padding-left:20px;padding-right:20px; 
@@ -32,7 +39,7 @@
             <a href="admin.php?url=Product/AddProduct" class="mui-btn mui-btn--raised mui-btn--primary" ><i class="fas fa-plus"></i> &nbsp;Thêm mới</a>
             <br>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-            <table class="mui-table" id="tbdh">
+            <table class="mui-table " id="tbdh">
             <thead>
                 <tr>
                   <th>STT</th>
@@ -45,10 +52,11 @@
                   <th id="td6">Thao tác</th>
                 </tr>
               </thead>
-              <tbody id="myTable">
+              <tbody id="myTableBody">
               <?php 
                 $stt=0;
                 $row= json_decode($data["DSSP"],true);
+                $fish = count($row);
 				        foreach ($row as list("id"=>$id,"tensp"=>$tensp,"hinhanh"=>$img,"soluong"=>$soluong,"giaban"=>$giaban,"giagoc"=>$giagoc,"ttban"=>$ttban)){
                     $stt++;
                 ?>
@@ -78,7 +86,9 @@
                 <?php } ?>
               </tbody>
             </table>
-              
+            <div class="pagination">
+                <ul id="myPager"></ul>
+            </div> 
           </div>
         </div>
       </div>
@@ -88,17 +98,18 @@
             event.preventDefault();
             /* Act on the event */
             var tukhoa = $(this).val().toLowerCase();
-            $('#myTable tr').filter(function() {
+            $('#myTableBody tr').filter(function() {
               $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa)>-1);
             });
         });
       });
       $(function () {
-          $('#myTable tr').dblclick(function (e) {
+          $('#myTableBody tr').dblclick(function (e) {
               var idsp = $(this).closest('.onRow').find('td:nth-child(2)').text();
               var tensp = $(this).closest('.onRow').find('td:nth-child(3)').text();
                 window.location="./admin.php?url=Product/dailProduct/"+idsp+"/"+tensp;
           });
       });
-      </script>
+      $('#myTableBody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:6});
+      </script>   
 </div>

@@ -15,7 +15,7 @@
 	<div id="sp-promotion">
 		<div id="promotion-l">
 			<div class="banner">
-				<img name="bannerpic" class="banner" id="apph-l" src="public/images/banner/t1.jpg">  
+				<img name="bannerpic" class="banner" id="apph-l" src="public/images/banner/banner1.jpg">  
 			</div>
 		</div>
 		<?php
