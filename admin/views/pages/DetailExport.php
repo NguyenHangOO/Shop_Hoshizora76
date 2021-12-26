@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="mui-row" id="dc"></div>
-        <div class="mui-row">
+        <div class="mui-row" style="padding-left:50px;">
             <h4>Thông tin đơn hàng</h4>
             <?php 
                 $row2= json_decode($data["donhangct"],true);

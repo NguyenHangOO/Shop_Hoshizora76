@@ -5,7 +5,7 @@
         <div class="row">
             <div class="mui-col-md-4 mui-col-md-offset-4 cp-ac">
                 <form class="mui-form" action="admin.php?url=Member/InsertManage" method="POST">
-                <?php if(isset($data["tbc2"])){ if ($data["tbc2"]=="Cập nhật thành công"){ ?>
+                <?php if(isset($data["tbc2"])){ if ($data["tbc2"]=="Thêm thành công"){ ?>
                     <div class="tbloi success" id="tbloi">
                         <i class="far fa-check-circle"></i> <span ><?php echo $data["tbc2"]; ?></span>
                         <a class="close" onclick="var hidden = document.getElementById('tbloi');hidden.style.display = 'none';"><i class="fas fa-times"></i></a>

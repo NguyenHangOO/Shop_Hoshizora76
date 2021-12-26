@@ -20,7 +20,7 @@
             return json_encode($mang);
         }
         public function GetDM1id($id,$lid){
-            if($id==3){
+            if($id==376520){
                 $qr = "SELECT tenloai FROM `loai1` where id=$lid";
                 $rows = mysqli_query($this->con, $qr);
                 $mang = array();
@@ -29,7 +29,7 @@
                 }
                 return json_encode($mang);
             }
-            else if($id==4){
+            else if($id==476520){
                 $qr = "SELECT tenloai FROM `loai3` where id=$lid";
                 $rows = mysqli_query($this->con, $qr);
                 $mang = array();

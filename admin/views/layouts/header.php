@@ -61,7 +61,7 @@
     </div>
     <style>
       .account{width: 30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.5);}
-      .anh{width: 70px;height: 60px;margin-right:12px;}
+      .anh1{width: 70px;height: 60px;margin-right:12px;}
       .btn-reset{background-color:green;color:white;padding:2px;cursor: pointer;}
     </style>
     <header id="header">
@@ -120,7 +120,7 @@
                   <label for="" style="color:gray;">Banner ads (chạy quảng cáo):</label>
                 </div>
                 <div class="mui-row">
-                  <div class="box-preview-img-an">
+                  <div class="box-preview-img-an1">
                     <?php  
                         $rowhh = json_decode($data["banner"],true);
                         if(count($rowhh)>0){
@@ -131,8 +131,8 @@
                   </div>
                 </div>
                 <div class="mui-row">
-                  <div class="box-preview-img"></div>
-                  Chọn ảnh: <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept=".jpg">
+                  <div class="box-preview-img1"></div>
+                  Chọn ảnh: <input type="file" name="img_file[]" multiple="true" onchange="previewImg1(event);" id="img_file1" accept=".jpg">
                   <button type="reset" class="btn-reset">Làm mới</button>
                 </div>
                 <div class="mui-row" style="margin-top:10px;text-align:left;margin-left:10px;margin-right:10px;">
@@ -174,20 +174,20 @@
         .catch( error => {
             console.error( error );
         } );
-        function previewImg(event) {
-            var files = document.getElementById('img_file').files; 
-            $('.box-preview-img-an').hide();
-            $('.box-preview-img').show();
+        function previewImg1(event) {
+            var files = document.getElementById('img_file1').files; 
+            $('.box-preview-img-an1').hide();
+            $('.box-preview-img1').show();
             for (i = 0; i < files.length; i++)
             {
-                $('.box-preview-img').append('<img class="anh" src="" id="' + i +'">');
-                $('.box-preview-img img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
+                $('.box-preview-img1').append('<img class="anh1" src="" id="' + i +'">');
+                $('.box-preview-img1 img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
             }   
         }
         $('.btn-reset').on('click', function() {
-            $('.box-preview-img').html('');
-            $('.box-preview-img').hide();
+            $('.box-preview-img1').html('');
+            $('.box-preview-img1').hide();
             $('.output').hide();
-            $('.box-preview-img-an').show();
+            $('.box-preview-img-an1').show();
         });
     </script>

@@ -95,7 +95,7 @@
                         </tr>
                         <?php } else { ?>
                     <tr>
-                        <td class="td1" id="tdchk" style="width:3%;line-height: 80px;"><input type="checkbox" name="chcksp" id="chcksp" value="<?php echo $id; ?>" checked></td>
+                        <td class="td1" id="tdchk" style="width:3%;line-height: 80px;"><input type="checkbox" name="chcksp" class="chcksp" id="chcksp" value="<?php echo $id; ?>" checked></td>
                         <td class="td1"style="width:11%;" ><img src="<?php echo $hinhanh; ?>" alt="" id="imgspp"></td>
                         <td class="td1"style="max-width:32%;"><span class="tenten"><?php echo $tensp; ?></span></td>
                         <td class="td2"style="width:14%;line-height: 80px;"><span style="color:red" id="dongia"><?php echo number_format($giaban); ?>đ</span></td>
@@ -121,7 +121,7 @@
                             <span style="font-size:10px; color:red">Số lượng đạt tối đa</span>
                             <?php } ?>
                         </td>
-                        <td class="td2"style="width:14%;line-height: 80px;"><span style="color:red" id="thanhtien"><?php echo number_format($thanhtien=$giaban*$slg); ?>đ</span></td>
+                        <td class="td2 thanhtien"style="width:14%;line-height: 80px;"><span style="color:red" id="thanhtien"><?php echo number_format($thanhtien=$giaban*$slg); ?>đ</span></td>
                         <td class="td3" id="td3"><a style="color:red" id="del" href="./Order/DelProductKH/<?php echo $id; ?>" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                      <?php   } } ?>
@@ -151,8 +151,8 @@
             <span style="text-align:left;display:block"><input type="checkbox" id= "chckall" name="chckall" checked>&nbsp;<span>Tất cả (<?php echo $tgh; ?> )</span></span>
             <span style="text-align:left;display:block"><a href="./Order/DelAllProductKH" style="color:red;text-decoration: none;" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i>&nbsp;Xóa tất cả sản phẩm</a> </span>
             <span>Tổng thanh toán:</span>&nbsp;
-            <span style="font-size:22px;color:red;" id="tienthanhtoan"><?php echo number_format($tongtien); ?>đ</span>
-            <span id="tong" style="display:none;font-size:22px;color:red;">0đ</span>
+            <!-- <span style="font-size:22px;color:red;" id="tienthanhtoan"><?php echo number_format($tongtien); ?>đ</span> -->
+            <span id="tong" style="font-size:22px;color:red;"></span>
             <button type="submit" class="btnMua" id="btn" name="btnMuaHang" >Mua hàng</button>
             <input type="hidden" name="dsidsp" id="dsidsp" value="">
             </form>
@@ -180,15 +180,36 @@
             for (var i = 0; i < checkboxes.length; i++){
                     checkboxes[i].checked = true;
             }
-            document.getElementById('tong').style.display = 'none';
-            document.getElementById('tienthanhtoan').style.display = 'inline';
+           /*  document.getElementById('tong').style.display = 'none';
+            document.getElementById('tienthanhtoan').style.display = 'inline'; */
         }else {
             var checkboxes = document.getElementsByName('chcksp');
             for (var i = 0; i < checkboxes.length; i++){
                     checkboxes[i].checked = false;
             }
-            document.getElementById('tienthanhtoan').style.display = 'none';
-            document.getElementById('tong').style.display = 'inline';
-        }       
+            /* document.getElementById('tienthanhtoan').style.display = 'none';
+            document.getElementById('tong').style.display = 'inline'; */
+        }
+        tinhtong();       
     }
+    const tinhtong = (e)=>{
+        //console.log([e.target.parentNode.parentNode]);
+        let thanhtien = document.querySelectorAll('.thanhtien');
+        let tong = 0;
+        let count = 0;
+        thanhtien.forEach((item)=>{
+            if( item.parentNode.querySelector('.chcksp').checked){
+                tong += parseInt(item.innerText.replace(',',''));
+                count++;
+            }
+        });
+        $('#tong').html(tong.toLocaleString('vi-VN')+'đ');
+        if(count===thanhtien.length){
+            document.getElementById('chckall').checked=true;
+        }else {
+            document.getElementById('chckall').checked=false;
+        }
+    }
+    $('.chcksp').click(tinhtong);
+    tinhtong();
 </script>

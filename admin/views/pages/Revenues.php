@@ -32,14 +32,14 @@
                             <?php } ?>
                             <label>Đến ngày</label>
                         </div>
-                        <div class="mui-select">
+                        <!-- <div class="mui-select">
                             <select >
                             <option>--Chọn--</option>
                             <option>Tuần</option>
                             <option>Tháng</option>
                             </select>
                             <label>Lọc theo</label>
-                        </div> 
+                        </div>  -->
                         <button class="mui-btn mui-btn--small mui-btn--primary" name="btnLoc" type="submit">Lọc</button>
                     </form>
                 </div>

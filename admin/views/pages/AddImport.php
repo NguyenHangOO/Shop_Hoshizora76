@@ -1,6 +1,6 @@
 <style>
     #ten{color:gray;}#tt{text-align:right;}#right{text-align:right;}img{width:80px;height:75px;}
-    #myBtn{background-color:green;color:white;}#hidden{display:none;}
+    #myBtn2{background-color:green;color:white;}#hidden{display:none;}
     #thongtin{padding-top:5px;padding-bottom: 5PX;border:1px solid gray; border-radius:3px;}
     #close{float:right;cursor: pointer;}
 </style>
@@ -18,7 +18,7 @@
                         <span id="close" onclick="var hidden = document.getElementById('tbtontai');hidden.style.display = 'none';"><i class="fas fa-times"></i></span>
                     </div>  
                 <?php } ?>
-                <a class="mui-btn mui-btn--small" id="myBtn"><i class="fas fa-plus"></i>Sản phẩm</a>
+                <a class="mui-btn mui-btn--small" id="myBtn2"><i class="fas fa-plus"></i>Sản phẩm</a>
                 <div class="mui-row" id="thongtin">
                     <div class="mui-col-xs-12">
                         <div class="mui-row">
@@ -111,7 +111,7 @@
                 <a href="admin.php?url=Order/DelImport/<?php echo $_SESSION['iddh'];?>" class="mui-btn mui-btn--raised mui-btn--danger" onclick="return confirm('Bạn có chắc muốn hủy đơn này?')" >Hủy</a>
             </div>
         </div>
-            <div id="myModal" class="modal">
+            <div id="myModal2" class="modal">
                 <!-- Nội dung -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -139,3 +139,20 @@
             </div>
       </div>
 </div>
+<script>
+    var modal2 = document.getElementById('myModal2');
+    var btn2 = document.getElementById("myBtn2");
+    var span = document.getElementsByClassName("close")[0];
+    btn2.onclick = function() {
+        modal2.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal2.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal2.style.display = "none";
+        }
+    }
+</script>
