@@ -74,8 +74,9 @@
                   <td id="td6" style="color:red"><span>Ngừng kinh doanh</span></td>
                  <?php  }?>
                   <td id="td6">
-                    <a href="admin.php?url=Product/dailProduct/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Xem chi tiết" style="color:gray"><i class="fas fa-eye"></i></a> | 
+                    <!-- <a href="admin.php?url=Product/dailProduct/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Xem chi tiết" style="color:gray"><i class="fas fa-eye"></i></a> |  -->
                     <a href="admin.php?url=Product/EditProduct/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Sửa"><i class="fas fa-edit"></i></a> | 
+                    <a href="admin.php?url=Product/DelProduct/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Xóa" style="color:red" onclick="return confirm('Bạn có chắc muốn xóa?')"><i class="fas fa-trash"></i></a> | 
                     <?php if($ttban==1){ ?>
                         <a href="admin.php?url=Product/Stop/<?php echo $id; ?>/<?php echo $tensp; ?>" title="Ngừng kinh doanh" style="color:red" onclick="return confirm('Bạn có chắc muốn thực hiện thao tác này?')"><i class="fas fa-ban"></i></a>
                     <?php  } else { ?>

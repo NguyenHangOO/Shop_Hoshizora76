@@ -61,7 +61,7 @@
     </div>
     <style>
       .account{width: 30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.5);}
-      .anh1{width: 70px;height: 60px;margin-right:12px;}
+      .anh{width: 70px;height: 60px;margin-right:12px;}
       .btn-reset{background-color:green;color:white;padding:2px;cursor: pointer;}
     </style>
     <header id="header">
@@ -180,7 +180,7 @@
             $('.box-preview-img1').show();
             for (i = 0; i < files.length; i++)
             {
-                $('.box-preview-img1').append('<img class="anh1" src="" id="' + i +'">');
+                $('.box-preview-img1').append('<img class="anh" src="" id="' + i +'">');
                 $('.box-preview-img1 img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
             }   
         }

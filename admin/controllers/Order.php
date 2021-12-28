@@ -280,9 +280,9 @@
         function DelImport($idma){
             if(isset($_SESSION['useradmin'])){
                 $useradmin=$_SESSION['useradmin'];
-                $kq= $this->OrderModel->DelDonNhap($idma);
+                $kq= $this->OrderModel->DelDonNhapCT($idma);
                 if($kq=="true"){
-                    $kq2 = $this->OrderModel->DelDonNhapCT($idma);
+                    $kq2 = $this->OrderModel->DelDonNhap($idma);
                     if($kq2=="true"){
                         if(isset($_SESSION["iddh"])){
                             unset($_SESSION["ngay"]);

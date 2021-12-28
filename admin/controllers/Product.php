@@ -377,5 +377,47 @@
                 header("Location:/Register/Sigin");
             }
         }
+        function DelProduct($id,$tensp){
+            if(isset($_SESSION['useradmin'])){
+                $useradmin=$_SESSION['useradmin'];
+                $relust = "";
+                $tb="";
+                $ktsp = $this->ProductModel->checktontaisp($id);
+                if($ktsp=="tontai"){
+                    $relust = "no";
+                        $tb = "Sản phẩm ".$tensp." không thể xóa. Do sản phẩm đã có được bán hoặc đã tồn tại trong nhập hàng.";
+                }else {
+                    $kqtt = $this->ProductModel->DelTT($id);
+                    $kqSPDG = $this->ProductModel->DelSPDG($id);
+                    $kqlist = $this->ProductModel->DelList($id);
+                    if($kqSPDG == "true"){
+                        $kq = $this->ProductModel->DelProduct($id);
+                        if($kq == "true"){
+                            $relust = "yes";
+                            $tb = "Đã xóa sản phẩm ".$tensp." thành công";
+                        }else {
+                            $relust = "no";
+                            $tb = "Xóa sản phẩm ".$tensp." không thành công. Do sản phẩm đã có được bán.";
+                        }
+                    }else {
+                        $relust = "no";
+                        $tb = "Không xóa được";
+                    }
+                }
+               
+                $this->view("Main",[
+                    "Page"=>"Product",
+                    "banner"=>$this->UserModel->Banner(),
+                    "giaodien"=>$this->UserModel->Giaodien(),
+                    "Admin"=>$this->UserModel->GetAdmin($useradmin),
+                    "DSDHXL"=>$this->OrderModel->GetDSDHXL(),
+                    "DSSP"=>$this->ProductModel->GetDSSP(),
+                    "relust"=>$relust,
+                    "tb"=>$tb
+                ]);
+            }else{
+                header("Location:/Register/Sigin");
+            }    
+        }
     }
 ?>

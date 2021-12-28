@@ -176,5 +176,56 @@
             }
             return json_encode($relust);
         }
+        public function DelProduct($idsp){
+            $sqr = "DELETE FROM `sanpham` WHERE id=$idsp";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function DelTT($idsp){
+            $sqr = "DELETE FROM `thongtinsp` WHERE sanpham_id=$idsp";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function DelList($idsp){
+            $sqr = "DELETE FROM `listimages` WHERE sanpham_id=$idsp";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        function DelSPDG($idsp){
+            $sqr = "DELETE FROM `danhgia` WHERE sanpham_id=$idsp";
+            $result = false;
+            if(mysqli_query ($this->con, $sqr)){
+                $result = true;
+            }
+            return json_encode($result);
+        }
+        public function checktontaisp($idsp){
+            $kt="";
+            $qr = "SELECT * from `donhangct` where sanpham_id='$idsp'";
+            $rows = mysqli_query($this->con, $qr);
+            if( mysqli_num_rows($rows)<=0){
+                $qr = "SELECT * from `donnhapchitiet` where sanpham_id='$idsp'";
+                $rows = mysqli_query($this->con, $qr);
+                if( mysqli_num_rows($rows)>0){
+                    $kt="tontai";
+                }else {
+                    $qr = "SELECT * from `giohang` where sanpham_id='$idsp'";
+                    $rows = mysqli_query($this->con, $qr);
+                    if( mysqli_num_rows($rows)>0){
+                        $kt="tontai";
+                    }
+                }
+            }else {$kt="tontai";}
+            return $kt;
+        }
     }
 ?>
